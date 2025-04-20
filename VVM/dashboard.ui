@@ -236,7 +236,7 @@ background-color: #e6e6e6;
              <string notr="true">QPushButton {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	background-color: #f8f8f8;
-	color: #0A1C3A;
+	color: black;
 	font-size: 16px;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -272,7 +272,7 @@ background-color: #e6e6e6;
              <string notr="true">QPushButton {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	background-color: #f8f8f8;
-	color: #0A1C3A;
+	color: black;
 	font-size: 16px;
 	border: 1px solid black;
 	border-radius: 5px;

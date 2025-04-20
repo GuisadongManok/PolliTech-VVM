@@ -17,7 +17,7 @@ class vvm : public QMainWindow
     Q_OBJECT
 
 public:
-    vvm(QSqlDatabase& database, QWidget* parent = nullptr);
+    explicit vvm(QSqlDatabase &database, const QString& voterId, QWidget *parent = nullptr);
     ~vvm();
 
 protected:
@@ -25,11 +25,14 @@ protected:
 
 private slots:
     void displayCandidates();
+    void submitVote();
 
 private:
     Ui::vvm *ui;
     loginsystem *loginWindow;
     QSqlDatabase db;
+    QString currentVoterId;
+
 
 
 };

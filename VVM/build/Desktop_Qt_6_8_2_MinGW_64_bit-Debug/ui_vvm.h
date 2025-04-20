@@ -48,7 +48,7 @@ public:
     QFrame *frame_cap;
     QGridLayout *gridLayout_9;
     QVBoxLayout *captainLayout;
-    QGridLayout *gridLayoutcap_skchair;
+    QGridLayout *gridLayout_skchair;
     QLabel *label_6;
     QScrollArea *scrollArea_skchair;
     QWidget *scrollAreaWidgetContents_4;
@@ -73,13 +73,13 @@ public:
     QGridLayout *gridLayout_11;
     QVBoxLayout *skCouncilorsLayout;
     QFrame *line_3;
-    QPushButton *pushButton;
+    QPushButton *submitButton;
 
     void setupUi(QMainWindow *vvm)
     {
         if (vvm->objectName().isEmpty())
             vvm->setObjectName("vvm");
-        vvm->resize(900, 789);
+        vvm->resize(900, 879);
         vvm->setMinimumSize(QSize(900, 789));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
@@ -193,13 +193,13 @@ public:
         scrollArea_cap->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 430, 212));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 430, 257));
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         frame_cap = new QFrame(scrollAreaWidgetContents);
         frame_cap->setObjectName("frame_cap");
         frame_cap->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"	background: #e5e5e5;\n"
+"	background: #f0f0f0;\n"
 "}"));
         frame_cap->setFrameShape(QFrame::Shape::Box);
         frame_cap->setFrameShadow(QFrame::Shadow::Raised);
@@ -220,9 +220,9 @@ public:
 
         gridLayout_7->addLayout(gridLayoutcap, 2, 1, 1, 1);
 
-        gridLayoutcap_skchair = new QGridLayout();
-        gridLayoutcap_skchair->setObjectName("gridLayoutcap_skchair");
-        gridLayoutcap_skchair->setVerticalSpacing(0);
+        gridLayout_skchair = new QGridLayout();
+        gridLayout_skchair->setObjectName("gridLayout_skchair");
+        gridLayout_skchair->setVerticalSpacing(0);
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
@@ -233,20 +233,20 @@ public:
 "}"));
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        gridLayoutcap_skchair->addWidget(label_6, 0, 0, 1, 1);
+        gridLayout_skchair->addWidget(label_6, 0, 0, 1, 1);
 
         scrollArea_skchair = new QScrollArea(centralwidget);
         scrollArea_skchair->setObjectName("scrollArea_skchair");
         scrollArea_skchair->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName("scrollAreaWidgetContents_4");
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 430, 212));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 430, 257));
         gridLayout_4 = new QGridLayout(scrollAreaWidgetContents_4);
         gridLayout_4->setObjectName("gridLayout_4");
         frame_skchair = new QFrame(scrollAreaWidgetContents_4);
         frame_skchair->setObjectName("frame_skchair");
         frame_skchair->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"	background: #e5e5e5;\n"
+"	background: #f0f0f0;\n"
 "}"));
         frame_skchair->setFrameShape(QFrame::Shape::Box);
         frame_skchair->setFrameShadow(QFrame::Shadow::Raised);
@@ -262,10 +262,10 @@ public:
 
         scrollArea_skchair->setWidget(scrollAreaWidgetContents_4);
 
-        gridLayoutcap_skchair->addWidget(scrollArea_skchair, 1, 0, 1, 1);
+        gridLayout_skchair->addWidget(scrollArea_skchair, 1, 0, 1, 1);
 
 
-        gridLayout_7->addLayout(gridLayoutcap_skchair, 2, 2, 1, 1);
+        gridLayout_7->addLayout(gridLayout_skchair, 2, 2, 1, 1);
 
         gridLayout_councilors = new QGridLayout();
         gridLayout_councilors->setObjectName("gridLayout_councilors");
@@ -291,13 +291,13 @@ public:
         scrollArea_councilors->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName("scrollAreaWidgetContents_3");
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 430, 211));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 430, 256));
         gridLayout_3 = new QGridLayout(scrollAreaWidgetContents_3);
         gridLayout_3->setObjectName("gridLayout_3");
         frame_councilors = new QFrame(scrollAreaWidgetContents_3);
         frame_councilors->setObjectName("frame_councilors");
         frame_councilors->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"	background: #e5e5e5;\n"
+"	background: #f0f0f0;\n"
 "}"));
         frame_councilors->setFrameShape(QFrame::Shape::Box);
         frame_councilors->setFrameShadow(QFrame::Shadow::Raised);
@@ -342,13 +342,13 @@ public:
         scrollArea_skcouncilors->setWidgetResizable(true);
         scrollAreaWidgetContents_5 = new QWidget();
         scrollAreaWidgetContents_5->setObjectName("scrollAreaWidgetContents_5");
-        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 430, 211));
+        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 430, 256));
         gridLayout_6 = new QGridLayout(scrollAreaWidgetContents_5);
         gridLayout_6->setObjectName("gridLayout_6");
         frame_skcouncilors = new QFrame(scrollAreaWidgetContents_5);
         frame_skcouncilors->setObjectName("frame_skcouncilors");
         frame_skcouncilors->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"	background: #e5e5e5;\n"
+"	background: #f0f0f0;\n"
 "}"));
         frame_skcouncilors->setFrameShape(QFrame::Shape::Box);
         frame_skcouncilors->setFrameShadow(QFrame::Shadow::Raised);
@@ -376,10 +376,10 @@ public:
 
         gridLayout_7->addWidget(line_3, 4, 1, 1, 2);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName("pushButton");
-        pushButton->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
-        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        submitButton = new QPushButton(centralwidget);
+        submitButton->setObjectName("submitButton");
+        submitButton->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        submitButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    font: 600 9pt \"Segoe UI\";\n"
 "    font-size: 16px;\n"
 "    color: black;\n"
@@ -414,7 +414,7 @@ public:
 "}\n"
 ""));
 
-        gridLayout_7->addWidget(pushButton, 5, 1, 1, 2, Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter);
+        gridLayout_7->addWidget(submitButton, 5, 1, 1, 2, Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter);
 
         vvm->setCentralWidget(centralwidget);
 
@@ -438,7 +438,7 @@ public:
 "Pick 7 to vote", nullptr));
         label_8->setText(QCoreApplication::translate("vvm", "SK Councilors (SK Kagawad)\n"
 "Pick 7 to vote", nullptr));
-        pushButton->setText(QCoreApplication::translate("vvm", "SUBMIT VOTE", nullptr));
+        submitButton->setText(QCoreApplication::translate("vvm", "SUBMIT VOTE", nullptr));
     } // retranslateUi
 
 };

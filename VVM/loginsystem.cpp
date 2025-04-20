@@ -99,7 +99,7 @@ void loginsystem::LoginButton()
         this->hide();
 
         delete mainWindow;
-        mainWindow = new vvm (db, nullptr);
+        mainWindow = new vvm(db, voter_id, nullptr);
 
         adjustVotingAge(age);
 

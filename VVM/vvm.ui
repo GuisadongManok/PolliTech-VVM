@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>900</width>
-    <height>789</height>
+    <height>879</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -183,7 +183,7 @@ Pick 1 to vote</string>
            <x>0</x>
            <y>0</y>
            <width>430</width>
-           <height>212</height>
+           <height>257</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout">
@@ -191,7 +191,7 @@ Pick 1 to vote</string>
            <widget class="QFrame" name="frame_cap">
             <property name="styleSheet">
              <string notr="true">QFrame {
-	background: #e5e5e5;
+	background: #f0f0f0;
 }</string>
             </property>
             <property name="frameShape">
@@ -214,7 +214,7 @@ Pick 1 to vote</string>
      </layout>
     </item>
     <item row="2" column="2">
-     <layout class="QGridLayout" name="gridLayoutcap_skchair">
+     <layout class="QGridLayout" name="gridLayout_skchair">
       <property name="verticalSpacing">
        <number>0</number>
       </property>
@@ -248,7 +248,7 @@ Pick 1 to vote</string>
            <x>0</x>
            <y>0</y>
            <width>430</width>
-           <height>212</height>
+           <height>257</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
@@ -256,7 +256,7 @@ Pick 1 to vote</string>
            <widget class="QFrame" name="frame_skchair">
             <property name="styleSheet">
              <string notr="true">QFrame {
-	background: #e5e5e5;
+	background: #f0f0f0;
 }</string>
             </property>
             <property name="frameShape">
@@ -317,7 +317,7 @@ Pick 7 to vote</string>
            <x>0</x>
            <y>0</y>
            <width>430</width>
-           <height>211</height>
+           <height>256</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -325,7 +325,7 @@ Pick 7 to vote</string>
            <widget class="QFrame" name="frame_councilors">
             <property name="styleSheet">
              <string notr="true">QFrame {
-	background: #e5e5e5;
+	background: #f0f0f0;
 }</string>
             </property>
             <property name="frameShape">
@@ -386,7 +386,7 @@ Pick 7 to vote</string>
            <x>0</x>
            <y>0</y>
            <width>430</width>
-           <height>211</height>
+           <height>256</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
@@ -394,7 +394,7 @@ Pick 7 to vote</string>
            <widget class="QFrame" name="frame_skcouncilors">
             <property name="styleSheet">
              <string notr="true">QFrame {
-	background: #e5e5e5;
+	background: #f0f0f0;
 }</string>
             </property>
             <property name="frameShape">
@@ -424,7 +424,7 @@ Pick 7 to vote</string>
      </widget>
     </item>
     <item row="5" column="1" colspan="2" alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="submitButton">
       <property name="cursor">
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
