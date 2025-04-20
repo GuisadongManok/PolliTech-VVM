@@ -143,7 +143,6 @@ void VoterManagement::LoadVoterTable()
     for (int i = 0; i < ui->Voter_table->columnCount(); ++i) {
         header->setSectionResizeMode(i, QHeaderView::ResizeToContents);
     }
-
     header->setSectionResizeMode(1, QHeaderView::Stretch);
     header->setSectionResizeMode(2, QHeaderView::Stretch);
 

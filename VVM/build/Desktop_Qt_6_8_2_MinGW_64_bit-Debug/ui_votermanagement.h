@@ -70,10 +70,12 @@ public:
     {
         if (VoterManagement->objectName().isEmpty())
             VoterManagement->setObjectName("VoterManagement");
-        VoterManagement->resize(1250, 662);
+        VoterManagement->resize(1262, 582);
+        VoterManagement->setMinimumSize(QSize(1262, 582));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         VoterManagement->setWindowIcon(icon);
+        VoterManagement->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(VoterManagement);
         centralwidget->setObjectName("centralwidget");
         QSizePolicy sizePolicy(QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Minimum);
@@ -81,6 +83,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
         centralwidget->setSizePolicy(sizePolicy);
+        centralwidget->setStyleSheet(QString::fromUtf8(""));
         gridLayout_2 = new QGridLayout(centralwidget);
         gridLayout_2->setObjectName("gridLayout_2");
         frame = new QFrame(centralwidget);
@@ -91,6 +94,9 @@ public:
         sizePolicy1.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
         frame->setSizePolicy(sizePolicy1);
         frame->setMaximumSize(QSize(16777215, 303));
+        frame->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"background-color: none;\n"
+"}"));
         frame->setFrameShape(QFrame::Shape::NoFrame);
         frame->setFrameShadow(QFrame::Shadow::Raised);
         gridLayout = new QGridLayout(frame);
@@ -108,6 +114,7 @@ public:
 "	font: 700 9pt \"Segoe UI\";\n"
 "	font-size: 35px;\n"
 "	color: black;\n"
+"	background-color: none;\n"
 "}"));
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label->setTextInteractionFlags(Qt::TextInteractionFlag::NoTextInteraction);
@@ -129,6 +136,7 @@ public:
 "	font: 600 9pt \"Segoe UI\";\n"
 "	font-size: 17px;\n"
 "	color: black;\n"
+"	background-color: none;\n"
 "}"));
         label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -168,6 +176,7 @@ public:
 "	font: 600 9pt \"Segoe UI\";\n"
 "	font-size: 17px;\n"
 "	color: black;\n"
+"	background-color: none;\n"
 "}"));
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -209,6 +218,7 @@ public:
 "	font: 600 9pt \"Segoe UI\";\n"
 "	font-size: 17px;\n"
 "	color: black;\n"
+"	background-color: none;\n"
 "}"));
         label_4->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -245,6 +255,7 @@ public:
 "	font: 600 9pt \"Segoe UI\";\n"
 "	font-size: 17px;\n"
 "	color: black;\n"
+"	background-color: none;\n"
 "}"));
         label_5->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -287,6 +298,7 @@ public:
 "	font: italic 9pt \"Source Code Pro\";\n"
 "	font-size: 14px;\n"
 "	color: black;\n"
+"	background-color: none;\n"
 "}"));
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -394,7 +406,7 @@ public:
 
         verticalLayout_11 = new QVBoxLayout();
         verticalLayout_11->setObjectName("verticalLayout_11");
-        verticalLayout_11->setContentsMargins(-1, -1, 10, -1);
+        verticalLayout_11->setContentsMargins(-1, -1, 0, -1);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
@@ -453,7 +465,7 @@ public:
         verticalLayout_10->setObjectName("verticalLayout_10");
         Voter_table = new QTableWidget(centralwidget);
         Voter_table->setObjectName("Voter_table");
-        QSizePolicy sizePolicy4(QSizePolicy::Policy::Ignored, QSizePolicy::Policy::Expanding);
+        QSizePolicy sizePolicy4(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(Voter_table->sizePolicy().hasHeightForWidth());

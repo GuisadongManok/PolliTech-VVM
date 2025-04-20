@@ -54,7 +54,12 @@ public:
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         dashboard->setWindowIcon(icon);
         dashboard->setStyleSheet(QString::fromUtf8("QDialog {\n"
-"background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #f8f9fa, stop:1 #e9ecef);\n"
+"background: qlineargradient(\n"
+"        x1: 0, y1: 0,\n"
+"        x2: 0, y2: 1,\n"
+"        stop: 0 #f0f0f0,\n"
+"        stop: 1 #e0e0e0\n"
+"    );\n"
 "}"));
         gridLayout_2 = new QGridLayout(dashboard);
         gridLayout_2->setObjectName("gridLayout_2");

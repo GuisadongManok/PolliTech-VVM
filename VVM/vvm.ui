@@ -23,9 +23,14 @@
      <rect>
       <x>9</x>
       <y>9</y>
-      <width>304</width>
-      <height>71</height>
+      <width>1231</width>
+      <height>86</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QFrame {
+padding: 3px;
+}</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::Shape::StyledPanel</enum>

@@ -67,7 +67,7 @@ void candidatesmanagement::InsertButton()
     QString party = ui->lineEdit_party->text().trimmed();
     QString position = ui->comboBox_positions->currentText().trimmed();
 
-    if (firstName.isEmpty() || lastName.isEmpty() || voterId.isEmpty() || ageText.isEmpty() || party.isEmpty() || position == "Select Position") {
+    if (firstName.isEmpty() || lastName.isEmpty() || voterId.isEmpty() || ageText.isEmpty() || position == "Select Position") {
         QMessageBox::warning(this, "Missing Information", "Please fill in all fields before adding a candidate.");
         return;
     }

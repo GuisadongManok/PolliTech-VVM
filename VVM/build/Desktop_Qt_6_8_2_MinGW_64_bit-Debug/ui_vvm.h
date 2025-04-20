@@ -44,7 +44,10 @@ public:
         centralwidget->setObjectName("centralwidget");
         frame = new QFrame(centralwidget);
         frame->setObjectName("frame");
-        frame->setGeometry(QRect(9, 9, 304, 71));
+        frame->setGeometry(QRect(9, 9, 1231, 86));
+        frame->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"padding: 3px;\n"
+"}"));
         frame->setFrameShape(QFrame::Shape::StyledPanel);
         frame->setFrameShadow(QFrame::Shadow::Raised);
         horizontalLayout = new QHBoxLayout(frame);
