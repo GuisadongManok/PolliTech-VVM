@@ -128,7 +128,7 @@
 }</string>
                </property>
                <property name="text">
-                <string>Please select your candidates carefully. Votes cannot be changed after submitting</string>
+                <string>Please select your candidates carefully. Votes cannot be changed after submitting.</string>
                </property>
               </widget>
              </item>
@@ -150,6 +150,9 @@
     </item>
     <item row="2" column="1">
      <layout class="QGridLayout" name="gridLayoutcap">
+      <property name="verticalSpacing">
+       <number>0</number>
+      </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label_3">
         <property name="styleSheet">
@@ -180,7 +183,7 @@ Pick 1 to vote</string>
            <x>0</x>
            <y>0</y>
            <width>430</width>
-           <height>206</height>
+           <height>212</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout">
@@ -188,12 +191,7 @@ Pick 1 to vote</string>
            <widget class="QFrame" name="frame_cap">
             <property name="styleSheet">
              <string notr="true">QFrame {
-	background: qlineargradient(
-        x1: 0, y1: 0,
-        x2: 0, y2: 1,
-        stop: 0 #f0f0f0,
-        stop: 1 #e0e0e0
-    );
+	background: #e5e5e5;
 }</string>
             </property>
             <property name="frameShape">
@@ -202,6 +200,11 @@ Pick 1 to vote</string>
             <property name="frameShadow">
              <enum>QFrame::Shadow::Raised</enum>
             </property>
+            <layout class="QGridLayout" name="gridLayout_9">
+             <item row="0" column="0">
+              <layout class="QVBoxLayout" name="captainLayout"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -211,7 +214,10 @@ Pick 1 to vote</string>
      </layout>
     </item>
     <item row="2" column="2">
-     <layout class="QGridLayout" name="gridLayoutcap_3">
+     <layout class="QGridLayout" name="gridLayoutcap_skchair">
+      <property name="verticalSpacing">
+       <number>0</number>
+      </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label_6">
         <property name="styleSheet">
@@ -232,7 +238,7 @@ Pick 1 to vote</string>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QScrollArea" name="scrollArea_cap_3">
+       <widget class="QScrollArea" name="scrollArea_skchair">
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -242,20 +248,15 @@ Pick 1 to vote</string>
            <x>0</x>
            <y>0</y>
            <width>430</width>
-           <height>206</height>
+           <height>212</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
           <item row="0" column="0">
-           <widget class="QFrame" name="frame_cap_3">
+           <widget class="QFrame" name="frame_skchair">
             <property name="styleSheet">
              <string notr="true">QFrame {
-	background: qlineargradient(
-        x1: 0, y1: 0,
-        x2: 0, y2: 1,
-        stop: 0 #f0f0f0,
-        stop: 1 #e0e0e0
-    );
+	background: #e5e5e5;
 }</string>
             </property>
             <property name="frameShape">
@@ -264,6 +265,11 @@ Pick 1 to vote</string>
             <property name="frameShadow">
              <enum>QFrame::Shadow::Raised</enum>
             </property>
+            <layout class="QGridLayout" name="gridLayout_10">
+             <item row="0" column="0">
+              <layout class="QVBoxLayout" name="skChairmanLayout"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -274,6 +280,9 @@ Pick 1 to vote</string>
     </item>
     <item row="3" column="1">
      <layout class="QGridLayout" name="gridLayout_councilors">
+      <property name="verticalSpacing">
+       <number>0</number>
+      </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label_5">
         <property name="styleSheet">
@@ -308,7 +317,7 @@ Pick 7 to vote</string>
            <x>0</x>
            <y>0</y>
            <width>430</width>
-           <height>205</height>
+           <height>211</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
@@ -316,12 +325,7 @@ Pick 7 to vote</string>
            <widget class="QFrame" name="frame_councilors">
             <property name="styleSheet">
              <string notr="true">QFrame {
-	background: qlineargradient(
-        x1: 0, y1: 0,
-        x2: 0, y2: 1,
-        stop: 0 #f0f0f0,
-        stop: 1 #e0e0e0
-    );
+	background: #e5e5e5;
 }</string>
             </property>
             <property name="frameShape">
@@ -330,6 +334,11 @@ Pick 7 to vote</string>
             <property name="frameShadow">
              <enum>QFrame::Shadow::Raised</enum>
             </property>
+            <layout class="QGridLayout" name="gridLayout_8">
+             <item row="0" column="0">
+              <layout class="QVBoxLayout" name="bCouncilorsLayout"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -339,7 +348,10 @@ Pick 7 to vote</string>
      </layout>
     </item>
     <item row="3" column="2">
-     <layout class="QGridLayout" name="gridLayout_councilors_2">
+     <layout class="QGridLayout" name="gridLayout_skcouncilors">
+      <property name="verticalSpacing">
+       <number>0</number>
+      </property>
       <item row="0" column="0">
        <widget class="QLabel" name="label_8">
         <property name="styleSheet">
@@ -364,7 +376,7 @@ Pick 7 to vote</string>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QScrollArea" name="scrollArea_councilors_2">
+       <widget class="QScrollArea" name="scrollArea_skcouncilors">
         <property name="widgetResizable">
          <bool>true</bool>
         </property>
@@ -374,20 +386,15 @@ Pick 7 to vote</string>
            <x>0</x>
            <y>0</y>
            <width>430</width>
-           <height>205</height>
+           <height>211</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
           <item row="0" column="0">
-           <widget class="QFrame" name="frame_councilors_2">
+           <widget class="QFrame" name="frame_skcouncilors">
             <property name="styleSheet">
              <string notr="true">QFrame {
-	background: qlineargradient(
-        x1: 0, y1: 0,
-        x2: 0, y2: 1,
-        stop: 0 #f0f0f0,
-        stop: 1 #e0e0e0
-    );
+	background: #e5e5e5;
 }</string>
             </property>
             <property name="frameShape">
@@ -396,6 +403,11 @@ Pick 7 to vote</string>
             <property name="frameShadow">
              <enum>QFrame::Shadow::Raised</enum>
             </property>
+            <layout class="QGridLayout" name="gridLayout_11">
+             <item row="0" column="0">
+              <layout class="QVBoxLayout" name="skCouncilorsLayout"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>

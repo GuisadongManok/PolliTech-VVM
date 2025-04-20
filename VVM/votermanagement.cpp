@@ -175,7 +175,7 @@ void VoterManagement::LoadVoterTable()
     }
 
     QTableCornerButton::section {
-        background-color: #f5f5f5;
+        background-color: #f5f5f5a;
         border: 1px solid #ccc;
     }
     )");

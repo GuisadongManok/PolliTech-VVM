@@ -46,24 +46,32 @@ public:
     QWidget *scrollAreaWidgetContents;
     QGridLayout *gridLayout;
     QFrame *frame_cap;
-    QGridLayout *gridLayoutcap_3;
+    QGridLayout *gridLayout_9;
+    QVBoxLayout *captainLayout;
+    QGridLayout *gridLayoutcap_skchair;
     QLabel *label_6;
-    QScrollArea *scrollArea_cap_3;
+    QScrollArea *scrollArea_skchair;
     QWidget *scrollAreaWidgetContents_4;
     QGridLayout *gridLayout_4;
-    QFrame *frame_cap_3;
+    QFrame *frame_skchair;
+    QGridLayout *gridLayout_10;
+    QVBoxLayout *skChairmanLayout;
     QGridLayout *gridLayout_councilors;
     QLabel *label_5;
     QScrollArea *scrollArea_councilors;
     QWidget *scrollAreaWidgetContents_3;
     QGridLayout *gridLayout_3;
     QFrame *frame_councilors;
-    QGridLayout *gridLayout_councilors_2;
+    QGridLayout *gridLayout_8;
+    QVBoxLayout *bCouncilorsLayout;
+    QGridLayout *gridLayout_skcouncilors;
     QLabel *label_8;
-    QScrollArea *scrollArea_councilors_2;
+    QScrollArea *scrollArea_skcouncilors;
     QWidget *scrollAreaWidgetContents_5;
     QGridLayout *gridLayout_6;
-    QFrame *frame_councilors_2;
+    QFrame *frame_skcouncilors;
+    QGridLayout *gridLayout_11;
+    QVBoxLayout *skCouncilorsLayout;
     QFrame *line_3;
     QPushButton *pushButton;
 
@@ -167,6 +175,7 @@ public:
 
         gridLayoutcap = new QGridLayout();
         gridLayoutcap->setObjectName("gridLayoutcap");
+        gridLayoutcap->setVerticalSpacing(0);
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName("label_3");
         label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
@@ -184,21 +193,23 @@ public:
         scrollArea_cap->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName("scrollAreaWidgetContents");
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 430, 206));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 430, 212));
         gridLayout = new QGridLayout(scrollAreaWidgetContents);
         gridLayout->setObjectName("gridLayout");
         frame_cap = new QFrame(scrollAreaWidgetContents);
         frame_cap->setObjectName("frame_cap");
         frame_cap->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"	background: qlineargradient(\n"
-"        x1: 0, y1: 0,\n"
-"        x2: 0, y2: 1,\n"
-"        stop: 0 #f0f0f0,\n"
-"        stop: 1 #e0e0e0\n"
-"    );\n"
+"	background: #e5e5e5;\n"
 "}"));
         frame_cap->setFrameShape(QFrame::Shape::Box);
         frame_cap->setFrameShadow(QFrame::Shadow::Raised);
+        gridLayout_9 = new QGridLayout(frame_cap);
+        gridLayout_9->setObjectName("gridLayout_9");
+        captainLayout = new QVBoxLayout();
+        captainLayout->setObjectName("captainLayout");
+
+        gridLayout_9->addLayout(captainLayout, 0, 0, 1, 1);
+
 
         gridLayout->addWidget(frame_cap, 0, 0, 1, 1);
 
@@ -209,8 +220,9 @@ public:
 
         gridLayout_7->addLayout(gridLayoutcap, 2, 1, 1, 1);
 
-        gridLayoutcap_3 = new QGridLayout();
-        gridLayoutcap_3->setObjectName("gridLayoutcap_3");
+        gridLayoutcap_skchair = new QGridLayout();
+        gridLayoutcap_skchair->setObjectName("gridLayoutcap_skchair");
+        gridLayoutcap_skchair->setVerticalSpacing(0);
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
@@ -221,40 +233,43 @@ public:
 "}"));
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        gridLayoutcap_3->addWidget(label_6, 0, 0, 1, 1);
+        gridLayoutcap_skchair->addWidget(label_6, 0, 0, 1, 1);
 
-        scrollArea_cap_3 = new QScrollArea(centralwidget);
-        scrollArea_cap_3->setObjectName("scrollArea_cap_3");
-        scrollArea_cap_3->setWidgetResizable(true);
+        scrollArea_skchair = new QScrollArea(centralwidget);
+        scrollArea_skchair->setObjectName("scrollArea_skchair");
+        scrollArea_skchair->setWidgetResizable(true);
         scrollAreaWidgetContents_4 = new QWidget();
         scrollAreaWidgetContents_4->setObjectName("scrollAreaWidgetContents_4");
-        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 430, 206));
+        scrollAreaWidgetContents_4->setGeometry(QRect(0, 0, 430, 212));
         gridLayout_4 = new QGridLayout(scrollAreaWidgetContents_4);
         gridLayout_4->setObjectName("gridLayout_4");
-        frame_cap_3 = new QFrame(scrollAreaWidgetContents_4);
-        frame_cap_3->setObjectName("frame_cap_3");
-        frame_cap_3->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"	background: qlineargradient(\n"
-"        x1: 0, y1: 0,\n"
-"        x2: 0, y2: 1,\n"
-"        stop: 0 #f0f0f0,\n"
-"        stop: 1 #e0e0e0\n"
-"    );\n"
+        frame_skchair = new QFrame(scrollAreaWidgetContents_4);
+        frame_skchair->setObjectName("frame_skchair");
+        frame_skchair->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"	background: #e5e5e5;\n"
 "}"));
-        frame_cap_3->setFrameShape(QFrame::Shape::Box);
-        frame_cap_3->setFrameShadow(QFrame::Shadow::Raised);
+        frame_skchair->setFrameShape(QFrame::Shape::Box);
+        frame_skchair->setFrameShadow(QFrame::Shadow::Raised);
+        gridLayout_10 = new QGridLayout(frame_skchair);
+        gridLayout_10->setObjectName("gridLayout_10");
+        skChairmanLayout = new QVBoxLayout();
+        skChairmanLayout->setObjectName("skChairmanLayout");
 
-        gridLayout_4->addWidget(frame_cap_3, 0, 0, 1, 1);
-
-        scrollArea_cap_3->setWidget(scrollAreaWidgetContents_4);
-
-        gridLayoutcap_3->addWidget(scrollArea_cap_3, 1, 0, 1, 1);
+        gridLayout_10->addLayout(skChairmanLayout, 0, 0, 1, 1);
 
 
-        gridLayout_7->addLayout(gridLayoutcap_3, 2, 2, 1, 1);
+        gridLayout_4->addWidget(frame_skchair, 0, 0, 1, 1);
+
+        scrollArea_skchair->setWidget(scrollAreaWidgetContents_4);
+
+        gridLayoutcap_skchair->addWidget(scrollArea_skchair, 1, 0, 1, 1);
+
+
+        gridLayout_7->addLayout(gridLayoutcap_skchair, 2, 2, 1, 1);
 
         gridLayout_councilors = new QGridLayout();
         gridLayout_councilors->setObjectName("gridLayout_councilors");
+        gridLayout_councilors->setVerticalSpacing(0);
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName("label_5");
         label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
@@ -276,21 +291,23 @@ public:
         scrollArea_councilors->setWidgetResizable(true);
         scrollAreaWidgetContents_3 = new QWidget();
         scrollAreaWidgetContents_3->setObjectName("scrollAreaWidgetContents_3");
-        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 430, 205));
+        scrollAreaWidgetContents_3->setGeometry(QRect(0, 0, 430, 211));
         gridLayout_3 = new QGridLayout(scrollAreaWidgetContents_3);
         gridLayout_3->setObjectName("gridLayout_3");
         frame_councilors = new QFrame(scrollAreaWidgetContents_3);
         frame_councilors->setObjectName("frame_councilors");
         frame_councilors->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"	background: qlineargradient(\n"
-"        x1: 0, y1: 0,\n"
-"        x2: 0, y2: 1,\n"
-"        stop: 0 #f0f0f0,\n"
-"        stop: 1 #e0e0e0\n"
-"    );\n"
+"	background: #e5e5e5;\n"
 "}"));
         frame_councilors->setFrameShape(QFrame::Shape::Box);
         frame_councilors->setFrameShadow(QFrame::Shadow::Raised);
+        gridLayout_8 = new QGridLayout(frame_councilors);
+        gridLayout_8->setObjectName("gridLayout_8");
+        bCouncilorsLayout = new QVBoxLayout();
+        bCouncilorsLayout->setObjectName("bCouncilorsLayout");
+
+        gridLayout_8->addLayout(bCouncilorsLayout, 0, 0, 1, 1);
+
 
         gridLayout_3->addWidget(frame_councilors, 0, 0, 1, 1);
 
@@ -301,8 +318,9 @@ public:
 
         gridLayout_7->addLayout(gridLayout_councilors, 3, 1, 1, 1);
 
-        gridLayout_councilors_2 = new QGridLayout();
-        gridLayout_councilors_2->setObjectName("gridLayout_councilors_2");
+        gridLayout_skcouncilors = new QGridLayout();
+        gridLayout_skcouncilors->setObjectName("gridLayout_skcouncilors");
+        gridLayout_skcouncilors->setVerticalSpacing(0);
         label_8 = new QLabel(centralwidget);
         label_8->setObjectName("label_8");
         label_8->setStyleSheet(QString::fromUtf8("QLabel {\n"
@@ -317,37 +335,39 @@ public:
 "}"));
         label_8->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        gridLayout_councilors_2->addWidget(label_8, 0, 0, 1, 1);
+        gridLayout_skcouncilors->addWidget(label_8, 0, 0, 1, 1);
 
-        scrollArea_councilors_2 = new QScrollArea(centralwidget);
-        scrollArea_councilors_2->setObjectName("scrollArea_councilors_2");
-        scrollArea_councilors_2->setWidgetResizable(true);
+        scrollArea_skcouncilors = new QScrollArea(centralwidget);
+        scrollArea_skcouncilors->setObjectName("scrollArea_skcouncilors");
+        scrollArea_skcouncilors->setWidgetResizable(true);
         scrollAreaWidgetContents_5 = new QWidget();
         scrollAreaWidgetContents_5->setObjectName("scrollAreaWidgetContents_5");
-        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 430, 205));
+        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 430, 211));
         gridLayout_6 = new QGridLayout(scrollAreaWidgetContents_5);
         gridLayout_6->setObjectName("gridLayout_6");
-        frame_councilors_2 = new QFrame(scrollAreaWidgetContents_5);
-        frame_councilors_2->setObjectName("frame_councilors_2");
-        frame_councilors_2->setStyleSheet(QString::fromUtf8("QFrame {\n"
-"	background: qlineargradient(\n"
-"        x1: 0, y1: 0,\n"
-"        x2: 0, y2: 1,\n"
-"        stop: 0 #f0f0f0,\n"
-"        stop: 1 #e0e0e0\n"
-"    );\n"
+        frame_skcouncilors = new QFrame(scrollAreaWidgetContents_5);
+        frame_skcouncilors->setObjectName("frame_skcouncilors");
+        frame_skcouncilors->setStyleSheet(QString::fromUtf8("QFrame {\n"
+"	background: #e5e5e5;\n"
 "}"));
-        frame_councilors_2->setFrameShape(QFrame::Shape::Box);
-        frame_councilors_2->setFrameShadow(QFrame::Shadow::Raised);
+        frame_skcouncilors->setFrameShape(QFrame::Shape::Box);
+        frame_skcouncilors->setFrameShadow(QFrame::Shadow::Raised);
+        gridLayout_11 = new QGridLayout(frame_skcouncilors);
+        gridLayout_11->setObjectName("gridLayout_11");
+        skCouncilorsLayout = new QVBoxLayout();
+        skCouncilorsLayout->setObjectName("skCouncilorsLayout");
 
-        gridLayout_6->addWidget(frame_councilors_2, 0, 0, 1, 1);
-
-        scrollArea_councilors_2->setWidget(scrollAreaWidgetContents_5);
-
-        gridLayout_councilors_2->addWidget(scrollArea_councilors_2, 1, 0, 1, 1);
+        gridLayout_11->addLayout(skCouncilorsLayout, 0, 0, 1, 1);
 
 
-        gridLayout_7->addLayout(gridLayout_councilors_2, 3, 2, 1, 1);
+        gridLayout_6->addWidget(frame_skcouncilors, 0, 0, 1, 1);
+
+        scrollArea_skcouncilors->setWidget(scrollAreaWidgetContents_5);
+
+        gridLayout_skcouncilors->addWidget(scrollArea_skcouncilors, 1, 0, 1, 1);
+
+
+        gridLayout_7->addLayout(gridLayout_skcouncilors, 3, 2, 1, 1);
 
         line_3 = new QFrame(centralwidget);
         line_3->setObjectName("line_3");
@@ -409,7 +429,7 @@ public:
         label_2->setText(QString());
         label->setText(QCoreApplication::translate("vvm", "BARANGAY AND SK ELECTIONS", nullptr));
         label_date->setText(QCoreApplication::translate("vvm", "MMM d, yyyy", nullptr));
-        label_7->setText(QCoreApplication::translate("vvm", "Please select your candidates carefully. Votes cannot be changed after submitting", nullptr));
+        label_7->setText(QCoreApplication::translate("vvm", "Please select your candidates carefully. Votes cannot be changed after submitting.", nullptr));
         label_3->setText(QCoreApplication::translate("vvm", "Barangay Captain (Punong Barangay)\n"
 "Pick 1 to vote", nullptr));
         label_6->setText(QCoreApplication::translate("vvm", "SK Chairperson\n"

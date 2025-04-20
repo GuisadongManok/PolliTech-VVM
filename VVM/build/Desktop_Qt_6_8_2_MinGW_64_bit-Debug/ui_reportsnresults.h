@@ -44,7 +44,7 @@ public:
     {
         if (ReportsNResults->objectName().isEmpty())
             ReportsNResults->setObjectName("ReportsNResults");
-        ReportsNResults->resize(769, 646);
+        ReportsNResults->resize(769, 664);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         ReportsNResults->setWindowIcon(icon);
