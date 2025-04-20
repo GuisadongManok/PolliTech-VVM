@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>skpositions</class>
+ <widget class="QDialog" name="skpositions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>759</width>
+    <height>284</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>SK POSITIONS</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../icons.qrc">
+    <normaloff>:/icons/buttons/icons/voting-box.png</normaloff>:/icons/buttons/icons/voting-box.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: white;</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>60</y>
+     <width>270</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel {
+	font: 700 9pt &quot;Segoe UI&quot;;
+	font-size: 30px;
+	color: black;
+}</string>
+   </property>
+   <property name="text">
+    <string>CHOOSE POSITION</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignmentFlag::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btreasurerButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>130</y>
+     <width>261</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 20px;
+	color: black;
+	background-color: #ecf0f1;
+	border: 1px solid black;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+   </property>
+   <property name="text">
+    <string>SK CHAIRMAN</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/buttons/icons/graduate.png</normaloff>:/icons/buttons/icons/graduate.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bSecretaryButton">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>130</y>
+     <width>261</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 20px;
+	color: black;
+	background-color: #ecf0f1;
+	border: 1px solid black;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+   </property>
+   <property name="text">
+    <string>SK COUNCILOR</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/buttons/icons/checklist_icon.png</normaloff>:/icons/buttons/icons/checklist_icon.png</iconset>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="logoutButton">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>20</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font: 500 9pt &quot;Source Code Pro&quot;;
+	font-size: 14px;
+	color: black;
+	background-color: #ecf0f1;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+   </property>
+   <property name="text">
+    <string>LOGOUT</string>
+   </property>
+   <property name="icon">
+    <iconset resource="../icons.qrc">
+     <normaloff>:/icons/buttons/icons/power_icon.png</normaloff>:/icons/buttons/icons/power_icon.png</iconset>
+   </property>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>

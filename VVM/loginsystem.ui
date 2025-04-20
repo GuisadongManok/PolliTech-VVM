@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>loginsystem</class>
+ <widget class="QDialog" name="loginsystem">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>666</width>
+    <height>324</height>
+   </rect>
+  </property>
+  <property name="cursor">
+   <cursorShape>ArrowCursor</cursorShape>
+  </property>
+  <property name="windowTitle">
+   <string>PolliTech</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../VVM.qrc">
+    <normaloff>:/backgrounds/Smol logo no bg.png</normaloff>:/backgrounds/Smol logo no bg.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 #f0f0f0,
+        stop: 1 #e0e0e0
+    );
+}</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="maximumSize">
+      <size>
+       <width>281</width>
+       <height>281</height>
+      </size>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::Shape::NoFrame</enum>
+     </property>
+     <property name="lineWidth">
+      <number>0</number>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="../VVM.qrc">:/backgrounds/256x256 name no bg.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>false</bool>
+     </property>
+     <property name="indent">
+      <number>-1</number>
+     </property>
+     <property name="textInteractionFlags">
+      <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SizeConstraint::SetMaximumSize</enum>
+     </property>
+     <property name="topMargin">
+      <number>35</number>
+     </property>
+     <property name="rightMargin">
+      <number>15</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignBottom">
+      <widget class="QLabel" name="label_4">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QLabel {
+	font: 700 9pt &quot;Segoe UI&quot;;
+	font-size: 35px;
+	color: #0A1C3A;
+}</string>
+       </property>
+       <property name="text">
+        <string>VOTER LOGIN</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignmentFlag::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="leftMargin">
+        <number>70</number>
+       </property>
+       <property name="topMargin">
+        <number>5</number>
+       </property>
+       <property name="rightMargin">
+        <number>70</number>
+       </property>
+       <property name="bottomMargin">
+        <number>45</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="LoginButton">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: white;
+
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(1, 120, 200),
+        stop:1 rgb(1, 100, 182)
+    );
+
+    border: 1px solid rgb(1, 26, 48);
+    border-radius: 16px;
+    padding: 5px 15px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(30, 145, 220),
+        stop:1 rgb(0, 90, 165)
+    );
+}
+
+QPushButton:pressed {
+    background-color: rgb(0, 75, 140);
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+QPushButton:focus {
+    outline: none;
+    border: 2px solid #0A1C3A;
+}</string>
+         </property>
+         <property name="text">
+          <string>LOGIN</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="AdminButton">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #012648;
+
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(255, 210, 30),
+        stop:1 rgb(254, 196, 1)
+    );
+
+    border: 1px solid #0A1C3A;
+    border-radius: 16px;
+    padding: 5px 15px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(255, 225, 90),
+        stop:1 rgb(255, 205, 30)
+    );
+}
+
+QPushButton:pressed {
+    background-color: rgb(240, 180, 0);
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+QPushButton:focus {
+    outline: none;
+    border: 2px solid 	#C49102;
+}</string>
+         </property>
+         <property name="text">
+          <string>ADMIN</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 17px;
+	color: #0A1C3A;
+}</string>
+         </property>
+         <property name="text">
+          <string>VOTER ID NUMBER</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_VIN">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+background-color: rgba(255,255,255,200);
+color: #0A1C3A;
+font: 9pt &quot;Segoe UI&quot;;
+font-size: 16px;
+padding: 3px;
+border: 1px solid black;
+border-radius: 5px;
+}</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">QLabel {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 17px;
+	color: #0A1C3A;
+}</string>
+         </property>
+         <property name="text">
+          <string>LAST NAME</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="lineEdit_lastName">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLineEdit {
+background-color: rgba(255,255,255,200);
+color: #0A1C3A;
+font: 9pt &quot;Segoe UI&quot;;
+font-size: 16px;
+padding: 3px;
+border: 1px solid black;
+border-radius: 5px;
+}</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <tabstops>
+  <tabstop>lineEdit_lastName</tabstop>
+  <tabstop>lineEdit_VIN</tabstop>
+  <tabstop>LoginButton</tabstop>
+  <tabstop>AdminButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../VVM.qrc"/>
+ </resources>
+ <connections/>
+</ui>

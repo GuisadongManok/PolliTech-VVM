@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>positions</class>
+ <widget class="QDialog" name="positions">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>721</width>
+    <height>311</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PolliTech</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../VVM.qrc">
+    <normaloff>:/backgrounds/Smol logo no bg.png</normaloff>:/backgrounds/Smol logo no bg.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+background: white;
+}</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>701</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: white;</string>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="page">
+    <widget class="QPushButton" name="councilorButton">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>140</y>
+       <width>271</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 20px;
+	color: black;
+	background-color: #ecf0f1;
+	border: 1px solid black;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+     </property>
+     <property name="text">
+      <string>BARANGAY COUNCILORS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="captainButton">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>140</y>
+       <width>271</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 20px;
+	color: black;
+	background-color: #ecf0f1;
+	border: 1px solid black;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+     </property>
+     <property name="text">
+      <string>BARANGAY CAPTAIN</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>50</y>
+       <width>330</width>
+       <height>43</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	font: 900 9pt &quot;Segoe UI&quot;;
+	font-size: 35px;
+	color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>CHOOSE POSITION</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="logoutButton">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>0</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 9pt &quot;Source Code Pro&quot;;
+	font-size: 14px;
+	color: black;
+	background-color: #ecf0f1;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+     </property>
+     <property name="text">
+      <string>LOGOUT</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../VVM.qrc">
+       <normaloff>:/icons/buttons/icons/power_icon.png</normaloff>:/icons/buttons/icons/power_icon.png</iconset>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_2">
+    <widget class="QPushButton" name="sk_councilor_button">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>80</y>
+       <width>261</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 20px;
+	color: black;
+	background-color: #ecf0f1;
+	border: 1px solid black;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+     </property>
+     <property name="text">
+      <string>SK COUNCILOR</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="sk_chairman_button">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>80</y>
+       <width>261</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 20px;
+	color: black;
+	background-color: #ecf0f1;
+	border: 1px solid black;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+     </property>
+     <property name="text">
+      <string>SK CHAIRMAN</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>20</y>
+       <width>270</width>
+       <height>38</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {
+	font: 700 9pt &quot;Segoe UI&quot;;
+	font-size: 30px;
+	color: black;
+}</string>
+     </property>
+     <property name="text">
+      <string>CHOOSE POSITION</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="logoutButton_2">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>0</y>
+       <width>80</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 500 9pt &quot;Source Code Pro&quot;;
+	font-size: 14px;
+	color: black;
+	background-color: #ecf0f1;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+     </property>
+     <property name="text">
+      <string>LOGOUT</string>
+     </property>
+     <property name="icon">
+      <iconset resource="../VVM.qrc">
+       <normaloff>:/icons/buttons/icons/power_icon.png</normaloff>:/icons/buttons/icons/power_icon.png</iconset>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="councilorButton_2">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>180</y>
+       <width>261</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 20px;
+	color: black;
+	background-color: #ecf0f1;
+	border: 1px solid black;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+     </property>
+     <property name="text">
+      <string>BARANGAY COUNCILORS</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="captainButton_2">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>180</y>
+       <width>261</width>
+       <height>91</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 20px;
+	color: black;
+	background-color: #ecf0f1;
+	border: 1px solid black;
+} 
+QPushButton:hover {
+	background-color: #bdc3c7;
+}</string>
+     </property>
+     <property name="text">
+      <string>BARANGAY CAPTAIN</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>captainButton</tabstop>
+  <tabstop>councilorButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../VVM.qrc"/>
+ </resources>
+ <connections/>
+</ui>

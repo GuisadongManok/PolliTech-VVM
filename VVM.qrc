@@ -1,0 +1,57 @@
+<RCC>
+    <qresource prefix="/icons/buttons">
+        <file>icons/home_icon.png</file>
+        <file>icons/page_symbol.png</file>
+        <file>icons/plus_symbol.png</file>
+        <file>icons/settings_icon.png</file>
+        <file>icons/user_icon.png</file>
+        <file>icons/users_icon.png</file>
+        <file>icons/cap_icon.png</file>
+        <file>icons/checklist_icon.png</file>
+        <file>icons/coin-bag_icon.png</file>
+        <file>icons/voting-box.png</file>
+        <file>icons/notepad_icon.png</file>
+        <file>icons/power_icon.png</file>
+        <file>icons/power-button-off.png</file>
+        <file>icons/money.png</file>
+        <file>icons/graduate.png</file>
+        <file>icons/list.png</file>
+        <file>icons/notes.png</file>
+        <file>icons/id-card.png</file>
+        <file>icons/padlock.png</file>
+        <file>icons/hide.png</file>
+        <file>icons/view.png</file>
+        <file>icons/voter.png</file>
+        <file>icons/play.png</file>
+        <file>icons/calendar.png</file>
+        <file>icons/bar-chart.png</file>
+        <file>icons/database-management.png</file>
+        <file>icons/money-bag.png</file>
+        <file>icons/warning.png</file>
+        <file>icons/money-bags.png</file>
+        <file>icons/museum.png</file>
+        <file>icons/refresh-page-option.png</file>
+        <file>icons/bin.png</file>
+        <file>icons/radioButton_checked.png</file>
+        <file>icons/radioButton_unchecked.png</file>
+        <file>icons/printing.png</file>
+        <file>icons/pdf.png</file>
+        <file>icons/download.png</file>
+        <file>icons/user logo.png</file>
+        <file>icons/dashboard.png</file>
+        <file>icons/undo.png</file>
+    </qresource>
+    <qresource prefix="/backgrounds">
+        <file>PolliTech Logo.png</file>
+        <file>PolliTech Logo smol.png</file>
+        <file>Smol logo no bg.png</file>
+        <file>256x256 no bg.png</file>
+        <file>Grade Grey.jpg</file>
+        <file>Portrait.jpg</file>
+        <file>Sea Blue.jpg</file>
+        <file>Zinc.jpg</file>
+        <file>256x256 logo w name no bg.png</file>
+        <file>256x256 logo w name.png</file>
+        <file>256x256 name no bg.png</file>
+    </qresource>
+</RCC>

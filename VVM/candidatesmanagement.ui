@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>candidatesmanagement</class>
+ <widget class="QMainWindow" name="candidatesmanagement">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1560</width>
+    <height>662</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PolliTech</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../VVM.qrc">
+    <normaloff>:/backgrounds/Smol logo no bg.png</normaloff>:/backgrounds/Smol logo no bg.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="0" column="0">
+     <widget class="QFrame" name="frame">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <layout class="QVBoxLayout" name="verticalLayout_11">
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
+          <widget class="QLabel" name="label">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	font: 700 9pt &quot;Segoe UI&quot;;
+	font-size: 35px;
+	color: black;
+}</string>
+           </property>
+           <property name="text">
+            <string>MANAGE CANDIDATES</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout">
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_3">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 17px;
+	color: black;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>FIRST NAME</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_first_name">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+background-color: rgba(255,255,255,200);
+color: black;
+font: 14pt &quot;Segoe UI&quot;;
+font-size: 16px;
+padding: 5px;
+border: 1px solid black;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_3">
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_2">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 17px;
+	color: black;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>VOTER ID</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_voter_id">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+background-color: rgba(255,255,255,200);
+color: black;
+font: 14pt &quot;Segoe UI&quot;;
+font-size: 16px;
+padding: 5px;
+border: 1px solid black;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_5">
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_7">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 17px;
+	color: black;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>POSITION</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="comboBox_positions">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="cursor">
+                  <cursorShape>PointingHandCursor</cursorShape>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QComboBox {
+	font: 14pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: black;
+    background-color: rgba(255,255,255,200);
+    border: 1px solid black;
+    padding: 5px;
+}
+</string>
+                 </property>
+                 <property name="currentText">
+                  <string>Select Position</string>
+                 </property>
+                 <property name="sizeAdjustPolicy">
+                  <enum>QComboBox::SizeAdjustPolicy::AdjustToContentsOnFirstShow</enum>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>Select Position</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Barangay Captain</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Barangay Councilor</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>SK Chairman</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>SK Councilor</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_2">
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_4">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 17px;
+	color: black;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>LAST NAME</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_last_name">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+background-color: rgba(255,255,255,200);
+color: black;
+font: 14pt &quot;Segoe UI&quot;;
+font-size: 16px;
+padding: 5px;
+border: 1px solid black;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <property name="leftMargin">
+                <number>80</number>
+               </property>
+               <property name="rightMargin">
+                <number>80</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_5">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 17px;
+	color: black;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>AGE</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_age">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+background-color: rgba(255,255,255,200);
+color: black;
+font: 14pt &quot;Segoe UI&quot;;
+font-size: 16px;
+padding: 5px;
+border: 1px solid black;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_6">
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_8">
+                 <property name="styleSheet">
+                  <string notr="true">QLabel {
+	font: 600 9pt &quot;Segoe UI&quot;;
+	font-size: 17px;
+	color: black;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>PARTY</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="lineEdit_party">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::FocusPolicy::StrongFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit {
+background-color: rgba(255,255,255,200);
+color: black;
+font: 14pt &quot;Segoe UI&quot;;
+font-size: 16px;
+padding: 5px;
+border: 1px solid black;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_10">
+           <property name="topMargin">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_6">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QLabel {
+	font: italic 9pt &quot;Source Code Pro&quot;;
+	font-size: 14px;
+	color: black;
+}</string>
+             </property>
+             <property name="text">
+              <string>Voter ID cannot be changed. If incorrect, please delete and re-add the candidate</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <property name="leftMargin">
+              <number>200</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>200</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="pushButton_back">
+               <property name="minimumSize">
+                <size>
+                 <width>125</width>
+                 <height>31</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::TabFocus</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: white;
+
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(1, 120, 200),
+        stop:1 rgb(1, 100, 182)
+    );
+
+    border: 1px solid rgb(1, 26, 48);
+    border-radius: 15px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(30, 145, 220),
+        stop:1 rgb(0, 90, 165)
+    );
+}
+
+QPushButton:pressed {
+    background-color: rgb(0, 75, 140);
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+QPushButton:focus {
+    outline: none;
+    border: 2px solid #0A1C3A;
+}</string>
+               </property>
+               <property name="text">
+                <string>BACK</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_insert">
+               <property name="minimumSize">
+                <size>
+                 <width>126</width>
+                 <height>31</height>
+                </size>
+               </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::TabFocus</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: black;
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #6FE1A4, stop:1 #3CA36E
+    );
+    border: 1px solid #2e7d5d;
+    border-radius: 15px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #7FFFB2, stop:1 #4BB97E
+    );
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(
+        spread:pad, x1:0, y1:0, x2:0, y2:1,
+        stop:0 #3CA36E, stop:1 #6FE1A4
+    );
+    padding-top: 7px;
+    padding-bottom: 3px;
+}
+
+QPushButton:focus {
+    outline: none;
+    border: 2px solid #1A5E3B;
+}
+</string>
+               </property>
+               <property name="text">
+                <string>INSERT</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <layout class="QVBoxLayout" name="verticalLayout_9">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
+        <item>
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Orientation::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="refresh_button">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::TabFocus</enum>
+          </property>
+          <property name="whatsThis">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh Button&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: black;
+
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #B3E5FC,
+        stop:1 #4FC3F7
+    );
+
+    border: 1px solid #0288D1;
+    border-radius: 15px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 #E1F5FE,
+        stop:1 #81D4FA
+    );
+}
+
+QPushButton:pressed {
+    background-color: #29B6F6;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+QPushButton:focus {
+    outline: none;
+    border: 2px solid #0288D1;
+}
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="../VVM.qrc">
+            <normaloff>:/icons/buttons/icons/refresh-page-option.png</normaloff>:/icons/buttons/icons/refresh-page-option.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_12">
+        <item>
+         <widget class="QTableWidget" name="candidate_tableWidget">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="cursor" stdset="0">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::FocusPolicy::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QTableWidget {
+color: black;
+border: 1px solid black;
+background-color: white;
+}</string>
+          </property>
+          <property name="verticalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="horizontalScrollBarPolicy">
+           <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+          </property>
+          <property name="sizeAdjustPolicy">
+           <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+          </property>
+          <property name="editTriggers">
+           <set>QAbstractItemView::EditTrigger::DoubleClicked</set>
+          </property>
+          <property name="tabKeyNavigation">
+           <bool>false</bool>
+          </property>
+          <property name="alternatingRowColors">
+           <bool>false</bool>
+          </property>
+          <property name="selectionBehavior">
+           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+          </property>
+          <property name="sortingEnabled">
+           <bool>true</bool>
+          </property>
+          <property name="cornerButtonEnabled">
+           <bool>false</bool>
+          </property>
+          <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+           <bool>false</bool>
+          </attribute>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="leftMargin">
+           <number>250</number>
+          </property>
+          <property name="rightMargin">
+           <number>250</number>
+          </property>
+          <item>
+           <widget class="QPushButton" name="list_delete_button">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::FocusPolicy::TabFocus</enum>
+            </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Delete Button (One Person)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: white;
+
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(220, 60, 50), 
+        stop:1 rgb(180, 30, 30)
+    );
+
+    border: 1px solid #5A0A0A; 
+    border-radius: 15px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(240, 80, 70),
+        stop:1 rgb(200, 40, 40)
+    );
+}
+
+QPushButton:pressed {
+    background-color: rgb(160, 20, 20);
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+QPushButton:focus {
+    outline: none;
+    border: 2px solid #8B0000;
+}
+</string>
+            </property>
+            <property name="text">
+             <string>DELETE</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="list_deleteAll_button">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
+            <property name="focusPolicy">
+             <enum>Qt::FocusPolicy::TabFocus</enum>
+            </property>
+            <property name="whatsThis">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Delete All Button&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: white;
+
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(240, 30, 20),
+        stop:1 rgb(200, 20, 20)  
+    );
+
+    border: 1px solid #8B0000; 
+    border-radius: 15px;
+    padding: 6px 12px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 rgb(255, 50, 40), 
+        stop:1 rgb(210, 40, 30)
+    );
+}
+
+QPushButton:pressed {
+    background-color: rgb(180, 10, 10); 
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+QPushButton:focus {
+    outline: none;
+    border: 2px solid #B22222; 
+}
+</string>
+            </property>
+            <property name="text">
+             <string>DELETE ALL</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>lineEdit_first_name</tabstop>
+  <tabstop>lineEdit_last_name</tabstop>
+  <tabstop>lineEdit_voter_id</tabstop>
+  <tabstop>lineEdit_age</tabstop>
+  <tabstop>comboBox_positions</tabstop>
+  <tabstop>lineEdit_party</tabstop>
+  <tabstop>pushButton_back</tabstop>
+  <tabstop>pushButton_insert</tabstop>
+  <tabstop>refresh_button</tabstop>
+  <tabstop>list_delete_button</tabstop>
+  <tabstop>list_deleteAll_button</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../VVM.qrc"/>
+ </resources>
+ <connections/>
+</ui>

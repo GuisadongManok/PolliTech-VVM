@@ -1,0 +1,46 @@
+#ifndef VOTERMANAGEMENT_H
+#define VOTERMANAGEMENT_H
+
+#include <QMainWindow>
+#include <QSqlDatabase>
+#include <QTimer>
+#include <QStack>
+
+
+namespace Ui {
+class VoterManagement;
+}
+
+class VoterManagement : public QMainWindow
+{
+    Q_OBJECT
+
+public:
+    explicit VoterManagement(QSqlDatabase &database, QWidget *parent = nullptr);
+    ~VoterManagement();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
+signals:
+    void windowClosed();
+
+private slots:
+    void BackButton();
+    void InsertVoterButton();
+    void LoadVoterTable();
+    void ListDeleteButton();
+    void ListDeleteAllButton();
+    void onCellChanged(int row, int column);
+    void AutoRefresh();
+
+
+private:
+    Ui::VoterManagement *ui;
+    QSqlDatabase &db;
+    QTimer *refreshTimer;
+    QStack<QVector<QString>> undoStack;
+    bool loadingTable = false;
+};
+
+#endif // VOTERMANAGEMENT_H
