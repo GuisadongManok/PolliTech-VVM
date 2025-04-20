@@ -98,7 +98,7 @@ public:
         label->setObjectName("label");
         label->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: 600 14pt \"Segoe UI\";\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "}"));
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -112,7 +112,7 @@ public:
         manage_voter_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	background-color: #f8f8f8;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	font-size: 16px;\n"
 "	border: 1px solid black;\n"
 "	border-radius: 5px;\n"
@@ -132,7 +132,7 @@ public:
         manage_candidate_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	background-color: #f8f8f8;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	font-size: 16px;\n"
 "	border: 1px solid black;\n"
 "	border-radius: 5px;\n"
@@ -152,7 +152,7 @@ public:
         manage_admins_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	background-color: #f8f8f8;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	font-size: 16px;\n"
 "	border: 1px solid black;\n"
 "	border-radius: 5px;\n"
@@ -179,7 +179,7 @@ public:
         label_3->setObjectName("label_3");
         label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: 600 14pt \"Segoe UI\";\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "}"));
         label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -192,7 +192,7 @@ public:
         view_live_vote_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	background-color: #f8f8f8;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	font-size: 16px;\n"
 "	border: 1px solid black;\n"
 "	border-radius: 5px;\n"
@@ -212,7 +212,7 @@ public:
         start_election_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	background-color: #f8f8f8;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	font-size: 16px;\n"
 "	border: 1px solid black;\n"
 "	border-radius: 5px;\n"
@@ -249,10 +249,11 @@ public:
         LogoutButton->setObjectName("LogoutButton");
         LogoutButton->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         LogoutButton->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        LogoutButton->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         LogoutButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    font: 600 9pt \"Segoe UI\";\n"
 "    font-size: 12px;\n"
-"    color: white;\n"
+"    color: black;\n"
 "\n"
 "    background-color: qlineargradient(\n"
 "        x1:0, y1:0, x2:0, y2:1,\n"

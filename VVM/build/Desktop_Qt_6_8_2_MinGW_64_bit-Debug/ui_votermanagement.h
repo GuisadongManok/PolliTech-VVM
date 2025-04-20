@@ -472,6 +472,7 @@ public:
         Voter_table->setSizePolicy(sizePolicy4);
         Voter_table->viewport()->setProperty("cursor", QVariant(QCursor(Qt::CursorShape::PointingHandCursor)));
         Voter_table->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        Voter_table->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
         Voter_table->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "color: black;\n"
 "background-color: #ffffff;\n"
@@ -487,7 +488,7 @@ public:
         Voter_table->setTabKeyNavigation(false);
         Voter_table->setAlternatingRowColors(false);
         Voter_table->setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-        Voter_table->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectItems);
+        Voter_table->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
         Voter_table->setSortingEnabled(true);
         Voter_table->setCornerButtonEnabled(false);
         Voter_table->horizontalHeader()->setProperty("showSortIndicator", QVariant(true));

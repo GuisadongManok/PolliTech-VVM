@@ -601,6 +601,9 @@ QPushButton:focus {
           <property name="focusPolicy">
            <enum>Qt::FocusPolicy::NoFocus</enum>
           </property>
+          <property name="layoutDirection">
+           <enum>Qt::LayoutDirection::LeftToRight</enum>
+          </property>
           <property name="styleSheet">
            <string notr="true">QTableWidget {
 color: black;
@@ -633,7 +636,7 @@ font: 9pt &quot;Segoe UI&quot;;
            <enum>QAbstractItemView::SelectionMode::ExtendedSelection</enum>
           </property>
           <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectionBehavior::SelectItems</enum>
+           <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
           </property>
           <property name="sortingEnabled">
            <bool>true</bool>

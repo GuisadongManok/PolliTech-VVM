@@ -103,7 +103,7 @@ void loginsystem::LoginButton()
 
         adjustVotingAge(age);
 
-        mainWindow->showMaximized();
+        mainWindow->show();
 
     } else {
         qDebug() << "Invalid login attempt for user:" << last_name;

@@ -75,7 +75,7 @@ padding: 3px;
             <property name="styleSheet">
              <string notr="true">QLabel {
 	font: 600 14pt &quot;Segoe UI&quot;;
-	color: black;
+	color: #0A1C3A;
 }</string>
             </property>
             <property name="text">
@@ -104,7 +104,7 @@ padding: 3px;
              <string notr="true">QPushButton {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	background-color: #f8f8f8;
-	color: black;
+	color: #0A1C3A;
 	font-size: 16px;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -140,7 +140,7 @@ background-color: #e6e6e6;
              <string notr="true">QPushButton {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	background-color: #f8f8f8;
-	color: black;
+	color: #0A1C3A;
 	font-size: 16px;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -176,7 +176,7 @@ background-color: #e6e6e6;
              <string notr="true">QPushButton {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	background-color: #f8f8f8;
-	color: black;
+	color: #0A1C3A;
 	font-size: 16px;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -210,7 +210,7 @@ background-color: #e6e6e6;
             <property name="styleSheet">
              <string notr="true">QLabel {
 	font: 600 14pt &quot;Segoe UI&quot;;
-	color: black;
+	color: #0A1C3A;
 }</string>
             </property>
             <property name="text">
@@ -236,7 +236,7 @@ background-color: #e6e6e6;
              <string notr="true">QPushButton {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	background-color: #f8f8f8;
-	color: black;
+	color: #0A1C3A;
 	font-size: 16px;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -272,7 +272,7 @@ background-color: #e6e6e6;
              <string notr="true">QPushButton {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	background-color: #f8f8f8;
-	color: black;
+	color: #0A1C3A;
 	font-size: 16px;
 	border: 1px solid black;
 	border-radius: 5px;
@@ -328,11 +328,14 @@ background-color: #e6e6e6;
      <property name="focusPolicy">
       <enum>Qt::FocusPolicy::NoFocus</enum>
      </property>
+     <property name="layoutDirection">
+      <enum>Qt::LayoutDirection::RightToLeft</enum>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
     font: 600 9pt &quot;Segoe UI&quot;;
     font-size: 12px;
-    color: white;
+    color: black;
 
     background-color: qlineargradient(
         x1:0, y1:0, x2:0, y2:1,
