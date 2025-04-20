@@ -53,7 +53,15 @@ void VoterManagement::InsertVoterButton()
         return;
     }
 
-    QString voterId = ui->lineEdit_voter_id->text();
+    QString firstName = ui->lineEdit_first_name->text().trimmed();
+    QString lastName = ui->lineEdit_last_name->text().trimmed();
+    QString voterId = ui->lineEdit_voter_id->text().trimmed();
+    QString ageText = ui->lineEdit_age->text().trimmed();
+
+    if (firstName.isEmpty() || lastName.isEmpty() || voterId.isEmpty() || ageText.isEmpty()) {
+        QMessageBox::warning(this, "Missing Information", "Please fill in all fields before adding a voter.");
+        return;
+    }
 
     QSqlQuery checkQuery(db);
     checkQuery.prepare("SELECT COUNT(*) FROM voter_info WHERE voter_id = :voter_id");
@@ -68,23 +76,22 @@ void VoterManagement::InsertVoterButton()
         return;
     }
 
+    bool ageOk;
+    int age = ageText.toInt(&ageOk);
+    if (!ageOk) {
+        QMessageBox::critical(this, "Error", "Invalid Age Input");
+        return;
+    }
+
     QSqlQuery QueryInsertData(db);
     QSqlDatabase::database().transaction();
     QueryInsertData.prepare(R"(
         INSERT INTO voter_info(first_name, last_name, voter_id, age)
         VALUES(:first_name, :last_name, :voter_id, :age)
     )");
-    QueryInsertData.bindValue(":first_name", ui->lineEdit_first_name->text());
-    QueryInsertData.bindValue(":last_name", ui->lineEdit_last_name->text());
+    QueryInsertData.bindValue(":first_name", firstName);
+    QueryInsertData.bindValue(":last_name", lastName);
     QueryInsertData.bindValue(":voter_id", voterId);
-
-    bool ageOk;
-    int age = ui->lineEdit_age->text().toInt(&ageOk);
-    if (!ageOk) {
-        QMessageBox::critical(this, "Error", "Invalid Age Input");
-        QSqlDatabase::database().rollback();
-        return;
-    }
     QueryInsertData.bindValue(":age", age);
 
     if (QueryInsertData.exec()) {
@@ -101,6 +108,7 @@ void VoterManagement::InsertVoterButton()
         QSqlDatabase::database().rollback();
     }
 }
+
 
 void VoterManagement::LoadVoterTable()
 {

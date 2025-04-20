@@ -60,49 +60,56 @@ void candidatesmanagement::InsertButton()
         return;
     }
 
-    QString voterId = ui->lineEdit_voter_id->text();
+    QString firstName = ui->lineEdit_first_name->text().trimmed();
+    QString lastName = ui->lineEdit_last_name->text().trimmed();
+    QString voterId = ui->lineEdit_voter_id->text().trimmed();
+    QString ageText = ui->lineEdit_age->text().trimmed();
+    QString party = ui->lineEdit_party->text().trimmed();
+    QString position = ui->comboBox_positions->currentText().trimmed();
 
-    QSqlQuery checkDuplicate(db);
-    checkDuplicate.prepare("SELECT COUNT(*) FROM candidates_info WHERE voter_id = :voter_id");
-    checkDuplicate.bindValue(":voter_id", voterId);
-    if (checkDuplicate.exec() && checkDuplicate.next()) {
-        if (checkDuplicate.value(0).toInt() > 0) {
-            QMessageBox::warning(this, "Duplicate Entry", "This Voter ID is already used by another candidate.");
+    if (firstName.isEmpty() || lastName.isEmpty() || voterId.isEmpty() || ageText.isEmpty() || party.isEmpty() || position == "Select Position") {
+        QMessageBox::warning(this, "Missing Information", "Please fill in all fields before adding a candidate.");
+        return;
+    }
+
+    QSqlQuery checkCandidate(db);
+    checkCandidate.prepare("SELECT COUNT(*) FROM candidates_info WHERE voter_id = :voter_id");
+    checkCandidate.bindValue(":voter_id", voterId);
+    if (checkCandidate.exec() && checkCandidate.next()) {
+        if (checkCandidate.value(0).toInt() > 0) {
+            QMessageBox::warning(this, "Duplicate Voter ID", "A candidate with this ID already exists.");
             return;
         }
     } else {
-        QMessageBox::warning(this, "Error", "Failed to check for duplicate Voter ID.");
+        QMessageBox::warning(this, "Error", "Failed to check for duplicate voter ID in candidates.");
         return;
     }
 
-    QSqlDatabase::database().transaction();
+    bool ageOk;
+    int age = ageText.toInt(&ageOk);
+    if (!ageOk) {
+        QMessageBox::critical(this, "Error", "Invalid Age Input");
+        return;
+    }
 
-    QSqlQuery QueryInsertData(db);
-    QueryInsertData.prepare(R"(
+    QSqlQuery insertCandidate(db);
+    QSqlDatabase::database().transaction();
+    insertCandidate.prepare(R"(
         INSERT INTO candidates_info(first_name, last_name, voter_id, age, position, party)
         VALUES(:first_name, :last_name, :voter_id, :age, :position, :party)
     )");
-    QueryInsertData.bindValue(":first_name", ui->lineEdit_first_name->text());
-    QueryInsertData.bindValue(":last_name", ui->lineEdit_last_name->text());
-    QueryInsertData.bindValue(":party", ui->lineEdit_party->text());
-    QueryInsertData.bindValue(":voter_id", voterId);
-    QueryInsertData.bindValue(":position", ui->comboBox_positions->currentText());
+    insertCandidate.bindValue(":first_name", firstName);
+    insertCandidate.bindValue(":last_name", lastName);
+    insertCandidate.bindValue(":voter_id", voterId);
+    insertCandidate.bindValue(":age", age);
+    insertCandidate.bindValue(":position", position);
+    insertCandidate.bindValue(":party", party);
 
-    bool ageOk;
-    int age = ui->lineEdit_age->text().toInt(&ageOk);
-    if (!ageOk) {
-        QMessageBox::critical(this, "Error", "Invalid Age Input");
+    if (!insertCandidate.exec()) {
+        QMessageBox::warning(this, "Error", "Error Adding Candidate: " + insertCandidate.lastError().text());
         QSqlDatabase::database().rollback();
         return;
     }
-    QueryInsertData.bindValue(":age", age);
-
-    if (!QueryInsertData.exec()) {
-        QMessageBox::warning(this, "Error", "Error Adding Candidate: " + QueryInsertData.lastError().text());
-        QSqlDatabase::database().rollback();
-        return;
-    }
-
 
     QSqlQuery checkVoter(db);
     checkVoter.prepare("SELECT COUNT(*) FROM voter_info WHERE voter_id = :voter_id");
@@ -114,13 +121,13 @@ void candidatesmanagement::InsertButton()
             INSERT INTO voter_info(first_name, last_name, voter_id, age)
             VALUES(:first_name, :last_name, :voter_id, :age)
         )");
-        insertVoter.bindValue(":first_name", ui->lineEdit_first_name->text());
-        insertVoter.bindValue(":last_name", ui->lineEdit_last_name->text());
+        insertVoter.bindValue(":first_name", firstName);
+        insertVoter.bindValue(":last_name", lastName);
         insertVoter.bindValue(":voter_id", voterId);
         insertVoter.bindValue(":age", age);
 
         if (!insertVoter.exec()) {
-            QMessageBox::warning(this, "Error", "Error inserting into voter_info: " + insertVoter.lastError().text());
+            QMessageBox::warning(this, "Error", "Error inserting candidate into voter_info: " + insertVoter.lastError().text());
             QSqlDatabase::database().rollback();
             return;
         }
@@ -137,6 +144,7 @@ void candidatesmanagement::InsertButton()
     ui->comboBox_positions->setCurrentIndex(0);
     ui->lineEdit_first_name->setFocus();
 }
+
 
 
 
