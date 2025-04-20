@@ -70,7 +70,7 @@ public:
     {
         if (VoterManagement->objectName().isEmpty())
             VoterManagement->setObjectName("VoterManagement");
-        VoterManagement->resize(1343, 662);
+        VoterManagement->resize(1250, 662);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         VoterManagement->setWindowIcon(icon);
@@ -278,6 +278,7 @@ public:
 
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName("verticalLayout_5");
+        verticalLayout_5->setContentsMargins(-1, 5, -1, -1);
         label_6 = new QLabel(frame);
         label_6->setObjectName("label_6");
         sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
@@ -297,7 +298,7 @@ public:
         horizontalLayout->setContentsMargins(180, 10, 180, -1);
         pushButton_back = new QPushButton(frame);
         pushButton_back->setObjectName("pushButton_back");
-        pushButton_back->setMinimumSize(QSize(125, 31));
+        pushButton_back->setMinimumSize(QSize(136, 35));
         pushButton_back->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         pushButton_back->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         pushButton_back->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -339,7 +340,7 @@ public:
 
         pushButton_insert = new QPushButton(frame);
         pushButton_insert->setObjectName("pushButton_insert");
-        pushButton_insert->setMinimumSize(QSize(125, 31));
+        pushButton_insert->setMinimumSize(QSize(136, 35));
         pushButton_insert->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         pushButton_insert->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         pushButton_insert->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -452,7 +453,7 @@ public:
         verticalLayout_10->setObjectName("verticalLayout_10");
         Voter_table = new QTableWidget(centralwidget);
         Voter_table->setObjectName("Voter_table");
-        QSizePolicy sizePolicy4(QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Expanding);
+        QSizePolicy sizePolicy4(QSizePolicy::Policy::Ignored, QSizePolicy::Policy::Expanding);
         sizePolicy4.setHorizontalStretch(0);
         sizePolicy4.setVerticalStretch(0);
         sizePolicy4.setHeightForWidth(Voter_table->sizePolicy().hasHeightForWidth());
@@ -607,8 +608,17 @@ public:
         label_6->setText(QCoreApplication::translate("VoterManagement", "Voter ID cannot be changed. If incorrect, please delete and re-add the voter", nullptr));
         pushButton_back->setText(QCoreApplication::translate("VoterManagement", "BACK", nullptr));
         pushButton_insert->setText(QCoreApplication::translate("VoterManagement", "INSERT", nullptr));
+#if QT_CONFIG(tooltip)
+        RefreshButton->setToolTip(QCoreApplication::translate("VoterManagement", "<html><head/><body><p align=\"center\">Refresh</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
         RefreshButton->setText(QString());
+#if QT_CONFIG(tooltip)
+        ListDeleteButton->setToolTip(QCoreApplication::translate("VoterManagement", "<html><head/><body><p align=\"center\">Delete voter</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
         ListDeleteButton->setText(QCoreApplication::translate("VoterManagement", "DELETE", nullptr));
+#if QT_CONFIG(tooltip)
+        DeleteAll_Button->setToolTip(QCoreApplication::translate("VoterManagement", "<html><head/><body><p align=\"center\">Delete all the voters</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
         DeleteAll_Button->setText(QCoreApplication::translate("VoterManagement", "DELETE ALL", nullptr));
     } // retranslateUi
 

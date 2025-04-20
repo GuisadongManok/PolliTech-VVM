@@ -680,14 +680,23 @@ public:
         label_6->setText(QCoreApplication::translate("candidatesmanagement", "Voter ID cannot be changed. If incorrect, please delete and re-add the candidate", nullptr));
         pushButton_back->setText(QCoreApplication::translate("candidatesmanagement", "BACK", nullptr));
         pushButton_insert->setText(QCoreApplication::translate("candidatesmanagement", "INSERT", nullptr));
+#if QT_CONFIG(tooltip)
+        refresh_button->setToolTip(QCoreApplication::translate("candidatesmanagement", "<html><head/><body><p align=\"center\">Refresh</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(whatsthis)
         refresh_button->setWhatsThis(QCoreApplication::translate("candidatesmanagement", "<html><head/><body><p align=\"center\">Refresh Button</p></body></html>", nullptr));
 #endif // QT_CONFIG(whatsthis)
         refresh_button->setText(QString());
+#if QT_CONFIG(tooltip)
+        list_delete_button->setToolTip(QCoreApplication::translate("candidatesmanagement", "<html><head/><body><p align=\"center\">Delete candidate</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(whatsthis)
         list_delete_button->setWhatsThis(QCoreApplication::translate("candidatesmanagement", "<html><head/><body><p align=\"center\">Delete Button (One Person)</p></body></html>", nullptr));
 #endif // QT_CONFIG(whatsthis)
         list_delete_button->setText(QCoreApplication::translate("candidatesmanagement", "DELETE", nullptr));
+#if QT_CONFIG(tooltip)
+        list_deleteAll_button->setToolTip(QCoreApplication::translate("candidatesmanagement", "<html><head/><body><p align=\"center\">Delete all candidates</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
 #if QT_CONFIG(whatsthis)
         list_deleteAll_button->setWhatsThis(QCoreApplication::translate("candidatesmanagement", "<html><head/><body><p align=\"center\">Delete All Button</p></body></html>", nullptr));
 #endif // QT_CONFIG(whatsthis)

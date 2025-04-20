@@ -616,6 +616,9 @@ QPushButton:focus {
           <property name="focusPolicy">
            <enum>Qt::FocusPolicy::TabFocus</enum>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="whatsThis">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh Button&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
@@ -741,6 +744,9 @@ background-color: white;
             <property name="focusPolicy">
              <enum>Qt::FocusPolicy::TabFocus</enum>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Delete candidate&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="whatsThis">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Delete Button (One Person)&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -793,6 +799,9 @@ QPushButton:focus {
             </property>
             <property name="focusPolicy">
              <enum>Qt::FocusPolicy::TabFocus</enum>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Delete all candidates&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="whatsThis">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Delete All Button&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>

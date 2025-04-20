@@ -6,8 +6,6 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <QSqlError>
-#include <QStackedWidget>
-#include <QSqlQuery>
 
 VoterManagement::VoterManagement(QSqlDatabase &database, QWidget *parent)
     : QMainWindow(parent)
@@ -23,14 +21,9 @@ VoterManagement::VoterManagement(QSqlDatabase &database, QWidget *parent)
     connect(ui->DeleteAll_Button, &QPushButton::clicked, this, &VoterManagement::ListDeleteAllButton);
     connect(ui->Voter_table, &QTableWidget::cellChanged, this, &VoterManagement::onCellChanged);
 
-    refreshTimer = new QTimer(this);
-    connect(refreshTimer, &QTimer::timeout, this, &VoterManagement::AutoRefresh);
-    refreshTimer->start(10000);
-
     LoadVoterTable();
 
     ui->label_6->setText("<img src=':/icons/buttons/icons/warning.png' width='14' height='14'> Voter ID cannot be changed. If incorrect, please delete and re-add the voter.");
-
 }
 
 VoterManagement::~VoterManagement()
@@ -53,49 +46,61 @@ void VoterManagement::BackButton()
     this->close();
 }
 
-
 void VoterManagement::InsertVoterButton()
 {
     if (!db.open()) {
-        QMessageBox::critical(this, "Error", "Database not open" + db.lastError().text());
+        QMessageBox::critical(this, "Error", "Database not open: " + db.lastError().text());
+        return;
+    }
+
+    QString voterId = ui->lineEdit_voter_id->text();
+
+    QSqlQuery checkQuery(db);
+    checkQuery.prepare("SELECT COUNT(*) FROM voter_info WHERE voter_id = :voter_id");
+    checkQuery.bindValue(":voter_id", voterId);
+    if (checkQuery.exec() && checkQuery.next()) {
+        if (checkQuery.value(0).toInt() > 0) {
+            QMessageBox::warning(this, "Duplicate Voter ID", "A voter with this ID already exists.");
+            return;
+        }
+    } else {
+        QMessageBox::warning(this, "Error", "Failed to check for duplicate voter ID.");
+        return;
     }
 
     QSqlQuery QueryInsertData(db);
     QSqlDatabase::database().transaction();
-    QueryInsertData.prepare("INSERT INTO voter_info(first_name, last_name, voter_id, age) VALUES(:first_name, :last_name, :voter_id, :age)");
+    QueryInsertData.prepare(R"(
+        INSERT INTO voter_info(first_name, last_name, voter_id, age)
+        VALUES(:first_name, :last_name, :voter_id, :age)
+    )");
     QueryInsertData.bindValue(":first_name", ui->lineEdit_first_name->text());
     QueryInsertData.bindValue(":last_name", ui->lineEdit_last_name->text());
-    QueryInsertData.bindValue(":voter_id", ui->lineEdit_voter_id->text());
+    QueryInsertData.bindValue(":voter_id", voterId);
 
     bool ageOk;
     int age = ui->lineEdit_age->text().toInt(&ageOk);
-    if (ageOk) {
-        QueryInsertData.bindValue(":age", age);
-    }
-    else {
+    if (!ageOk) {
         QMessageBox::critical(this, "Error", "Invalid Age Input");
         QSqlDatabase::database().rollback();
-        db.close();
         return;
     }
+    QueryInsertData.bindValue(":age", age);
 
     if (QueryInsertData.exec()) {
-        QMessageBox::information(this, "Success", "Voter Added Succesfully");
         QSqlDatabase::database().commit();
+        QMessageBox::information(this, "Success", "Voter Added Successfully");
 
         ui->lineEdit_first_name->clear();
         ui->lineEdit_last_name->clear();
         ui->lineEdit_age->clear();
         ui->lineEdit_voter_id->clear();
-
         ui->lineEdit_first_name->setFocus();
-    }
-    else {
-        QMessageBox::information(this, "Error", "Error Adding Voter: " + QueryInsertData.lastError().text());
+    } else {
+        QMessageBox::warning(this, "Error", "Error Adding Voter: " + QueryInsertData.lastError().text());
         QSqlDatabase::database().rollback();
     }
 }
-
 
 void VoterManagement::LoadVoterTable()
 {
@@ -221,23 +226,15 @@ void VoterManagement::onCellChanged(int row, int column)
 {
     if (loadingTable) return;
 
-    refreshTimer->stop();
-
     QTableWidgetItem *idItem = ui->Voter_table->item(row, 0);
     QTableWidgetItem *editedItem = ui->Voter_table->item(row, column);
 
-    if (!idItem || !editedItem) {
-        refreshTimer->start(10000);
-        return;
-    }
+    if (!idItem || !editedItem) return;
 
     QString oldValue = editedItem->data(Qt::UserRole).toString();
     QString newValue = editedItem->text();
 
-    if (oldValue == newValue) {
-        refreshTimer->start(10000);
-        return;
-    }
+    if (oldValue == newValue) return;
 
     QString voterId = idItem->text();
     QString columnName;
@@ -254,16 +251,13 @@ void VoterManagement::onCellChanged(int row, int column)
             ui->Voter_table->blockSignals(true);
             editedItem->setText(oldValue);
             ui->Voter_table->blockSignals(false);
-            refreshTimer->start(10000);
             return;
         }
         break;
     case 0:
         QMessageBox::warning(this, "Warning", "Voter ID cannot be changed. Please delete and re-add the voter.");
-        refreshTimer->start(10000);
         return;
     default:
-        refreshTimer->start(10000);
         return;
     }
 
@@ -279,11 +273,4 @@ void VoterManagement::onCellChanged(int row, int column)
     } else {
         qDebug() << "Update failed:" << updateQuery.lastError().text();
     }
-
-    refreshTimer->start(10000);
-}
-
-void VoterManagement::AutoRefresh()
-{
-    LoadVoterTable();
 }

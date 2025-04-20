@@ -13,6 +13,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -26,7 +27,6 @@ class Ui_adminlogin
 {
 public:
     QGridLayout *gridLayout;
-    QLabel *label_4;
     QVBoxLayout *verticalLayout_4;
     QLabel *label_3;
     QVBoxLayout *verticalLayout_3;
@@ -39,12 +39,14 @@ public:
     QHBoxLayout *horizontalLayout;
     QPushButton *BackButton;
     QPushButton *LoginButton;
+    QLabel *label_4;
+    QFrame *line;
 
     void setupUi(QDialog *adminlogin)
     {
         if (adminlogin->objectName().isEmpty())
             adminlogin->setObjectName("adminlogin");
-        adminlogin->resize(666, 324);
+        adminlogin->resize(644, 324);
         QSizePolicy sizePolicy(QSizePolicy::Policy::Fixed, QSizePolicy::Policy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -64,24 +66,10 @@ public:
 "}"));
         gridLayout = new QGridLayout(adminlogin);
         gridLayout->setObjectName("gridLayout");
-        label_4 = new QLabel(adminlogin);
-        label_4->setObjectName("label_4");
-        label_4->setMaximumSize(QSize(281, 281));
-        label_4->setFrameShape(QFrame::Shape::NoFrame);
-        label_4->setLineWidth(0);
-        label_4->setPixmap(QPixmap(QString::fromUtf8(":/backgrounds/256x256 name no bg.png")));
-        label_4->setScaledContents(true);
-        label_4->setAlignment(Qt::AlignmentFlag::AlignCenter);
-        label_4->setWordWrap(false);
-        label_4->setIndent(-1);
-        label_4->setTextInteractionFlags(Qt::TextInteractionFlag::NoTextInteraction);
-
-        gridLayout->addWidget(label_4, 0, 0, 1, 1);
-
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
         verticalLayout_4->setSizeConstraint(QLayout::SizeConstraint::SetFixedSize);
-        verticalLayout_4->setContentsMargins(-1, 0, 5, 35);
+        verticalLayout_4->setContentsMargins(-1, 0, -1, 30);
         label_3 = new QLabel(adminlogin);
         label_3->setObjectName("label_3");
         label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
@@ -98,7 +86,7 @@ public:
         verticalLayout_3->setSizeConstraint(QLayout::SizeConstraint::SetFixedSize);
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName("verticalLayout");
-        verticalLayout->setContentsMargins(30, -1, 30, -1);
+        verticalLayout->setContentsMargins(20, -1, 20, -1);
         label = new QLabel(adminlogin);
         label->setObjectName("label");
         QSizePolicy sizePolicy1(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
@@ -136,7 +124,7 @@ public:
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName("verticalLayout_2");
-        verticalLayout_2->setContentsMargins(30, -1, 30, -1);
+        verticalLayout_2->setContentsMargins(20, -1, 20, -1);
         label_2 = new QLabel(adminlogin);
         label_2->setObjectName("label_2");
         sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
@@ -258,7 +246,28 @@ public:
         verticalLayout_4->addLayout(verticalLayout_3);
 
 
-        gridLayout->addLayout(verticalLayout_4, 0, 1, 1, 1);
+        gridLayout->addLayout(verticalLayout_4, 0, 2, 1, 1);
+
+        label_4 = new QLabel(adminlogin);
+        label_4->setObjectName("label_4");
+        label_4->setMaximumSize(QSize(281, 281));
+        label_4->setFrameShape(QFrame::Shape::NoFrame);
+        label_4->setLineWidth(0);
+        label_4->setPixmap(QPixmap(QString::fromUtf8(":/backgrounds/256x256 name no bg.png")));
+        label_4->setScaledContents(true);
+        label_4->setAlignment(Qt::AlignmentFlag::AlignCenter);
+        label_4->setWordWrap(false);
+        label_4->setIndent(-1);
+        label_4->setTextInteractionFlags(Qt::TextInteractionFlag::NoTextInteraction);
+
+        gridLayout->addWidget(label_4, 0, 0, 1, 1);
+
+        line = new QFrame(adminlogin);
+        line->setObjectName("line");
+        line->setFrameShape(QFrame::Shape::VLine);
+        line->setFrameShadow(QFrame::Shadow::Sunken);
+
+        gridLayout->addWidget(line, 0, 1, 1, 1);
 
         QWidget::setTabOrder(lineEdit_email, lineEdit_password);
         QWidget::setTabOrder(lineEdit_password, BackButton);
@@ -272,12 +281,12 @@ public:
     void retranslateUi(QDialog *adminlogin)
     {
         adminlogin->setWindowTitle(QCoreApplication::translate("adminlogin", "PolliTech", nullptr));
-        label_4->setText(QString());
         label_3->setText(QCoreApplication::translate("adminlogin", "ADMIN LOGIN", nullptr));
         label->setText(QCoreApplication::translate("adminlogin", "EMAIL", nullptr));
         label_2->setText(QCoreApplication::translate("adminlogin", "PASSWORD", nullptr));
         BackButton->setText(QCoreApplication::translate("adminlogin", "BACK", nullptr));
         LoginButton->setText(QCoreApplication::translate("adminlogin", "LOGIN", nullptr));
+        label_4->setText(QString());
     } // retranslateUi
 
 };

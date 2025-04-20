@@ -63,7 +63,17 @@ void vvm::displayCandidates()
         return;
     }
 
-    QFont font("Segoe UI", 12);
+
+
+
+
+
+
+
+
+
+
+    /*QFont font("Segoe UI", 12);
     font.setBold(false);
 
     int bCouncilorRow = 0, bCouncilorCol = 0;
@@ -115,7 +125,7 @@ void vvm::displayCandidates()
                 skCouncilorRow++;
             }
         }
-    }
+    }*/
 
 
 }

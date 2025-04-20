@@ -13,6 +13,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
@@ -38,12 +39,13 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLineEdit *lineEdit_lastName;
+    QFrame *line;
 
     void setupUi(QDialog *loginsystem)
     {
         if (loginsystem->objectName().isEmpty())
             loginsystem->setObjectName("loginsystem");
-        loginsystem->resize(666, 324);
+        loginsystem->resize(642, 324);
         loginsystem->setCursor(QCursor(Qt::CursorShape::ArrowCursor));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
@@ -75,7 +77,7 @@ public:
         gridLayout = new QGridLayout();
         gridLayout->setObjectName("gridLayout");
         gridLayout->setSizeConstraint(QLayout::SizeConstraint::SetMaximumSize);
-        gridLayout->setContentsMargins(-1, 35, 15, 0);
+        gridLayout->setContentsMargins(-1, 35, -1, 0);
         label_4 = new QLabel(loginsystem);
         label_4->setObjectName("label_4");
         QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
@@ -250,7 +252,14 @@ public:
         gridLayout->addLayout(verticalLayout, 1, 0, 1, 1);
 
 
-        gridLayout_2->addLayout(gridLayout, 0, 1, 1, 1);
+        gridLayout_2->addLayout(gridLayout, 0, 2, 1, 1);
+
+        line = new QFrame(loginsystem);
+        line->setObjectName("line");
+        line->setFrameShape(QFrame::Shape::VLine);
+        line->setFrameShadow(QFrame::Shadow::Sunken);
+
+        gridLayout_2->addWidget(line, 0, 1, 1, 1);
 
         QWidget::setTabOrder(lineEdit_lastName, lineEdit_VIN);
         QWidget::setTabOrder(lineEdit_VIN, LoginButton);

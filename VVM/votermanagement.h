@@ -3,8 +3,6 @@
 
 #include <QMainWindow>
 #include <QSqlDatabase>
-#include <QTimer>
-#include <QStack>
 
 
 namespace Ui {
@@ -32,14 +30,11 @@ private slots:
     void ListDeleteButton();
     void ListDeleteAllButton();
     void onCellChanged(int row, int column);
-    void AutoRefresh();
 
 
 private:
     Ui::VoterManagement *ui;
     QSqlDatabase &db;
-    QTimer *refreshTimer;
-    QStack<QVector<QString>> undoStack;
     bool loadingTable = false;
 };
 

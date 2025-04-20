@@ -19,9 +19,9 @@ ReportsNResults::ReportsNResults(QSqlDatabase &database, QWidget *parent)
 {
     ui->setupUi(this);
 
-    QStandardItemModel* model = qobject_cast<QStandardItemModel*>(ui->comboBox_positions->model());
-    QStandardItem* item = model->item(0);
-    item->setEnabled(false);
+    // QStandardItemModel* model = qobject_cast<QStandardItemModel*>(ui->comboBox_positions->model());
+    // QStandardItem* item = model->item(0);
+    // item->setEnabled(false);
 
     connect(ui->pushButton_back, &QPushButton::clicked, this, &ReportsNResults::BackButton);
     connect(ui->pushButton_refresh, &QPushButton::clicked, this, &ReportsNResults::loadVoteCounts);
@@ -58,11 +58,11 @@ void ReportsNResults::BackButton()
 void ReportsNResults::loadVoteCounts()
 {
     ui->tableWidget_voteCount->setSortingEnabled(false);
-    ui->tableWidget_voteCount->setColumnCount(5);
+    ui->tableWidget_voteCount->setColumnCount(4);
 
     QSqlQuery query(db);
-    query.prepare("SELECT first_name, last_name, position, party, vote_count FROM candidates_info");
-    ui->tableWidget_voteCount->setHorizontalHeaderLabels(QStringList() << "FIRST NAME" <<"LAST NAME" << "POSITION" << "PARTY" << "VOTE COUNT" );
+    query.prepare("SELECT first_name || ' ' || last_name AS full_name, position, party, vote_count FROM candidates_info");
+    ui->tableWidget_voteCount->setHorizontalHeaderLabels(QStringList() << "NAME" << "POSITION" << "PARTY" << "VOTE COUNT" );
 
     if (!query.exec()) {
         qDebug() << "Vote count query failed:" << query.lastError().text();
@@ -73,18 +73,16 @@ void ReportsNResults::loadVoteCounts()
 
     int row = 0;
     while (query.next()) {
-        QString firstName = query.value("first_name").toString();
-        QString lastName = query.value("last_name").toString();
+        QString fullName = query.value("full_name").toString();
         QString pos = query.value("position").toString();
         QString party = query.value("party").toString();
         int votes = query.value("vote_count").toInt();
 
         ui->tableWidget_voteCount->insertRow(row);
-        ui->tableWidget_voteCount->setItem(row, 0, new QTableWidgetItem(firstName));
-        ui->tableWidget_voteCount->setItem(row, 1, new QTableWidgetItem(lastName));
-        ui->tableWidget_voteCount->setItem(row, 2, new QTableWidgetItem(pos));
-        ui->tableWidget_voteCount->setItem(row, 3, new QTableWidgetItem(party));
-        ui->tableWidget_voteCount->setItem(row, 4, new QTableWidgetItem(QString::number(votes)));
+        ui->tableWidget_voteCount->setItem(row, 0, new QTableWidgetItem(fullName));
+        ui->tableWidget_voteCount->setItem(row, 1, new QTableWidgetItem(pos));
+        ui->tableWidget_voteCount->setItem(row, 2, new QTableWidgetItem(party));
+        ui->tableWidget_voteCount->setItem(row, 3, new QTableWidgetItem(QString::number(votes)));
 
         row++;
     }

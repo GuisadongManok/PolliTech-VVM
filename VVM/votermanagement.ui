@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1343</width>
+    <width>1250</width>
     <height>662</height>
    </rect>
   </property>
@@ -324,6 +324,9 @@ border: 1px solid black;
          </item>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_5">
+           <property name="topMargin">
+            <number>5</number>
+           </property>
            <item>
             <widget class="QLabel" name="label_6">
              <property name="sizePolicy">
@@ -365,8 +368,8 @@ border: 1px solid black;
               <widget class="QPushButton" name="pushButton_back">
                <property name="minimumSize">
                 <size>
-                 <width>125</width>
-                 <height>31</height>
+                 <width>136</width>
+                 <height>35</height>
                 </size>
                </property>
                <property name="cursor">
@@ -420,8 +423,8 @@ QPushButton:focus {
               <widget class="QPushButton" name="pushButton_insert">
                <property name="minimumSize">
                 <size>
-                 <width>125</width>
-                 <height>31</height>
+                 <width>136</width>
+                 <height>35</height>
                 </size>
                </property>
                <property name="cursor">
@@ -508,6 +511,9 @@ QPushButton:focus {
           <property name="focusPolicy">
            <enum>Qt::FocusPolicy::NoFocus</enum>
           </property>
+          <property name="toolTip">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
           <property name="styleSheet">
            <string notr="true">QPushButton {
     font: 600 9pt &quot;Segoe UI&quot;;
@@ -561,7 +567,7 @@ QPushButton:focus {
         <item>
          <widget class="QTableWidget" name="Voter_table">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <sizepolicy hsizetype="Ignored" vsizetype="Expanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -642,6 +648,9 @@ font: 9pt &quot;Segoe UI&quot;;
             <property name="focusPolicy">
              <enum>Qt::FocusPolicy::NoFocus</enum>
             </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Delete voter&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
     font: 600 9pt &quot;Segoe UI&quot;;
@@ -697,6 +706,9 @@ QPushButton:focus {
             </property>
             <property name="focusPolicy">
              <enum>Qt::FocusPolicy::NoFocus</enum>
+            </property>
+            <property name="toolTip">
+             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Delete all the voters&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {

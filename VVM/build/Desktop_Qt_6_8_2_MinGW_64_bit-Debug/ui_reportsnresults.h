@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -32,7 +31,6 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *label_6;
     QHBoxLayout *horizontalLayout_7;
-    QComboBox *comboBox_positions;
     QSpacerItem *horizontalSpacer_8;
     QPushButton *pushButton_refresh;
     QTableWidget *tableWidget_voteCount;
@@ -46,7 +44,7 @@ public:
     {
         if (ReportsNResults->objectName().isEmpty())
             ReportsNResults->setObjectName("ReportsNResults");
-        ReportsNResults->resize(769, 635);
+        ReportsNResults->resize(769, 646);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         ReportsNResults->setWindowIcon(icon);
@@ -58,8 +56,7 @@ public:
         label_6 = new QLabel(ReportsNResults);
         label_6->setObjectName("label_6");
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	font: 700 9pt \"Source Code Pro\";\n"
-"	font-size: 35px;\n"
+"	font: 700 30pt \"Segoe UI\";\n"
 "	color: black;\n"
 "}"));
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -69,25 +66,6 @@ public:
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setObjectName("horizontalLayout_7");
         horizontalLayout_7->setSizeConstraint(QLayout::SizeConstraint::SetFixedSize);
-        comboBox_positions = new QComboBox(ReportsNResults);
-        comboBox_positions->addItem(QString());
-        comboBox_positions->addItem(QString());
-        comboBox_positions->addItem(QString());
-        comboBox_positions->addItem(QString());
-        comboBox_positions->addItem(QString());
-        comboBox_positions->setObjectName("comboBox_positions");
-        comboBox_positions->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
-        comboBox_positions->setStyleSheet(QString::fromUtf8("QComboBox {\n"
-"	font: 9pt \"Source Code Pro\";\n"
-"	font-size: 16px;\n"
-"	color: black;\n"
-"	background-color: white;\n"
-"	border: 1px solid black;\n"
-"	padding: 2px;\n"
-"}"));
-
-        horizontalLayout_7->addWidget(comboBox_positions);
-
         horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_7->addItem(horizontalSpacer_8);
@@ -276,12 +254,9 @@ public:
     {
         ReportsNResults->setWindowTitle(QCoreApplication::translate("ReportsNResults", "PolliTech", nullptr));
         label_6->setText(QCoreApplication::translate("ReportsNResults", "LIVE VOTE COUNT", nullptr));
-        comboBox_positions->setItemText(0, QCoreApplication::translate("ReportsNResults", "  Select Position", nullptr));
-        comboBox_positions->setItemText(1, QCoreApplication::translate("ReportsNResults", "Barangay Captain", nullptr));
-        comboBox_positions->setItemText(2, QCoreApplication::translate("ReportsNResults", "Barangay Councilors", nullptr));
-        comboBox_positions->setItemText(3, QCoreApplication::translate("ReportsNResults", "SK Chairman", nullptr));
-        comboBox_positions->setItemText(4, QCoreApplication::translate("ReportsNResults", "SK Councilors", nullptr));
-
+#if QT_CONFIG(tooltip)
+        pushButton_refresh->setToolTip(QCoreApplication::translate("ReportsNResults", "<html><head/><body><p align=\"center\">Refresh</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
         pushButton_refresh->setText(QString());
         pushButton_back->setText(QCoreApplication::translate("ReportsNResults", "BACK", nullptr));
         pushButton_print->setText(QCoreApplication::translate("ReportsNResults", "EXPORT AS PDF", nullptr));

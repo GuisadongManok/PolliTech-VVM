@@ -31,13 +31,11 @@ private slots:
     void ListDeleteButton();
     void ListDeleteAllButton();
     void onCellChanged(int row, int column);
-    void AutoRefresh();
 
 private:
     Ui::candidatesmanagement *ui;
     QSqlDatabase &db;
     bool loadingTable = false;
-    QTimer* refreshTimer;
 };
 
 #endif // CANDIDATESMANAGEMENT_H
