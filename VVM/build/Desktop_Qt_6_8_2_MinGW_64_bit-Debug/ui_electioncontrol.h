@@ -15,9 +15,11 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -25,7 +27,7 @@ QT_BEGIN_NAMESPACE
 class Ui_ElectionControl
 {
 public:
-    QVBoxLayout *verticalLayout_2;
+    QVBoxLayout *verticalLayout_3;
     QLabel *label;
     QListWidget *listWidget;
     QFrame *frame;
@@ -34,8 +36,13 @@ public:
     QLabel *label_3;
     QLabel *label_4;
     QLabel *label_5;
+    QVBoxLayout *verticalLayout_2;
     QFrame *line_2;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
     QPushButton *start_election_button;
+    QPushButton *start_election_button_2;
+    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QDialog *ElectionControl)
     {
@@ -54,8 +61,8 @@ public:
 "        stop: 1 #e0e0e0\n"
 "    );\n"
 "}"));
-        verticalLayout_2 = new QVBoxLayout(ElectionControl);
-        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalLayout_3 = new QVBoxLayout(ElectionControl);
+        verticalLayout_3->setObjectName("verticalLayout_3");
         label = new QLabel(ElectionControl);
         label->setObjectName("label");
         QSizePolicy sizePolicy(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
@@ -72,7 +79,7 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label->setTextInteractionFlags(Qt::TextInteractionFlag::NoTextInteraction);
 
-        verticalLayout_2->addWidget(label);
+        verticalLayout_3->addWidget(label);
 
         listWidget = new QListWidget(ElectionControl);
         listWidget->setObjectName("listWidget");
@@ -80,7 +87,7 @@ public:
 "	background-color: rgba(255,255,255,200);\n"
 "}"));
 
-        verticalLayout_2->addWidget(listWidget);
+        verticalLayout_3->addWidget(listWidget);
 
         frame = new QFrame(ElectionControl);
         frame->setObjectName("frame");
@@ -137,14 +144,22 @@ public:
         gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
 
 
-        verticalLayout_2->addWidget(frame);
+        verticalLayout_3->addWidget(frame);
 
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName("verticalLayout_2");
         line_2 = new QFrame(ElectionControl);
         line_2->setObjectName("line_2");
         line_2->setFrameShape(QFrame::Shape::HLine);
         line_2->setFrameShadow(QFrame::Shadow::Sunken);
 
         verticalLayout_2->addWidget(line_2);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName("horizontalLayout");
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
 
         start_election_button = new QPushButton(ElectionControl);
         start_election_button->setObjectName("start_election_button");
@@ -177,7 +192,50 @@ public:
 ""));
         start_election_button->setIconSize(QSize(16, 16));
 
-        verticalLayout_2->addWidget(start_election_button, 0, Qt::AlignmentFlag::AlignHCenter);
+        horizontalLayout->addWidget(start_election_button);
+
+        start_election_button_2 = new QPushButton(ElectionControl);
+        start_election_button_2->setObjectName("start_election_button_2");
+        start_election_button_2->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        start_election_button_2->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        start_election_button_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    font: 600 9pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #ffffff, stop:1 #dcdcdc);\n"
+"    border: 1px solid #888;\n"
+"    border-radius: 4px;\n"
+"    padding: 6px 12px;\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #f0f0f0, stop:1 #c8c8c8);\n"
+"    border: 1px solid #555;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #c8c8c8, stop:1 #a0a0a0);\n"
+"    padding-top: 7px;\n"
+"    padding-left: 13px;\n"
+"}\n"
+""));
+        start_election_button_2->setIconSize(QSize(16, 16));
+
+        horizontalLayout->addWidget(start_election_button_2);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+
+        verticalLayout_2->addLayout(horizontalLayout);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
 
 
         retranslateUi(ElectionControl);
@@ -196,6 +254,10 @@ public:
         start_election_button->setToolTip(QCoreApplication::translate("ElectionControl", "<html><head/><body><p align=\"center\">Control Election</p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
         start_election_button->setText(QCoreApplication::translate("ElectionControl", "START/STOP ELECTION", nullptr));
+#if QT_CONFIG(tooltip)
+        start_election_button_2->setToolTip(QCoreApplication::translate("ElectionControl", "<html><head/><body><p align=\"center\">Control Election</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
+        start_election_button_2->setText(QCoreApplication::translate("ElectionControl", "RESET ELECTION", nullptr));
     } // retranslateUi
 
 };
