@@ -27,6 +27,8 @@ protected:
 private slots:
     void displayCandidates();
     void submitVote();
+    void updateBCouncilorLimit();
+    void updateSKCouncilorLimit();
 
 private:
     bool closingAfterVote = false;

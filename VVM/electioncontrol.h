@@ -2,7 +2,6 @@
 #define ELECTIONCONTROL_H
 
 #include <QDialog>
-#include <QSqlDatabase>
 
 namespace Ui {
 class ElectionControl;
@@ -13,7 +12,7 @@ class ElectionControl : public QDialog
     Q_OBJECT
 
 public:
-    explicit ElectionControl(QSqlDatabase database, QWidget *parent = nullptr);
+    explicit ElectionControl(QWidget *parent = nullptr);
     ~ElectionControl();
 
 protected:
@@ -24,7 +23,6 @@ signals:
 
 private:
     Ui::ElectionControl *ui;
-    QSqlDatabase &db;
 };
 
 #endif // ELECTIONCONTROL_H

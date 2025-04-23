@@ -4,10 +4,9 @@
 
 #include <QCloseEvent>
 
-ElectionControl::ElectionControl(QSqlDatabase database, QWidget *parent)
+ElectionControl::ElectionControl(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ElectionControl)
-    , db(database)
 {
     ui->setupUi(this);
 }

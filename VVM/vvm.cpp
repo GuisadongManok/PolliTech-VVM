@@ -89,6 +89,7 @@ void vvm::displayCandidates()
             QCheckBox* checkbox = new QCheckBox(displayText);
             checkbox->setFont(font);
             checkbox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+            connect(checkbox, &QCheckBox::stateChanged, this, &vvm::updateBCouncilorLimit);
             ui->bCouncilorsLayout->addWidget(checkbox);
             ui->bCouncilorsLayout->setAlignment(Qt::AlignLeft);
         }
@@ -103,11 +104,13 @@ void vvm::displayCandidates()
             QCheckBox* checkbox = new QCheckBox(displayText);
             checkbox->setFont(font);
             checkbox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+            connect(checkbox, &QCheckBox::stateChanged, this, &vvm::updateSKCouncilorLimit);
             ui->skCouncilorsLayout->addWidget(checkbox);
             ui->skCouncilorsLayout->setAlignment(Qt::AlignLeft);
         }
     }
 }
+
 
 void vvm::submitVote()
 {
@@ -143,17 +146,46 @@ void vvm::submitVote()
 
     QString captainVote = collectRadioVote(ui->captainLayout);
     QString skChairVote = collectRadioVote(ui->skChairmanLayout);
+
     QStringList bCouncilorVotes = collectCheckboxVotes(ui->bCouncilorsLayout, 7, "Barangay Councilors");
-    if (bCouncilorVotes.isEmpty() && ui->bCouncilorsLayout->count() > 0) return;
+    if (ui->bCouncilorsLayout->count() > 0 && bCouncilorVotes.size() != 7) {
+        QMessageBox::warning(this, "Incomplete Vote", "You must vote for exactly 7 Barangay Councilors.");
+        return;
+    }
 
     QStringList skCouncilorVotes = collectCheckboxVotes(ui->skCouncilorsLayout, 7, "SK Councilors");
-    if (skCouncilorVotes.isEmpty() && ui->skCouncilorsLayout->count() > 0) return;
+    if (ui->skCouncilorsLayout->count() > 0 && skCouncilorVotes.size() != 7) {
+        QMessageBox::warning(this, "Incomplete Vote", "You must vote for exactly 7 SK Councilors.");
+        return;
+    }
 
-    QString summary;
-    if (!captainVote.isEmpty()) { votedCandidates << captainVote; summary += "Barangay Captain: " + captainVote + "\n"; }
-    if (!skChairVote.isEmpty()) { votedCandidates << skChairVote; summary += "SK Chairman: " + skChairVote + "\n"; }
-    for (const QString& c : bCouncilorVotes) { votedCandidates << c; summary += "Barangay Councilor: " + c + "\n"; }
-    for (const QString& c : skCouncilorVotes) { votedCandidates << c; summary += "SK Councilor: " + c + "\n"; }
+
+    if (captainVote.isEmpty() && skChairVote.isEmpty()) {
+        QMessageBox::warning(this, "Missing Vote", "Please select at least one candidate for Barangay Captain or SK Chairman.");
+        return;
+    }
+
+
+    if (!captainVote.isEmpty()) votedCandidates << captainVote;
+    if (!skChairVote.isEmpty()) votedCandidates << skChairVote;
+    votedCandidates << bCouncilorVotes << skCouncilorVotes;
+
+
+    QString summary = "<b>Barangay Captain:</b><br>";
+    summary += captainVote.isEmpty() ? "None<br>" : "&nbsp;&nbsp;" + captainVote + "<br>";
+
+    summary += "<br><b>Barangay Councilors:</b><br>";
+    for (const QString& c : bCouncilorVotes) {
+        summary += "&nbsp;&nbsp;" + c + "<br>";
+    }
+
+    summary += "<br><b>SK Chairman:</b><br>";
+    summary += skChairVote.isEmpty() ? "None<br>" : "&nbsp;&nbsp;" + skChairVote + "<br>";
+
+    summary += "<br><b>SK Councilors:</b><br>";
+    for (const QString& c : skCouncilorVotes) {
+        summary += "&nbsp;&nbsp;" + c + "<br>";
+    }
 
 
     QSqlQuery checkVote(db);
@@ -164,10 +196,16 @@ void vvm::submitVote()
         return;
     }
 
-    QMessageBox::StandardButton confirm = QMessageBox::question(this, "Confirm Vote",
-                                     "You selected:\n\n" + summary + "\nSubmit your vote?",
-                                     QMessageBox::Yes | QMessageBox::No);
-    if (confirm != QMessageBox::Yes) return;
+
+    QMessageBox confirmBox;
+    confirmBox.setWindowTitle("Confirm Vote");
+    confirmBox.setTextFormat(Qt::RichText);
+    confirmBox.setText("You selected:<br><br>" + summary + "<br>Submit your vote?");
+    confirmBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    confirmBox.setDefaultButton(QMessageBox::No);
+
+    if (confirmBox.exec() != QMessageBox::Yes) return;
+
 
     for (const QString& displayText : votedCandidates) {
         QStringList parts = displayText.split(" - ");
@@ -193,6 +231,7 @@ void vvm::submitVote()
         }
     }
 
+
     QSqlQuery updateVoter(db);
     updateVoter.prepare("UPDATE voter_info SET has_voted = 1 WHERE voter_id = :voter_id");
     updateVoter.bindValue(":voter_id", currentVoterId);
@@ -204,5 +243,49 @@ void vvm::submitVote()
 
     loginWindow = new loginsystem(db, nullptr);
     loginWindow->exec();
-
 }
+
+
+
+void vvm::updateBCouncilorLimit()
+{
+    int checkedCount = 0;
+    QList<QCheckBox*> checkboxes;
+
+    for (int i = 0; i < ui->bCouncilorsLayout->count(); ++i) {
+        QCheckBox* cb = qobject_cast<QCheckBox*>(ui->bCouncilorsLayout->itemAt(i)->widget());
+        if (cb) {
+            checkboxes << cb;
+            if (cb->isChecked()) checkedCount++;
+        }
+    }
+
+    bool disableUnchecked = (checkedCount >= 7);
+    for (QCheckBox* cb : checkboxes) {
+        if (!cb->isChecked()) {
+            cb->setEnabled(!disableUnchecked);
+        }
+    }
+}
+
+void vvm::updateSKCouncilorLimit()
+{
+    int checkedCount = 0;
+    QList<QCheckBox*> checkboxes;
+
+    for (int i = 0; i < ui->skCouncilorsLayout->count(); ++i) {
+        QCheckBox* cb = qobject_cast<QCheckBox*>(ui->skCouncilorsLayout->itemAt(i)->widget());
+        if (cb) {
+            checkboxes << cb;
+            if (cb->isChecked()) checkedCount++;
+        }
+    }
+
+    bool disableUnchecked = (checkedCount >= 7);
+    for (QCheckBox* cb : checkboxes) {
+        if (!cb->isChecked()) {
+            cb->setEnabled(!disableUnchecked);
+        }
+    }
+}
+

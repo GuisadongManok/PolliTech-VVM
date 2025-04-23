@@ -118,7 +118,7 @@ public:
         label = new QLabel(frame);
         label->setObjectName("label");
         label->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	font: 600 11pt \"Segoe UI\";\n"
+"	font: 700 11pt \"Segoe UI\";\n"
 "	color: black;\n"
 "}"));
         label->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
@@ -211,7 +211,7 @@ public:
         gridLayout_9->addLayout(captainLayout, 0, 0, 1, 1);
 
 
-        gridLayout->addWidget(frame_cap, 0, 0, 1, 1);
+        gridLayout->addWidget(frame_cap, 0, 0, 1, 1, Qt::AlignmentFlag::AlignTop);
 
         scrollArea_cap->setWidget(scrollAreaWidgetContents);
 
@@ -258,7 +258,7 @@ public:
         gridLayout_10->addLayout(skChairmanLayout, 0, 0, 1, 1);
 
 
-        gridLayout_4->addWidget(frame_skchair, 0, 0, 1, 1);
+        gridLayout_4->addWidget(frame_skchair, 0, 0, 1, 1, Qt::AlignmentFlag::AlignTop);
 
         scrollArea_skchair->setWidget(scrollAreaWidgetContents_4);
 
@@ -309,7 +309,7 @@ public:
         gridLayout_8->addLayout(bCouncilorsLayout, 0, 0, 1, 1);
 
 
-        gridLayout_3->addWidget(frame_councilors, 0, 0, 1, 1);
+        gridLayout_3->addWidget(frame_councilors, 0, 0, 1, 1, Qt::AlignmentFlag::AlignTop);
 
         scrollArea_councilors->setWidget(scrollAreaWidgetContents_3);
 
@@ -360,7 +360,7 @@ public:
         gridLayout_11->addLayout(skCouncilorsLayout, 0, 0, 1, 1);
 
 
-        gridLayout_6->addWidget(frame_skcouncilors, 0, 0, 1, 1);
+        gridLayout_6->addWidget(frame_skcouncilors, 0, 0, 1, 1, Qt::AlignmentFlag::AlignTop);
 
         scrollArea_skcouncilors->setWidget(scrollAreaWidgetContents_5);
 

@@ -79,7 +79,7 @@
             <widget class="QLabel" name="label">
              <property name="styleSheet">
               <string notr="true">QLabel {
-	font: 600 11pt &quot;Segoe UI&quot;;
+	font: 700 11pt &quot;Segoe UI&quot;;
 	color: black;
 }</string>
              </property>
@@ -187,7 +187,7 @@ Pick 1 to vote</string>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
+          <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignTop">
            <widget class="QFrame" name="frame_cap">
             <property name="styleSheet">
              <string notr="true">QFrame {
@@ -252,7 +252,7 @@ Pick 1 to vote</string>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
+          <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignTop">
            <widget class="QFrame" name="frame_skchair">
             <property name="styleSheet">
              <string notr="true">QFrame {
@@ -321,7 +321,7 @@ Pick 7 to vote</string>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
-          <item row="0" column="0">
+          <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignTop">
            <widget class="QFrame" name="frame_councilors">
             <property name="styleSheet">
              <string notr="true">QFrame {
@@ -390,7 +390,7 @@ Pick 7 to vote</string>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_6">
-          <item row="0" column="0">
+          <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignTop">
            <widget class="QFrame" name="frame_skcouncilors">
             <property name="styleSheet">
              <string notr="true">QFrame {

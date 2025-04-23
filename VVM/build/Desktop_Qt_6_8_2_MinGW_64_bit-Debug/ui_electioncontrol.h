@@ -41,7 +41,7 @@ public:
     {
         if (ElectionControl->objectName().isEmpty())
             ElectionControl->setObjectName("ElectionControl");
-        ElectionControl->resize(600, 536);
+        ElectionControl->resize(600, 550);
         ElectionControl->setMinimumSize(QSize(600, 413));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
