@@ -117,26 +117,28 @@ void loginsystem::LoginButton()
 
 void loginsystem::adjustVotingAge(int age)
 {
-    auto captainBox = mainWindow->findChild<QGroupBox*>("groupBox_Captain");
-    auto councilorsBox = mainWindow->findChild<QGroupBox*>("groupBox_Councilors");
-    auto skChairBox = mainWindow->findChild<QGroupBox*>("groupBox_SK_chairman");
-    auto skCouncilorsBox = mainWindow->findChild<QGroupBox*>("groupBox_SK_councilors");
+    auto frameCaptain = mainWindow->findChild<QFrame*>("frame_cap");
+    auto frameCouncilors = mainWindow->findChild<QFrame*>("frame_councilors");
+    auto frameSKChair = mainWindow->findChild<QFrame*>("frame_skchair");
+    auto frameSKCouncilors = mainWindow->findChild<QFrame*>("frame_skcouncilors");
 
     if (age >= 15 && age <= 17) {
-        if (captainBox) captainBox->hide();
-        if (councilorsBox) councilorsBox->hide();
-        if (skChairBox) skChairBox->show();
-        if (skCouncilorsBox) skCouncilorsBox->show();
+        if (frameCaptain) frameCaptain->hide();
+        if (frameCouncilors) frameCouncilors->hide();
+        if (frameSKChair) frameSKChair->show();
+        if (frameSKCouncilors) frameSKCouncilors->show();
     } else if (age >= 18 && age <= 30) {
-        if (captainBox) captainBox->show();
-        if (councilorsBox) councilorsBox->show();
-        if (skChairBox) skChairBox->show();
-        if (skCouncilorsBox) skCouncilorsBox->show();
+        if (frameCaptain) frameCaptain->show();
+        if (frameCouncilors) frameCouncilors->show();
+        if (frameSKChair) frameSKChair->show();
+        if (frameSKCouncilors) frameSKCouncilors->show();
     } else {
-        if (captainBox) captainBox->show();
-        if (councilorsBox) councilorsBox->show();
-        if (skChairBox) skChairBox->hide();
-        if (skCouncilorsBox) skCouncilorsBox->hide();
+        if (frameCaptain) frameCaptain->show();
+        if (frameCouncilors) frameCouncilors->show();
+        if (frameSKChair) frameSKChair->hide();
+        if (frameSKCouncilors) frameSKCouncilors->hide();
     }
 }
+
+
 
