@@ -36,6 +36,11 @@ vvm::~vvm()
 
 void vvm::closeEvent(QCloseEvent *event)
 {
+    if (closingAfterVote) {
+        event->accept();
+        return;
+    }
+
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Logout Confirmation", "Are you sure you want to logout?", QMessageBox::Yes | QMessageBox::No);
 
@@ -194,5 +199,10 @@ void vvm::submitVote()
     updateVoter.exec();
 
     QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");
+    closingAfterVote = true;
     this->close();
+
+    loginWindow = new loginsystem(db, nullptr);
+    loginWindow->exec();
+
 }

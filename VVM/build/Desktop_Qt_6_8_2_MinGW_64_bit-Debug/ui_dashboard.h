@@ -110,17 +110,30 @@ public:
         manage_voter_button->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         manage_voter_button->setToolTipDuration(-1);
         manage_voter_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	font: 600 9pt \"Segoe UI\";\n"
-"	background-color: #f8f8f8;\n"
-"	color: #0A1C3A;\n"
-"	font-size: 16px;\n"
-"	border: 1px solid black;\n"
-"	border-radius: 5px;\n"
-"	padding: 5px;\n"
+"    font: 600 9pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #ffffff, stop:1 #dcdcdc);\n"
+"    border: 1px solid #888;\n"
+"    border-radius: 4px;\n"
+"    padding: 6px 12px;\n"
+"    outline: none;\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"background-color: #e6e6e6;\n"
-"}"));
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #f0f0f0, stop:1 #c8c8c8);\n"
+"    border: 1px solid #555;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #c8c8c8, stop:1 #a0a0a0);\n"
+"    padding-top: 7px;\n"
+"    padding-left: 13px;\n"
+"}\n"
+""));
         manage_voter_button->setIconSize(QSize(16, 16));
 
         verticalLayout->addWidget(manage_voter_button);
@@ -130,17 +143,30 @@ public:
         manage_candidate_button->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         manage_candidate_button->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         manage_candidate_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	font: 600 9pt \"Segoe UI\";\n"
-"	background-color: #f8f8f8;\n"
-"	color: #0A1C3A;\n"
-"	font-size: 16px;\n"
-"	border: 1px solid black;\n"
-"	border-radius: 5px;\n"
-"	padding: 5px;\n"
+"    font: 600 9pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #ffffff, stop:1 #dcdcdc);\n"
+"    border: 1px solid #888;\n"
+"    border-radius: 4px;\n"
+"    padding: 6px 12px;\n"
+"    outline: none;\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"background-color: #e6e6e6;\n"
-"}"));
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #f0f0f0, stop:1 #c8c8c8);\n"
+"    border: 1px solid #555;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #c8c8c8, stop:1 #a0a0a0);\n"
+"    padding-top: 7px;\n"
+"    padding-left: 13px;\n"
+"}\n"
+""));
         manage_candidate_button->setIconSize(QSize(16, 16));
 
         verticalLayout->addWidget(manage_candidate_button);
@@ -150,17 +176,30 @@ public:
         manage_admins_button->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         manage_admins_button->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         manage_admins_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	font: 600 9pt \"Segoe UI\";\n"
-"	background-color: #f8f8f8;\n"
-"	color: #0A1C3A;\n"
-"	font-size: 16px;\n"
-"	border: 1px solid black;\n"
-"	border-radius: 5px;\n"
-"	padding: 5px;\n"
+"    font: 600 9pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #ffffff, stop:1 #dcdcdc);\n"
+"    border: 1px solid #888;\n"
+"    border-radius: 4px;\n"
+"    padding: 6px 12px;\n"
+"    outline: none;\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"background-color: #e6e6e6;\n"
-"}"));
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #f0f0f0, stop:1 #c8c8c8);\n"
+"    border: 1px solid #555;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #c8c8c8, stop:1 #a0a0a0);\n"
+"    padding-top: 7px;\n"
+"    padding-left: 13px;\n"
+"}\n"
+""));
         manage_admins_button->setIconSize(QSize(16, 16));
 
         verticalLayout->addWidget(manage_admins_button);
@@ -190,17 +229,30 @@ public:
         view_live_vote_button->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         view_live_vote_button->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         view_live_vote_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	font: 600 9pt \"Segoe UI\";\n"
-"	background-color: #f8f8f8;\n"
-"	color: black;\n"
-"	font-size: 16px;\n"
-"	border: 1px solid black;\n"
-"	border-radius: 5px;\n"
-"	padding: 5px;\n"
+"    font: 600 9pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #ffffff, stop:1 #dcdcdc);\n"
+"    border: 1px solid #888;\n"
+"    border-radius: 4px;\n"
+"    padding: 6px 12px;\n"
+"    outline: none;\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"background-color: #e6e6e6;\n"
-"}"));
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #f0f0f0, stop:1 #c8c8c8);\n"
+"    border: 1px solid #555;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #c8c8c8, stop:1 #a0a0a0);\n"
+"    padding-top: 7px;\n"
+"    padding-left: 13px;\n"
+"}\n"
+""));
         view_live_vote_button->setIconSize(QSize(16, 16));
 
         verticalLayout_2->addWidget(view_live_vote_button);
@@ -210,17 +262,30 @@ public:
         start_election_button->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         start_election_button->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         start_election_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	font: 600 9pt \"Segoe UI\";\n"
-"	background-color: #f8f8f8;\n"
-"	color: black;\n"
-"	font-size: 16px;\n"
-"	border: 1px solid black;\n"
-"	border-radius: 5px;\n"
-"	padding: 5px;\n"
+"    font: 600 9pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #ffffff, stop:1 #dcdcdc);\n"
+"    border: 1px solid #888;\n"
+"    border-radius: 4px;\n"
+"    padding: 6px 12px;\n"
+"    outline: none;\n"
 "}\n"
+"\n"
 "QPushButton:hover {\n"
-"background-color: #e6e6e6;\n"
-"}"));
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #f0f0f0, stop:1 #c8c8c8);\n"
+"    border: 1px solid #555;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #c8c8c8, stop:1 #a0a0a0);\n"
+"    padding-top: 7px;\n"
+"    padding-left: 13px;\n"
+"}\n"
+""));
         start_election_button->setIconSize(QSize(16, 16));
 
         verticalLayout_2->addWidget(start_election_button);

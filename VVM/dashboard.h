@@ -7,6 +7,7 @@
 #include "votermanagement.h"
 #include "candidatesmanagement.h"
 #include "reportsnresults.h"
+#include "electioncontrol.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -28,6 +29,7 @@ private slots:
     void ManageVotersButton();
     void ManageCandidatesButton();
     void ViewLiveVoteCountButton();
+    void controlButton();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
@@ -42,5 +44,6 @@ private:
     VoterManagement *vmanageWindow;
     candidatesmanagement *cmanagementWindow;
     ReportsNResults *rnrWindow;
+    ElectionControl *controlWindow;
 };
 #endif // DASHBOARD_H

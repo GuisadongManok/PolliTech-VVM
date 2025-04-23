@@ -419,8 +419,6 @@ release/moc_adminlogin.cpp: ../../adminlogin.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QStack \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qstack.h \
 		../../reportsnresults.h \
 		release/moc_predefs.h \
 		C:/Qt/6.8.2/mingw_64/bin/moc.exe
@@ -628,8 +626,6 @@ release/moc_candidatesmanagement.cpp: ../../candidatesmanagement.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QStack \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qstack.h \
 		release/moc_predefs.h \
 		C:/Qt/6.8.2/mingw_64/bin/moc.exe
 	C:\Qt\6.8.2\mingw_64\bin\moc.exe $(DEFINES) --include "C:/Users/GuisadongManok/OneDrive/Documents/Deana Stuff/QT Creator/PolliTech VVM/VVM/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug/release/moc_predefs.h" -IC:/Qt/6.8.2/mingw_64/mkspecs/win32-g++ -I"C:/Users/GuisadongManok/OneDrive/Documents/Deana Stuff/QT Creator/PolliTech VVM/VVM" -IC:/Qt/6.8.2/mingw_64/include -IC:/Qt/6.8.2/mingw_64/include/QtPrintSupport -IC:/Qt/6.8.2/mingw_64/include/QtWidgets -IC:/Qt/6.8.2/mingw_64/include/QtGui -IC:/Qt/6.8.2/mingw_64/include/QtSql -IC:/Qt/6.8.2/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\candidatesmanagement.h -o release\moc_candidatesmanagement.cpp
@@ -844,8 +840,6 @@ release/moc_dashboard.cpp: ../../dashboard.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QStack \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qstack.h \
 		../../reportsnresults.h \
 		release/moc_predefs.h \
 		C:/Qt/6.8.2/mingw_64/bin/moc.exe
@@ -2124,8 +2118,6 @@ release/adminlogin.o: ../../adminlogin.cpp ../../adminlogin.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QStack \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qstack.h \
 		../../reportsnresults.h \
 		ui_adminlogin.h \
 		C:/Qt/6.8.2/mingw_64/include/QtSql/QSqlQuery \
@@ -2341,8 +2333,6 @@ release/candidatesmanagement.o: ../../candidatesmanagement.cpp ../../candidatesm
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QStack \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qstack.h \
 		ui_candidatesmanagement.h \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qmessagebox.h \
@@ -2580,8 +2570,6 @@ release/dashboard.o: ../../dashboard.cpp ../../dashboard.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QStack \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qstack.h \
 		../../reportsnresults.h \
 		ui_dashboard.h \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QStackedWidget \
@@ -2998,8 +2986,6 @@ release/loginsystem.o: ../../loginsystem.cpp ../../loginsystem.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QStack \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qstack.h \
 		../../reportsnresults.h \
 		C:/Qt/6.8.2/mingw_64/include/QtSql/QSqlQuery \
 		C:/Qt/6.8.2/mingw_64/include/QtSql/qsqlquery.h \
@@ -3671,8 +3657,6 @@ release/votermanagement.o: ../../votermanagement.cpp ../../votermanagement.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/QTimer \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimer.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/QStack \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qstack.h \
 		../../reportsnresults.h \
 		C:/Qt/6.8.2/mingw_64/include/QtSql/QSqlQuery \
 		C:/Qt/6.8.2/mingw_64/include/QtSql/qsqlquery.h \
@@ -3680,10 +3664,7 @@ release/votermanagement.o: ../../votermanagement.cpp ../../votermanagement.h \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.8.2/mingw_64/include/QtSql/QSqlError \
-		C:/Qt/6.8.2/mingw_64/include/QtSql/qsqlerror.h \
-		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QStackedWidget \
-		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qstackedwidget.h \
-		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qframe.h
+		C:/Qt/6.8.2/mingw_64/include/QtSql/qsqlerror.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\votermanagement.o ..\..\votermanagement.cpp
 
 release/vvm.o: ../../vvm.cpp ../../vvm.h \
@@ -3904,7 +3885,10 @@ release/vvm.o: ../../vvm.cpp ../../vvm.h \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qabstractbutton.h \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/QCheckBox \
 		C:/Qt/6.8.2/mingw_64/include/QtWidgets/qcheckbox.h \
-		C:/Qt/6.8.2/mingw_64/include/QtGui/QFont
+		C:/Qt/6.8.2/mingw_64/include/QtGui/QFont \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/QDate \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/qdatetime.h \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/qcalendar.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\vvm.o ..\..\vvm.cpp
 
 release/qrc_VVM.o: release/qrc_VVM.cpp 

@@ -113,16 +113,17 @@ public:
         label->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: 700 9pt \"Segoe UI\";\n"
 "	font-size: 35px;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	background-color: none;\n"
 "}"));
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label->setTextInteractionFlags(Qt::TextInteractionFlag::NoTextInteraction);
 
-        verticalLayout_8->addWidget(label);
+        verticalLayout_8->addWidget(label, 0, Qt::AlignmentFlag::AlignBottom);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
+        horizontalLayout_3->setContentsMargins(-1, 5, -1, -1);
         verticalLayout_7 = new QVBoxLayout();
         verticalLayout_7->setObjectName("verticalLayout_7");
         verticalLayout = new QVBoxLayout();
@@ -135,7 +136,7 @@ public:
         label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	font-size: 17px;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	background-color: none;\n"
 "}"));
         label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -152,11 +153,11 @@ public:
         lineEdit_first_name->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
         lineEdit_first_name->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "background-color: rgba(255,255,255,200);\n"
-"color: black;\n"
+"color: #0A1C3A;\n"
 "font: 14pt \"Segoe UI\";\n"
 "font-size: 16px;\n"
 "padding: 5px;\n"
-"border: 1px solid black;\n"
+"border: 1px solid #0A1C3A;\n"
 "}"));
         lineEdit_first_name->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -175,7 +176,7 @@ public:
         label_2->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	font-size: 17px;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	background-color: none;\n"
 "}"));
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -189,11 +190,11 @@ public:
         lineEdit_voter_id->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
         lineEdit_voter_id->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "background-color: rgba(255,255,255,200);\n"
-"color: black;\n"
+"color: #0A1C3A;\n"
 "font: 14pt \"Segoe UI\";\n"
 "font-size: 16px;\n"
 "padding: 5px;\n"
-"border: 1px solid black;\n"
+"border: 1px solid #0A1C3A;\n"
 "}"));
         lineEdit_voter_id->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -217,7 +218,7 @@ public:
         label_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	font-size: 17px;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	background-color: none;\n"
 "}"));
         label_4->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -231,11 +232,11 @@ public:
         lineEdit_last_name->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
         lineEdit_last_name->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "background-color: rgba(255,255,255,200);\n"
-"color: black;\n"
+"color: #0A1C3A;\n"
 "font: 14pt \"Segoe UI\";\n"
 "font-size: 16px;\n"
 "padding: 5px;\n"
-"border: 1px solid black;\n"
+"border: 1px solid #0A1C3A;\n"
 "}"));
         lineEdit_last_name->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -254,7 +255,7 @@ public:
         label_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: 600 9pt \"Segoe UI\";\n"
 "	font-size: 17px;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	background-color: none;\n"
 "}"));
         label_5->setAlignment(Qt::AlignmentFlag::AlignCenter);
@@ -268,11 +269,11 @@ public:
         lineEdit_age->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
         lineEdit_age->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "background-color: rgba(255,255,255,200);\n"
-"color: black;\n"
+"color: #0A1C3A;\n"
 "font: 14pt \"Segoe UI\";\n"
 "font-size: 16px;\n"
 "padding: 5px;\n"
-"border: 1px solid black;\n"
+"border: 1px solid #0A1C3A;\n"
 "}"));
         lineEdit_age->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -297,7 +298,7 @@ public:
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: italic 9pt \"Source Code Pro\";\n"
 "	font-size: 14px;\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "	background-color: none;\n"
 "}"));
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);

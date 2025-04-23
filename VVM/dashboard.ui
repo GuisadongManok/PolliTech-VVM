@@ -102,17 +102,30 @@ padding: 3px;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-	font: 600 9pt &quot;Segoe UI&quot;;
-	background-color: #f8f8f8;
-	color: #0A1C3A;
-	font-size: 16px;
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 5px;
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
 }
+
 QPushButton:hover {
-background-color: #e6e6e6;
-}</string>
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
             </property>
             <property name="text">
              <string>MANAGE VOTERS</string>
@@ -138,17 +151,30 @@ background-color: #e6e6e6;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-	font: 600 9pt &quot;Segoe UI&quot;;
-	background-color: #f8f8f8;
-	color: #0A1C3A;
-	font-size: 16px;
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 5px;
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
 }
+
 QPushButton:hover {
-background-color: #e6e6e6;
-}</string>
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
             </property>
             <property name="text">
              <string>MANAGE CANDIDATES</string>
@@ -174,17 +200,30 @@ background-color: #e6e6e6;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-	font: 600 9pt &quot;Segoe UI&quot;;
-	background-color: #f8f8f8;
-	color: #0A1C3A;
-	font-size: 16px;
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 5px;
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
 }
+
 QPushButton:hover {
-background-color: #e6e6e6;
-}</string>
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
             </property>
             <property name="text">
              <string>MANAGE OTHER ADMINS</string>
@@ -234,17 +273,30 @@ background-color: #e6e6e6;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-	font: 600 9pt &quot;Segoe UI&quot;;
-	background-color: #f8f8f8;
-	color: black;
-	font-size: 16px;
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 5px;
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
 }
+
 QPushButton:hover {
-background-color: #e6e6e6;
-}</string>
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
             </property>
             <property name="text">
              <string>VIEW VOTE COUNT</string>
@@ -270,17 +322,30 @@ background-color: #e6e6e6;
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {
-	font: 600 9pt &quot;Segoe UI&quot;;
-	background-color: #f8f8f8;
-	color: black;
-	font-size: 16px;
-	border: 1px solid black;
-	border-radius: 5px;
-	padding: 5px;
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
 }
+
 QPushButton:hover {
-background-color: #e6e6e6;
-}</string>
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
             </property>
             <property name="text">
              <string>START/STOP ELECTION</string>

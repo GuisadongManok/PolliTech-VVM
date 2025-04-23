@@ -4,10 +4,12 @@
 #include "votermanagement.h"
 #include "candidatesmanagement.h"
 #include "reportsnresults.h"
+#include "electioncontrol.h"
 
 #include <QStackedWidget>
 #include <QMessageBox>
 #include <QCloseEvent>
+
 
 dashboard::dashboard(QSqlDatabase &database, QWidget *parent)
     : QDialog(parent)
@@ -17,6 +19,7 @@ dashboard::dashboard(QSqlDatabase &database, QWidget *parent)
     , vmanageWindow(nullptr)
     , cmanagementWindow(nullptr)
     , rnrWindow(nullptr)
+    , controlWindow(nullptr)
 {
     ui->setupUi(this);
     this->setFixedSize(this->size());
@@ -25,6 +28,7 @@ dashboard::dashboard(QSqlDatabase &database, QWidget *parent)
     connect(ui->manage_voter_button, &QPushButton::clicked, this, &dashboard::ManageVotersButton);
     connect(ui->manage_candidate_button, &QPushButton::clicked, this, &dashboard::ManageCandidatesButton);
     connect(ui->view_live_vote_button, &QPushButton::clicked, this, &dashboard::ViewLiveVoteCountButton);
+    connect(ui->start_election_button, &QPushButton::clicked, this, &dashboard::controlButton);
 
     this->setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 
@@ -117,5 +121,17 @@ void dashboard::closeEvent(QCloseEvent *event)
     } else {
         event->ignore();
     }
+}
+
+
+void dashboard::controlButton()
+{
+    if (!controlWindow) {
+        controlWindow = new ElectionControl(db, nullptr);
+        connect(controlWindow, &ElectionControl::windowClosed, this, &dashboard::show);
+    }
+
+    this->hide();
+    controlWindow->show();
 }
 

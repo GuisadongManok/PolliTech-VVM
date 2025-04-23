@@ -54,7 +54,7 @@
             <string notr="true">QLabel {
 	font: 700 9pt &quot;Segoe UI&quot;;
 	font-size: 35px;
-	color: black;
+	color: #0A1C3A;
 }</string>
            </property>
            <property name="text">
@@ -86,7 +86,7 @@
                   <string notr="true">QLabel {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	font-size: 17px;
-	color: black;
+	color: #0A1C3A;
 }</string>
                  </property>
                  <property name="text">
@@ -111,11 +111,11 @@
                  <property name="styleSheet">
                   <string notr="true">QLineEdit {
 background-color: rgba(255,255,255,200);
-color: black;
+color: #0A1C3A;
 font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
-border: 1px solid black;
+border: 1px solid #0A1C3A;
 }</string>
                  </property>
                  <property name="alignment">
@@ -139,7 +139,7 @@ border: 1px solid black;
                   <string notr="true">QLabel {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	font-size: 17px;
-	color: black;
+	color: #0A1C3A;
 }</string>
                  </property>
                  <property name="text">
@@ -164,11 +164,11 @@ border: 1px solid black;
                  <property name="styleSheet">
                   <string notr="true">QLineEdit {
 background-color: rgba(255,255,255,200);
-color: black;
+color: #0A1C3A;
 font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
-border: 1px solid black;
+border: 1px solid #0A1C3A;
 }</string>
                  </property>
                  <property name="alignment">
@@ -192,7 +192,7 @@ border: 1px solid black;
                   <string notr="true">QLabel {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	font-size: 17px;
-	color: black;
+	color: #0A1C3A;
 }</string>
                  </property>
                  <property name="text">
@@ -221,9 +221,9 @@ border: 1px solid black;
                   <string notr="true">QComboBox {
 	font: 14pt &quot;Segoe UI&quot;;
     font-size: 16px;
-    color: black;
+    color: #0A1C3A;
     background-color: rgba(255,255,255,200);
-    border: 1px solid black;
+    border: 1px solid #0A1C3A;
     padding: 5px;
 }
 </string>
@@ -281,7 +281,7 @@ border: 1px solid black;
                   <string notr="true">QLabel {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	font-size: 17px;
-	color: black;
+	color: #0A1C3A;
 }</string>
                  </property>
                  <property name="text">
@@ -306,11 +306,11 @@ border: 1px solid black;
                  <property name="styleSheet">
                   <string notr="true">QLineEdit {
 background-color: rgba(255,255,255,200);
-color: black;
+color: #0A1C3A;
 font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
-border: 1px solid black;
+border: 1px solid #0A1C3A;
 }</string>
                  </property>
                  <property name="alignment">
@@ -334,7 +334,7 @@ border: 1px solid black;
                   <string notr="true">QLabel {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	font-size: 17px;
-	color: black;
+	color: #0A1C3A;
 }</string>
                  </property>
                  <property name="text">
@@ -359,11 +359,11 @@ border: 1px solid black;
                  <property name="styleSheet">
                   <string notr="true">QLineEdit {
 background-color: rgba(255,255,255,200);
-color: black;
+color: #0A1C3A;
 font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
-border: 1px solid black;
+border: 1px solid #0A1C3A;
 }</string>
                  </property>
                  <property name="alignment">
@@ -387,7 +387,7 @@ border: 1px solid black;
                   <string notr="true">QLabel {
 	font: 600 9pt &quot;Segoe UI&quot;;
 	font-size: 17px;
-	color: black;
+	color: #0A1C3A;
 }</string>
                  </property>
                  <property name="text">
@@ -412,11 +412,11 @@ border: 1px solid black;
                  <property name="styleSheet">
                   <string notr="true">QLineEdit {
 background-color: rgba(255,255,255,200);
-color: black;
+color: #0A1C3A;
 font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
-border: 1px solid black;
+border: 1px solid #0A1C3A;
 }</string>
                  </property>
                  <property name="alignment">
@@ -447,7 +447,7 @@ border: 1px solid black;
               <string notr="true">QLabel {
 	font: italic 9pt &quot;Source Code Pro&quot;;
 	font-size: 14px;
-	color: black;
+	color: #0A1C3A;
 }</string>
              </property>
              <property name="text">

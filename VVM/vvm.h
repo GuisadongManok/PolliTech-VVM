@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QSqlDatabase>
 
+
 class loginsystem;
 
 QT_BEGIN_NAMESPACE
@@ -26,6 +27,9 @@ protected:
 private slots:
     void displayCandidates();
     void submitVote();
+
+private:
+    bool closingAfterVote = false;
 
 private:
     Ui::vvm *ui;
