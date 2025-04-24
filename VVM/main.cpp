@@ -4,16 +4,21 @@
 #include <QSqlDatabase>
 #include <QDebug>
 #include <QSqlError>
+#include <QDir>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    QString dbPath = QCoreApplication::applicationDirPath() + "/database/voting.db";
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName("C:/Users/GuisadongManok/OneDrive/Documents/Deana Stuff/QT Creator/PolliTech VVM/VVM/database/voting.db");
+    db.setDatabaseName(dbPath);
+
+    qDebug() << "Looking for DB at:" << QCoreApplication::applicationDirPath() + "/database/voting.db";
+
 
     if (!db.open()) {
-        qDebug() << "Error: Could not open database!" <<db.lastError().text();
+        qDebug() << "Error: Could not open database!" << db.lastError().text();
     }
 
     loginsystem loginWindow(db);

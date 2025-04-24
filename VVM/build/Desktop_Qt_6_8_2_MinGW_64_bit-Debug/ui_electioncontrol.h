@@ -54,6 +54,7 @@ public:
         if (ElectionControl->objectName().isEmpty())
             ElectionControl->setObjectName("ElectionControl");
         ElectionControl->resize(642, 577);
+        ElectionControl->setMinimumSize(QSize(642, 577));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         ElectionControl->setWindowIcon(icon);
@@ -95,6 +96,8 @@ public:
 
         pushButton_refresh = new QPushButton(ElectionControl);
         pushButton_refresh->setObjectName("pushButton_refresh");
+        pushButton_refresh->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        pushButton_refresh->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         pushButton_refresh->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    font: 600 9pt \"Segoe UI\";\n"
 "    font-size: 16px;\n"
@@ -131,6 +134,7 @@ public:
 
         statusTableWidget = new QTableWidget(ElectionControl);
         statusTableWidget->setObjectName("statusTableWidget");
+        statusTableWidget->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         statusTableWidget->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "	background-color: white;\n"
 "}"));

@@ -270,8 +270,9 @@ QPushButton:pressed {
 
 QPushButton:focus {
     outline: none;
-    border: 2px solid #0A1C3A;
-}</string>
+    border: 2px solid rgb(102, 178, 255);
+}
+</string>
            </property>
            <property name="text">
             <string>LOGIN</string>

@@ -10,6 +10,12 @@
     <height>577</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>642</width>
+    <height>577</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>PolliTech</string>
   </property>
@@ -74,6 +80,12 @@ background: qlineargradient(
        </item>
        <item>
         <widget class="QPushButton" name="pushButton_refresh">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::NoFocus</enum>
+         </property>
          <property name="styleSheet">
           <string notr="true">QPushButton {
     font: 600 9pt &quot;Segoe UI&quot;;
@@ -114,6 +126,9 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QTableWidget" name="statusTableWidget">
+       <property name="focusPolicy">
+        <enum>Qt::FocusPolicy::NoFocus</enum>
+       </property>
        <property name="styleSheet">
         <string notr="true">QTableWidget {
 	background-color: white;

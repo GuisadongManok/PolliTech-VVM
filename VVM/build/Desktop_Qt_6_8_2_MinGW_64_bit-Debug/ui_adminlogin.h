@@ -234,8 +234,9 @@ public:
 "\n"
 "QPushButton:focus {\n"
 "    outline: none;\n"
-"    border: 2px solid #0A1C3A;\n"
-"}"));
+"    border: 2px solid rgb(102, 178, 255);\n"
+"}\n"
+""));
 
         horizontalLayout->addWidget(LoginButton);
 

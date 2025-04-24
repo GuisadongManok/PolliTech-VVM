@@ -22,7 +22,7 @@ ElectionControl::ElectionControl(QSqlDatabase &database, QWidget *parent)
     connect(ui->resetElection_button, &QPushButton::clicked, this, &ElectionControl::resetElection);
 
     ui->statusTableWidget->setColumnCount(2);
-    ui->statusTableWidget->setHorizontalHeaderLabels(QStringList() << "Action" << "Timestamp");
+    ui->statusTableWidget->setHorizontalHeaderLabels(QStringList() << "ACTION" << "TIMESTAMP");
     ui->statusTableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
     ui->statusTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     ui->statusTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -85,7 +85,7 @@ void ElectionControl::toggleElection()
         ui->label_eStats->setText("Election Status: Ongoing");
         ui->label_sTime->setText("Start Time: " + QTime::currentTime().toString("hh:mm AP"));
         ui->start_stop_button->setText("STOP ELECTION");
-        ui->start_stop_button->setStyleSheet("background-color: red; color: white; font-weight: bold; border: 1px solid #800000; padding: 6px; border-radius: 4px;");
+        ui->start_stop_button->setStyleSheet("background-color: red; color: white; font-weight: bold; font-size: 16px; border: 1px solid #800000; padding: 6px; border-radius: 4px;");
 
         query.prepare("UPDATE election_state SET status = 'ongoing', start_time = :start_time, end_time = NULL WHERE id = 1");
         query.bindValue(":start_time", QDateTime::currentDateTime().toString(Qt::ISODate));
@@ -95,7 +95,7 @@ void ElectionControl::toggleElection()
         ui->label_eStats->setText("Election Status: Ended");
         ui->label_eTime->setText("End Time: " + QTime::currentTime().toString("hh:mm AP"));
         ui->start_stop_button->setText("START ELECTION");
-        ui->start_stop_button->setStyleSheet("background-color: green; color: white; font-weight: bold; border: 1px solid #006400; padding: 6px; border-radius: 4px;");
+        ui->start_stop_button->setStyleSheet("background-color: green; color: white; font-weight: bold; font-size: 16px; border: 1px solid #006400; padding: 6px; border-radius: 4px;");
 
         query.prepare("UPDATE election_state SET status = 'ended', end_time = :end_time WHERE id = 1");
         query.bindValue(":end_time", QDateTime::currentDateTime().toString(Qt::ISODate));
@@ -152,19 +152,32 @@ void ElectionControl::updateStatusDisplay()
         QString startTime = query.value(1).toString();
         QString endTime = query.value(2).toString();
 
+        QString color;
+        if (status == "ongoing") {
+            color = "green";
+        } else if (status == "ended") {
+            color = "red";
+        } else {
+            color = "orange";
+        }
+
         ui->label_eStats->setText("Election Status: " + status.toUpper());
+        ui->label_eStats->setStyleSheet("color: " + color + "; font-weight: bold; font-size: 16px;");
+
         ui->label_sTime->setText("Start Time: " + (startTime.isEmpty() ? "" : QDateTime::fromString(startTime, Qt::ISODate).toString("hh:mm AP")));
         ui->label_eTime->setText("End Time: " + (endTime.isEmpty() ? "" : QDateTime::fromString(endTime, Qt::ISODate).toString("hh:mm AP")));
+
         ui->start_stop_button->setText(status == "ongoing" ? "STOP ELECTION" : "START ELECTION");
         ui->start_stop_button->setStyleSheet(status == "ongoing"
-                                                 ? "background-color: red; color: white; font-weight: bold; border: 1px solid #800000; padding: 6px; border-radius: 4px;"
-                                                 : "background-color: green; color: white; font-weight: bold; border: 1px solid #006400; padding: 6px; border-radius: 4px;");
+                                                 ? "background-color: red; color: white; font-weight: bold; font-size: 16px; border: 1px solid #800000; padding: 6px; border-radius: 4px;"
+                                                 : "background-color: green; color: white; font-weight: bold; font-size: 16px; border: 1px solid #006400; padding: 6px; border-radius: 4px;");
 
-        ui->resetElection_button->setStyleSheet("background-color: #f5c542; color: black; font-weight: bold; border: 1px solid #b58900; padding: 6px; border-radius: 4px;");
+        ui->resetElection_button->setStyleSheet("background-color: #f5c542; color: black; font-weight: bold; font-size: 16px; border: 1px solid #b58900; padding: 6px; border-radius: 4px;");
 
         isElectionOngoing = (status == "ongoing");
     }
 }
+
 
 void ElectionControl::loadElectionStatus()
 {
