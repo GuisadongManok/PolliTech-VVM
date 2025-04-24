@@ -71,8 +71,35 @@ void loginsystem::AdminButton()
 
 void loginsystem::LoginButton()
 {
-    QString last_name = ui->lineEdit_lastName->text();
-    QString voter_id = ui->lineEdit_VIN->text();
+    QString last_name = ui->lineEdit_lastName->text().trimmed();
+    QString voter_id = ui->lineEdit_VIN->text().trimmed();
+
+    if (last_name.isEmpty() || voter_id.isEmpty()) {
+        QMessageBox::warning(this, "Missing Fields", "Please enter your last name and voter ID.");
+        return;
+    }
+
+
+    QSqlQuery statusQuery(db);
+    statusQuery.prepare("SELECT status FROM election_state WHERE id = :id");
+    statusQuery.bindValue(":id", 1);
+    if (!statusQuery.exec()) {
+        QMessageBox::critical(this, "Error", "Could not verify election status:\n" + statusQuery.lastError().text());
+        return;
+    }
+
+
+    if (!statusQuery.next()) {
+        QMessageBox::critical(this, "Error", "Election status not found. Please contact the administrator.");
+        return;
+    }
+
+    QString status = statusQuery.value(0).toString();
+    if (status != "ongoing") {
+        QMessageBox::warning(this, "Election Not Active", "You can only vote while the election is ongoing.");
+        return;
+    }
+
 
     QSqlQuery query(db);
     query.prepare("SELECT age, last_name, voter_id FROM voter_info WHERE last_name = :last_name AND voter_id = :voter_id");
@@ -81,8 +108,6 @@ void loginsystem::LoginButton()
 
     if (!query.exec()) {
         qDebug() << "Database query failed: " << query.lastError().text();
-
-
         QMessageBox::critical(this, "Error", "Database query failed: " + query.lastError().text());
         return;
     }
@@ -95,25 +120,19 @@ void loginsystem::LoginButton()
 
         ui->lineEdit_lastName->clear();
         ui->lineEdit_VIN->clear();
-
         this->hide();
 
         delete mainWindow;
         mainWindow = new vvm(db, voter_id, nullptr);
 
         adjustVotingAge(age);
-
         mainWindow->show();
-
     } else {
         qDebug() << "Invalid login attempt for user:" << last_name;
-
         QMessageBox::warning(this, "Error", "Invalid Last Name or Voter ID.");
-        this->show();
     }
-
-
 }
+
 
 void loginsystem::adjustVotingAge(int age)
 {

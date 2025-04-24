@@ -39,7 +39,9 @@ struct qt_meta_tag_ZN15ElectionControlE_t {};
 static constexpr auto qt_meta_stringdata_ZN15ElectionControlE = QtMocHelpers::stringData(
     "ElectionControl",
     "windowClosed",
-    ""
+    "",
+    "toggleElection",
+    "resetElection"
 );
 #else  // !QT_MOC_HAS_STRINGDATA
 #error "qtmochelpers.h not found or too old."
@@ -51,7 +53,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN15ElectionControlE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,9 +61,17 @@ Q_CONSTINIT static const uint qt_meta_data_ZN15ElectionControlE[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x06,    1 /* Public */,
+       1,    0,   32,    2, 0x06,    1 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags, initial metatype offsets
+       3,    0,   33,    2, 0x08,    2 /* Private */,
+       4,    0,   34,    2, 0x08,    3 /* Private */,
 
  // signals: parameters
+    QMetaType::Void,
+
+ // slots: parameters
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -77,6 +87,10 @@ Q_CONSTINIT const QMetaObject ElectionControl::staticMetaObject = { {
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<ElectionControl, std::true_type>,
         // method 'windowClosed'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'toggleElection'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'resetElection'
         QtPrivate::TypeAndForceComplete<void, std::false_type>
     >,
     nullptr
@@ -88,6 +102,8 @@ void ElectionControl::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->windowClosed(); break;
+        case 1: _t->toggleElection(); break;
+        case 2: _t->resetElection(); break;
         default: ;
         }
     }
@@ -122,14 +138,14 @@ int ElectionControl::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 3;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }

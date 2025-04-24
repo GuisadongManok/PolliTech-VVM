@@ -6,15 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>550</height>
+    <width>642</width>
+    <height>577</height>
    </rect>
-  </property>
-  <property name="minimumSize">
-   <size>
-    <width>600</width>
-    <height>413</height>
-   </size>
   </property>
   <property name="windowTitle">
    <string>PolliTech</string>
@@ -33,8 +27,8 @@ background: qlineargradient(
     );
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_3">
-   <item>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -61,16 +55,75 @@ background: qlineargradient(
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QListWidget" name="listWidget">
-     <property name="styleSheet">
-      <string notr="true">QListWidget {
-	background-color: rgba(255,255,255,200);
+   <item row="1" column="0">
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_refresh">
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../VVM.qrc">
+           <normaloff>:/icons/buttons/icons/refresh-page-option.png</normaloff>:/icons/buttons/icons/refresh-page-option.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QTableWidget" name="statusTableWidget">
+       <property name="styleSheet">
+        <string notr="true">QTableWidget {
+	background-color: white;
 }</string>
-     </property>
-    </widget>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
-   <item>
+   <item row="2" column="0">
     <widget class="QFrame" name="frame">
      <property name="maximumSize">
       <size>
@@ -88,7 +141,7 @@ background: qlineargradient(
       <item row="0" column="0">
        <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QLabel" name="label_3">
+         <widget class="QLabel" name="label_eStats">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -112,7 +165,7 @@ background: qlineargradient(
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_4">
+         <widget class="QLabel" name="label_sTime">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -136,7 +189,7 @@ background: qlineargradient(
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_5">
+         <widget class="QLabel" name="label_eTime">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -164,7 +217,7 @@ background: qlineargradient(
      </layout>
     </widget>
    </item>
-   <item>
+   <item row="3" column="0">
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="Line" name="line_2">
@@ -189,7 +242,7 @@ background: qlineargradient(
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="start_election_button">
+        <widget class="QPushButton" name="start_stop_button">
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -197,7 +250,7 @@ background: qlineargradient(
           <enum>Qt::FocusPolicy::NoFocus</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Control Election&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Start/stop election&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton {
@@ -237,8 +290,8 @@ QPushButton:pressed {
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="start_election_button_2">
+       <item alignment="Qt::AlignmentFlag::AlignHCenter">
+        <widget class="QPushButton" name="resetElection_button">
          <property name="cursor">
           <cursorShape>PointingHandCursor</cursorShape>
          </property>
@@ -246,7 +299,7 @@ QPushButton:pressed {
           <enum>Qt::FocusPolicy::NoFocus</enum>
          </property>
          <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Control Election&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Reset election data&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QPushButton {
