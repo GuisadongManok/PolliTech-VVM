@@ -28,7 +28,6 @@ ReportsNResults::ReportsNResults(QSqlDatabase &database, QWidget *parent)
     connect(refreshTimer, &QTimer::timeout, this, &ReportsNResults::loadVoteCounts);
     refreshTimer->start(5000);
 
-    ui->tableWidget_voteCount->scrollToBottom();
 }
 
 ReportsNResults::~ReportsNResults()
@@ -143,13 +142,21 @@ void ReportsNResults::printTable()
     printer.setPageSize(QPageSize::A4);
     printer.setFullPage(true);
 
+    QPageLayout layout = printer.pageLayout();
+    QMarginsF margins(15, 15, 15, 15);
+    layout.setMargins(margins);
+    printer.setPageLayout(layout);
+
     QString html;
     html += "<html><head><style>";
-    html += "table { border-collapse: collapse; width: 100%; font-family: 'Segoe UI'; font-size: 12pt; }";
-    html += "th, td { border: 1px solid black; padding: 6px; text-align: left; }";
-    html += "th { background-color: #f0f0f0; }";
+    html += "body { font-family: 'Segoe UI'; font-size: 12pt; }";
+    html += "h2 { font-size: 18pt; margin-bottom: 20px; }";
+    html += "table { border-collapse: collapse; width: 100%; font-size: 12pt; }";
+    html += "th, td { border: 1px solid black; padding: 6px; }";
+    html += "th { background-color: #f0f0f0; text-align: center; }";
     html += "</style></head><body>";
-    html += "<h2 align='center'>Vote Count Report</h2>";
+
+    html += "<h2 align='center'>VOTE COUNT REPORT</h2>";
     html += "<table>";
 
     html += "<tr>";
@@ -163,16 +170,41 @@ void ReportsNResults::printTable()
         html += "<tr>";
         for (int col = 0; col < ui->tableWidget_voteCount->columnCount(); ++col) {
             QTableWidgetItem* item = ui->tableWidget_voteCount->item(row, col);
-            html += "<td>" + (item ? item->text() : "") + "</td>";
+            QString text = item ? item->text() : "";
+
+            if (col == ui->tableWidget_voteCount->columnCount() - 1)
+                html += "<td align='center'>" + text + "</td>";
+            else
+                html += "<td>" + text + "</td>";
         }
         html += "</tr>";
     }
 
-    html += "</table></body></html>";
+    html += "</table><br><br>";
+
+    QDateTime current = QDateTime::currentDateTime();
+    QString timestamp = current.toString("MMMM d, yyyy - hh:mm AP");
+
+    html += "<div style='text-align: center; font-size: 10pt; margin-top: 40px;'>";
+    html += "Generated on: " + timestamp;
+    html += "</div>";
+
+    html += "</body></html>";
 
     QTextDocument document;
     document.setHtml(html);
+
+    QRectF pageRect = printer.pageRect(QPrinter::Point);
+    document.setPageSize(QSizeF(pageRect.width(), pageRect.height()));
+
     document.print(&printer);
 }
+
+
+
+
+
+
+
 
 
