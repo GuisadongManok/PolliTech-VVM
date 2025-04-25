@@ -168,6 +168,9 @@ border: 1px solid black;
 border-radius: 5px;
 }</string>
            </property>
+           <property name="echoMode">
+            <enum>QLineEdit::EchoMode::Password</enum>
+           </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignCenter</set>
            </property>

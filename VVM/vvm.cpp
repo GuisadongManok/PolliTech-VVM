@@ -27,7 +27,6 @@ vvm::vvm(QSqlDatabase &database, const QString& voterId, QWidget *parent)
     ui->label_date->setText(currentDate);
 
     connect(ui->submitButton, &QPushButton::clicked, this, &vvm::submitVote);
-
 }
 
 vvm::~vvm()
@@ -159,14 +158,26 @@ void vvm::submitVote()
         return;
     }
 
-    if (showBCouncilors && bCouncilorVotes.size() != 7) {
-        QMessageBox::warning(this, "Incomplete Vote", "You must vote for exactly 7 Barangay Councilors.");
-        return;
+    if (showBCouncilors) {
+        if (bCouncilorVotes.size() < 1) {
+            QMessageBox::warning(this, "Incomplete Vote", "Please select at least 1 Barangay Councilor.");
+            return;
+        }
+        if (bCouncilorVotes.size() > 7) {
+            QMessageBox::warning(this, "Too Many Votes", "You can only vote for up to 7 Barangay Councilors.");
+            return;
+        }
     }
 
-    if (showSKCouncilors && skCouncilorVotes.size() != 7) {
-        QMessageBox::warning(this, "Incomplete Vote", "You must vote for exactly 7 SK Councilors.");
-        return;
+    if (showSKCouncilors) {
+        if (skCouncilorVotes.size() < 1) {
+            QMessageBox::warning(this, "Incomplete Vote", "Please select at least 1 SK Councilor.");
+            return;
+        }
+        if (skCouncilorVotes.size() > 7) {
+            QMessageBox::warning(this, "Too Many Votes", "You can only vote for up to 7 SK Councilors.");
+            return;
+        }
     }
 
     if (captainVote.isEmpty() && skChairVote.isEmpty()) {
@@ -219,22 +230,28 @@ void vvm::submitVote()
         QStringList parts = displayText.split(" - ");
         if (parts.isEmpty()) continue;
 
-        QStringList nameParts = parts[0].split(" ");
-        if (nameParts.size() < 2) continue;
+        QString fullName = parts[0].trimmed();
 
-        QString firstName = nameParts.first();
-        QString lastName = nameParts.last();
+        QSqlQuery nameQuery(db);
+        nameQuery.prepare("SELECT first_name, last_name FROM candidates_info WHERE first_name || ' ' || last_name = :full_name");
+        nameQuery.bindValue(":full_name", fullName);
 
-        QSqlQuery query(db);
-        query.prepare(R"(
-            UPDATE candidates_info
-            SET vote_count = COALESCE(vote_count, 0) + 1
-            WHERE first_name = :first AND last_name = :last
-        )");
-        query.bindValue(":first", firstName);
-        query.bindValue(":last", lastName);
-        if (!query.exec()) {
-            qDebug() << "Failed to update vote_count for:" << firstName << lastName << "-" << query.lastError().text();
+        if (nameQuery.exec() && nameQuery.next()) {
+            QString firstName = nameQuery.value(0).toString();
+            QString lastName = nameQuery.value(1).toString();
+
+            QSqlQuery query(db);
+            query.prepare(R"(
+                UPDATE candidates_info
+                SET vote_count = COALESCE(vote_count, 0) + 1
+                WHERE first_name = :first AND last_name = :last
+            )");
+            query.bindValue(":first", firstName);
+            query.bindValue(":last", lastName);
+
+            if (!query.exec()) {
+                qDebug() << "Failed to update vote_count for:" << firstName << lastName << "-" << query.lastError().text();
+            }
         }
     }
 
@@ -243,6 +260,8 @@ void vvm::submitVote()
     updateVoter.bindValue(":voter_id", currentVoterId);
     updateVoter.exec();
 
+    ui->submitButton->setEnabled(false);
+
     QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");
     closingAfterVote = true;
     this->close();
@@ -250,8 +269,6 @@ void vvm::submitVote()
     loginWindow = new loginsystem(db, nullptr);
     loginWindow->exec();
 }
-
-
 
 
 void vvm::updateBCouncilorLimit()
@@ -295,4 +312,3 @@ void vvm::updateSKCouncilorLimit()
         }
     }
 }
-

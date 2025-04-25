@@ -19,16 +19,11 @@ ReportsNResults::ReportsNResults(QSqlDatabase &database, QWidget *parent)
 {
     ui->setupUi(this);
 
-    // QStandardItemModel* model = qobject_cast<QStandardItemModel*>(ui->comboBox_positions->model());
-    // QStandardItem* item = model->item(0);
-    // item->setEnabled(false);
-
     connect(ui->pushButton_back, &QPushButton::clicked, this, &ReportsNResults::BackButton);
     connect(ui->pushButton_refresh, &QPushButton::clicked, this, &ReportsNResults::loadVoteCounts);
     connect(ui->pushButton_print, &QPushButton::clicked, this, &ReportsNResults::printTable);
 
     loadVoteCounts();
-    // this->setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 
     connect(refreshTimer, &QTimer::timeout, this, &ReportsNResults::loadVoteCounts);
     refreshTimer->start(5000);
@@ -135,9 +130,7 @@ void ReportsNResults::loadVoteCounts()
 void ReportsNResults::printTable()
 {
     QString fileName = QFileDialog::getSaveFileName(this, "Save Table as PDF", "", "PDF Files (*.pdf)");
-
-    if (fileName.isEmpty())
-        return;
+    if (fileName.isEmpty()) return;
 
     if (!fileName.endsWith(".pdf", Qt::CaseInsensitive))
         fileName += ".pdf";
@@ -149,15 +142,36 @@ void ReportsNResults::printTable()
     printer.setPageSize(QPageSize::A4);
     printer.setFullPage(true);
 
-    QPainter painter(&printer);
-    if (!painter.isActive()) {
-        qDebug() << "Failed to open file for writing PDF.";
-        return;
+    QString html;
+    html += "<html><head><style>";
+    html += "table { border-collapse: collapse; width: 100%; font-family: 'Segoe UI'; font-size: 12pt; }";
+    html += "th, td { border: 1px solid black; padding: 6px; text-align: left; }";
+    html += "th { background-color: #f0f0f0; }";
+    html += "</style></head><body>";
+    html += "<h2 align='center'>Vote Count Report</h2>";
+    html += "<table>";
+
+    html += "<tr>";
+    for (int col = 0; col < ui->tableWidget_voteCount->columnCount(); ++col) {
+        QString header = ui->tableWidget_voteCount->horizontalHeaderItem(col)->text();
+        html += "<th>" + header + "</th>";
+    }
+    html += "</tr>";
+
+    for (int row = 0; row < ui->tableWidget_voteCount->rowCount(); ++row) {
+        html += "<tr>";
+        for (int col = 0; col < ui->tableWidget_voteCount->columnCount(); ++col) {
+            QTableWidgetItem* item = ui->tableWidget_voteCount->item(row, col);
+            html += "<td>" + (item ? item->text() : "") + "</td>";
+        }
+        html += "</tr>";
     }
 
-    ui->tableWidget_voteCount->render(&painter);
-    painter.end();
+    html += "</table></body></html>";
 
-    qDebug() << "Saved to:" << fileName;
+    QTextDocument document;
+    document.setHtml(html);
+    document.print(&printer);
 }
+
 

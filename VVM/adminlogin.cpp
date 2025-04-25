@@ -26,7 +26,6 @@ adminlogin::adminlogin(QSqlDatabase &database, QWidget *parent)
     connect(ui->BackButton, &QPushButton::clicked, this, &adminlogin::BackButton);
     connect(ui->LoginButton, &QPushButton::clicked, this, &adminlogin::LoginButton);
 
-    ui->lineEdit_password->setEchoMode(QLineEdit::Password);
     ui->LoginButton->setDefault(true);
 
 

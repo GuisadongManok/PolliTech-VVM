@@ -149,6 +149,7 @@ public:
 "border: 1px solid black;\n"
 "border-radius: 5px;\n"
 "}"));
+        lineEdit_password->setEchoMode(QLineEdit::EchoMode::Password);
         lineEdit_password->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout_2->addWidget(lineEdit_password);

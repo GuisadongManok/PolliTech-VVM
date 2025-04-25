@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 15.0.84, 2025-04-24T18:11:10. -->
+<!-- Written by QtCreator 15.0.84, 2025-04-25T14:27:30. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -139,8 +139,8 @@
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">2</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\GuisadongManok\OneDrive\Documents\Deana Stuff\QT Creator\VVM\build\Desktop_Qt_6_8_2_MinGW_64_bit-Release</value>
-    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/GuisadongManok/OneDrive/Documents/Deana Stuff/QT Creator/VVM/build/Desktop_Qt_6_8_2_MinGW_64_bit-Release</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory">C:\Users\GuisadongManok\OneDrive\Documents\Deana Stuff\QT Creator\PolliTech VVM\VVM\build\Desktop_Qt_6_8_2_MinGW_64_bit-Debug</value>
+    <value type="QString" key="ProjectExplorer.BuildConfiguration.BuildDirectory.shadowDir">C:/Users/GuisadongManok/OneDrive/Documents/Deana Stuff/QT Creator/PolliTech VVM/VVM/build/Desktop_Qt_6_8_2_MinGW_64_bit-Debug</value>
     <valuemap type="QVariantMap" key="ProjectExplorer.BuildConfiguration.BuildStepList.0">
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.0">
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
