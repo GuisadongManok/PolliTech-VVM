@@ -183,6 +183,7 @@ void candidatesmanagement::LoadCandidateTable()
     }
     header->setSectionResizeMode(1, QHeaderView::Stretch);
     header->setSectionResizeMode(2, QHeaderView::Stretch);
+    ui->candidate_tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
     ui->candidate_tableWidget->setStyleSheet(R"(
     QTableWidget {

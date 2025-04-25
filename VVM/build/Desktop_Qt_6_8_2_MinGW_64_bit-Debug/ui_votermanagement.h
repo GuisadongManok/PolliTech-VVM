@@ -296,7 +296,7 @@ public:
         sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
         label_6->setSizePolicy(sizePolicy2);
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	font: italic 9pt \"Source Code Pro\";\n"
+"	font: italic 11pt \"Segoe UI\";\n"
 "	font-size: 14px;\n"
 "	color: #0A1C3A;\n"
 "	background-color: none;\n"

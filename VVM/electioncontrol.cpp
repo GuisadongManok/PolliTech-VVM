@@ -26,6 +26,7 @@ ElectionControl::ElectionControl(QSqlDatabase &database, QWidget *parent)
     ui->statusTableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
     ui->statusTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
     ui->statusTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->statusTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
     ui->statusTableWidget->setStyleSheet(R"(
         QTableWidget {

@@ -145,6 +145,8 @@ void VoterManagement::LoadVoterTable()
     }
     header->setSectionResizeMode(1, QHeaderView::Stretch);
     header->setSectionResizeMode(2, QHeaderView::Stretch);
+    ui->Voter_table->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+
 
     ui->Voter_table->setStyleSheet(R"(
     QTableWidget {

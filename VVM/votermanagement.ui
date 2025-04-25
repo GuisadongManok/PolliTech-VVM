@@ -362,7 +362,7 @@ border: 1px solid #0A1C3A;
              </property>
              <property name="styleSheet">
               <string notr="true">QLabel {
-	font: italic 9pt &quot;Source Code Pro&quot;;
+	font: italic 11pt &quot;Segoe UI&quot;;
 	font-size: 14px;
 	color: #0A1C3A;
 	background-color: none;

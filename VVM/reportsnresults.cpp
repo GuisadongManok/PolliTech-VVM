@@ -89,6 +89,7 @@ void ReportsNResults::loadVoteCounts()
 
     header->setSectionResizeMode(1, QHeaderView::Stretch);
     header->setSectionResizeMode(2, QHeaderView::Stretch);
+    ui->tableWidget_voteCount->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
     ui->tableWidget_voteCount->setStyleSheet(R"(
         QTableWidget {
