@@ -3265,7 +3265,10 @@ debug/main.o: ../../main.cpp ../../vvm.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qcalendar.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qfile.h \
 		C:/Qt/6.8.2/mingw_64/include/QtCore/qfileinfo.h \
-		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimezone.h
+		C:/Qt/6.8.2/mingw_64/include/QtCore/qtimezone.h \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/QFile \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/QStandardPaths \
+		C:/Qt/6.8.2/mingw_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
 
 debug/reportsnresults.o: ../../reportsnresults.cpp ../../reportsnresults.h \
