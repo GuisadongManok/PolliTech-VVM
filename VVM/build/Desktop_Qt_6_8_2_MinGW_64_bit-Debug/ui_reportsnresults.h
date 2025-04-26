@@ -147,6 +147,7 @@ public:
         pushButton_back = new QPushButton(ReportsNResults);
         pushButton_back->setObjectName("pushButton_back");
         pushButton_back->setMinimumSize(QSize(52, 32));
+        pushButton_back->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         pushButton_back->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         pushButton_back->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    font: 600 9pt \"Segoe UI\";\n"

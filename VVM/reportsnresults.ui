@@ -182,6 +182,9 @@ QPushButton:focus {
            <height>32</height>
           </size>
          </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="focusPolicy">
           <enum>Qt::FocusPolicy::NoFocus</enum>
          </property>
