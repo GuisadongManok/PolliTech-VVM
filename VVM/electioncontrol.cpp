@@ -19,48 +19,7 @@ ElectionControl::ElectionControl(QSqlDatabase &database, QWidget *parent)
 
     connect(ui->pushButton_refresh, &QPushButton::clicked, this, &ElectionControl::loadElectionStatus);
     connect(ui->start_stop_button, &QPushButton::clicked, this, &ElectionControl::toggleElection);
-    connect(ui->resetElection_button, &QPushButton::clicked, this, &ElectionControl::resetElection);
-
-    ui->statusTableWidget->setColumnCount(2);
-    ui->statusTableWidget->setHorizontalHeaderLabels(QStringList() << "ACTION" << "TIMESTAMP");
-    ui->statusTableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
-    ui->statusTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
-    ui->statusTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->statusTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
-
-    ui->statusTableWidget->setStyleSheet(R"(
-        QTableWidget {
-            background-color: #ffffff;
-            border: 1px solid black;
-            gridline-color: #ccc;
-            font-size: 14px;
-        }
-
-        QTableWidget::item {
-            padding: 6px;
-        }
-
-        QTableWidget::item:selected {
-            background-color: #cce5ff;
-            color: #000;
-        }
-
-        QTableWidget::item:hover {
-            background-color: #e6f2ff;
-        }
-
-        QHeaderView::section {
-            background-color: #f5f5f5;
-            padding: 6px;
-            border: 1px solid #ccc;
-            font-weight: bold;
-        }
-
-        QTableCornerButton::section {
-            background-color: #f5f5f5;
-            border: 1px solid #ccc;
-        }
-    )");
+    connect(ui->resetElection_button, &QPushButton::clicked, this, &ElectionControl::resetElection);    
 
     loadElectionStatus();
 }
@@ -184,6 +143,13 @@ void ElectionControl::loadElectionStatus()
 {
     ui->statusTableWidget->setRowCount(0);
 
+    ui->statusTableWidget->setColumnCount(2);
+    ui->statusTableWidget->setHorizontalHeaderLabels(QStringList() << "ACTION" << "TIMESTAMP");
+    ui->statusTableWidget->horizontalHeader()->setSectionResizeMode(0, QHeaderView::Stretch);
+    ui->statusTableWidget->horizontalHeader()->setSectionResizeMode(1, QHeaderView::Stretch);
+    ui->statusTableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->statusTableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+
     QSqlQuery loadLogs(db);
     loadLogs.prepare("SELECT action, timestamp FROM election_status_log ORDER BY id ASC");
     if (loadLogs.exec()) {
@@ -207,6 +173,40 @@ void ElectionControl::loadElectionStatus()
             }
         }
     }
+
+    ui->statusTableWidget->setStyleSheet(R"(
+    QTableWidget {
+        background-color: #ffffff;
+        border: 1px solid black;
+        gridline-color: #ccc;
+        font-size: 14px;
+    }
+
+    QTableWidget::item {
+        padding: 6px;
+    }
+
+    QTableWidget::item:selected {
+        background-color: #cce5ff;
+        color: #000;
+    }
+
+    QTableWidget::item:hover {
+        background-color: #e6f2ff;
+    }
+
+    QHeaderView::section {
+        background-color: #f5f5f5;
+        padding: 6px;
+        border: 1px solid #ccc;
+        font-weight: bold;
+    }
+
+    QTableCornerButton::section {
+        background-color: #f5f5f5;
+        border: 1px solid #ccc;
+    }
+    )");
 
     updateStatusDisplay();
 }

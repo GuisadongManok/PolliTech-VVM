@@ -21,6 +21,16 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+	background: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 #f0f0f0,
+        stop: 1 #e0e0e0
+    );
+}</string>
+   </property>
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <widget class="QFrame" name="frame">
@@ -29,6 +39,9 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: none;</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::Shape::NoFrame</enum>
@@ -55,6 +68,7 @@
 	font: 700 9pt &quot;Segoe UI&quot;;
 	font-size: 35px;
 	color: #0A1C3A;
+	background-color: none;
 }</string>
            </property>
            <property name="text">

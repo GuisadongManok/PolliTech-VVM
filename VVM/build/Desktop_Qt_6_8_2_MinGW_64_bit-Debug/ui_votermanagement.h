@@ -83,7 +83,14 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(centralwidget->sizePolicy().hasHeightForWidth());
         centralwidget->setSizePolicy(sizePolicy);
-        centralwidget->setStyleSheet(QString::fromUtf8(""));
+        centralwidget->setStyleSheet(QString::fromUtf8("QWidget {\n"
+"	background: qlineargradient(\n"
+"        x1: 0, y1: 0,\n"
+"        x2: 0, y2: 1,\n"
+"        stop: 0 #f0f0f0,\n"
+"        stop: 1 #e0e0e0\n"
+"    );\n"
+"}"));
         gridLayout_2 = new QGridLayout(centralwidget);
         gridLayout_2->setObjectName("gridLayout_2");
         frame = new QFrame(centralwidget);
