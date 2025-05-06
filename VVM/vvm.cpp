@@ -13,6 +13,11 @@
 #include <QFont>
 #include <QDate>
 
+#include <QPrinter>
+#include <QPrintDialog>
+#include <QTextDocument>
+
+
 vvm::vvm(QSqlDatabase &database, const QString& voterId, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::vvm)
@@ -263,6 +268,32 @@ void vvm::submitVote()
     ui->submitButton->setEnabled(false);
 
     QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");
+
+    // Prepare receipt content
+    QString receiptContent;
+    receiptContent += "<h2 align='center'>Vote Receipt</h2>";
+    receiptContent += "<p><b>Voter ID:</b> " + currentVoterId + "</p>";
+    receiptContent += "<p><b>Date:</b> " + QDate::currentDate().toString("MMM dd, yyyy") + "</p>";
+    receiptContent += "<hr>";
+    receiptContent += summary;
+    receiptContent += "<hr>";
+    receiptContent += "<p align='center'>Thank you for voting!</p>";
+
+    // Create a QTextDocument
+    QTextDocument receiptDoc;
+    receiptDoc.setHtml(receiptContent);
+
+    // Ask user if they want to print the receipt
+    QMessageBox::StandardButton printReply = QMessageBox::question(this, "Print Receipt", "Would you like to print your vote receipt?", QMessageBox::Yes | QMessageBox::No);
+    if (printReply == QMessageBox::Yes) {
+        QPrinter printer;
+        QPrintDialog printDialog(&printer, this);
+        if (printDialog.exec() == QDialog::Accepted) {
+            receiptDoc.print(&printer);
+        }
+    }
+
+
     closingAfterVote = true;
     this->close();
 
