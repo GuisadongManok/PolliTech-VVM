@@ -16,6 +16,7 @@
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QTextDocument>
+#include <QFile>
 
 
 vvm::vvm(QSqlDatabase &database, const QString& voterId, QWidget *parent)
@@ -265,34 +266,32 @@ void vvm::submitVote()
     updateVoter.bindValue(":voter_id", currentVoterId);
     updateVoter.exec();
 
-    ui->submitButton->setEnabled(false);
-
     QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");
 
-    // Prepare receipt content
     QString receiptContent;
     receiptContent += "<h2 align='center'>Vote Receipt</h2>";
     receiptContent += "<p><b>Voter ID:</b> " + currentVoterId + "</p>";
     receiptContent += "<p><b>Date:</b> " + QDate::currentDate().toString("MMM dd, yyyy") + "</p>";
+    receiptContent += "<p><b>Time:</b> " + QTime::currentTime().toString("hh:mm:ss AP") + "</p>";
     receiptContent += "<hr>";
     receiptContent += summary;
     receiptContent += "<hr>";
     receiptContent += "<p align='center'>Thank you for voting!</p>";
 
-    // Create a QTextDocument
     QTextDocument receiptDoc;
     receiptDoc.setHtml(receiptContent);
 
-    // Ask user if they want to print the receipt
-    QMessageBox::StandardButton printReply = QMessageBox::question(this, "Print Receipt", "Would you like to print your vote receipt?", QMessageBox::Yes | QMessageBox::No);
-    if (printReply == QMessageBox::Yes) {
-        QPrinter printer;
-        QPrintDialog printDialog(&printer, this);
-        if (printDialog.exec() == QDialog::Accepted) {
-            receiptDoc.print(&printer);
-        }
-    }
+    QPrinter printer;
+    QPrintDialog printDialog(&printer, this);
+    printDialog.setWindowTitle("Print Vote Receipt");
 
+    if (printDialog.exec() == QDialog::Accepted) {
+        receiptDoc.print(&printer);
+        ui->submitButton->setEnabled(false);
+    } else {
+        QMessageBox::warning(this, "Print Required", "You must print your vote receipt before continuing.");
+        return;
+    }
 
     closingAfterVote = true;
     this->close();
@@ -300,6 +299,7 @@ void vvm::submitVote()
     loginWindow = new loginsystem(db, nullptr);
     loginWindow->exec();
 }
+
 
 
 void vvm::updateBCouncilorLimit()

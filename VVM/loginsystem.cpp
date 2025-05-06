@@ -83,14 +83,8 @@ void loginsystem::LoginButton()
     QSqlQuery statusQuery(db);
     statusQuery.prepare("SELECT status FROM election_state WHERE id = :id");
     statusQuery.bindValue(":id", 1);
-    if (!statusQuery.exec()) {
-        QMessageBox::critical(this, "Error", "Could not verify election status:\n" + statusQuery.lastError().text());
-        return;
-    }
-
-
-    if (!statusQuery.next()) {
-        QMessageBox::critical(this, "Error", "Election status not found. Please contact the administrator.");
+    if (!statusQuery.exec() || !statusQuery.next()) {
+        QMessageBox::critical(this, "Error", "Could not verify election status.");
         return;
     }
 
@@ -102,7 +96,11 @@ void loginsystem::LoginButton()
 
 
     QSqlQuery query(db);
-    query.prepare("SELECT age, last_name, voter_id FROM voter_info WHERE last_name = :last_name AND voter_id = :voter_id");
+    query.prepare(R"(
+        SELECT age, last_name, voter_id, has_voted
+        FROM voter_info
+        WHERE last_name = :last_name AND voter_id = :voter_id
+    )");
     query.bindValue(":last_name", last_name);
     query.bindValue(":voter_id", voter_id);
 
@@ -113,11 +111,17 @@ void loginsystem::LoginButton()
     }
 
     if (query.next()) {
-        int age = query.value(0).toInt();
+        int age = query.value("age").toInt();
+        bool hasVoted = query.value("has_voted").toBool();
+
+        if (hasVoted) {
+            QMessageBox::warning(this, "Already Voted", "You have already voted. You cannot vote again.");
+            return;
+        }
+
         qDebug() << "Login successful for user:" << last_name << " Age:" << age;
 
         QMessageBox::information(this, "Welcome", "Login Successful.");
-
         ui->lineEdit_lastName->clear();
         ui->lineEdit_VIN->clear();
         this->hide();
@@ -132,6 +136,7 @@ void loginsystem::LoginButton()
         QMessageBox::warning(this, "Error", "Invalid Last Name or Voter ID.");
     }
 }
+
 
 
 void loginsystem::adjustVotingAge(int age)
