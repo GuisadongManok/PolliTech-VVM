@@ -23,6 +23,16 @@
    <iconset resource="../VVM.qrc">
     <normaloff>:/backgrounds/Smol logo no bg.png</normaloff>:/backgrounds/Smol logo no bg.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow {
+	background: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 #f0f0f0,
+        stop: 1 #e0e0e0
+    );
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_7">
     <item row="3" column="0" colspan="2">
@@ -41,11 +51,17 @@
        <widget class="QLabel" name="label_6">
         <property name="styleSheet">
          <string notr="true">QLabel {
-	font: 600 13pt &quot;Segoe UI&quot;;
-	color: white;
-	background-color: #3CA36E;
-	padding: 4px;
-}</string>
+    font: 600 13pt &quot;Segoe UI&quot;;
+    color: white;
+    background: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 #3CA36E,
+        stop: 1 #338E60
+    );
+    padding: 4px;
+}
+</string>
         </property>
         <property name="text">
          <string>SK Chairperson
@@ -410,11 +426,17 @@ Vote for 7</string>
        <widget class="QLabel" name="label_3">
         <property name="styleSheet">
          <string notr="true">QLabel {
-	font: 600 13pt &quot;Segoe UI&quot;;
-	color: white;
-	background-color: #3CA36E;
-	padding: 4px;
-}</string>
+    font: 600 13pt &quot;Segoe UI&quot;;
+    color: white;
+    background: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 0, y2: 1,
+        stop: 0 #3CA36E,
+        stop: 1 #338E60
+    );
+    padding: 4px;
+}
+</string>
         </property>
         <property name="text">
          <string>Barangay Captain (Punong Barangay)

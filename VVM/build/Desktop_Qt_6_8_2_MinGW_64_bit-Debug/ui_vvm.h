@@ -83,6 +83,14 @@ public:
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         vvm->setWindowIcon(icon);
+        vvm->setStyleSheet(QString::fromUtf8("QMainWindow {\n"
+"	background: qlineargradient(\n"
+"        x1: 0, y1: 0,\n"
+"        x2: 0, y2: 1,\n"
+"        stop: 0 #f0f0f0,\n"
+"        stop: 1 #e0e0e0\n"
+"    );\n"
+"}"));
         centralwidget = new QWidget(vvm);
         centralwidget->setObjectName("centralwidget");
         gridLayout_7 = new QGridLayout(centralwidget);
@@ -100,11 +108,17 @@ public:
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName("label_6");
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	font: 600 13pt \"Segoe UI\";\n"
-"	color: white;\n"
-"	background-color: #3CA36E;\n"
-"	padding: 4px;\n"
-"}"));
+"    font: 600 13pt \"Segoe UI\";\n"
+"    color: white;\n"
+"    background: qlineargradient(\n"
+"        x1: 0, y1: 0,\n"
+"        x2: 0, y2: 1,\n"
+"        stop: 0 #3CA36E,\n"
+"        stop: 1 #338E60\n"
+"    );\n"
+"    padding: 4px;\n"
+"}\n"
+""));
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         gridLayout_skchair->addWidget(label_6, 0, 0, 1, 1);
@@ -369,11 +383,17 @@ public:
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName("label_3");
         label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	font: 600 13pt \"Segoe UI\";\n"
-"	color: white;\n"
-"	background-color: #3CA36E;\n"
-"	padding: 4px;\n"
-"}"));
+"    font: 600 13pt \"Segoe UI\";\n"
+"    color: white;\n"
+"    background: qlineargradient(\n"
+"        x1: 0, y1: 0,\n"
+"        x2: 0, y2: 1,\n"
+"        stop: 0 #3CA36E,\n"
+"        stop: 1 #338E60\n"
+"    );\n"
+"    padding: 4px;\n"
+"}\n"
+""));
         label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         gridLayoutcap->addWidget(label_3, 0, 0, 1, 1);
