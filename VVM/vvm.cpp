@@ -232,41 +232,6 @@ void vvm::submitVote()
     confirmBox.setDefaultButton(QMessageBox::No);
     if (confirmBox.exec() != QMessageBox::Yes) return;
 
-    for (const QString& displayText : votedCandidates) {
-        QStringList parts = displayText.split(" - ");
-        if (parts.isEmpty()) continue;
-
-        QString fullName = parts[0].trimmed();
-
-        QSqlQuery nameQuery(db);
-        nameQuery.prepare("SELECT first_name, last_name FROM candidates_info WHERE first_name || ' ' || last_name = :full_name");
-        nameQuery.bindValue(":full_name", fullName);
-
-        if (nameQuery.exec() && nameQuery.next()) {
-            QString firstName = nameQuery.value(0).toString();
-            QString lastName = nameQuery.value(1).toString();
-
-            QSqlQuery query(db);
-            query.prepare(R"(
-                UPDATE candidates_info
-                SET vote_count = COALESCE(vote_count, 0) + 1
-                WHERE first_name = :first AND last_name = :last
-            )");
-            query.bindValue(":first", firstName);
-            query.bindValue(":last", lastName);
-
-            if (!query.exec()) {
-                qDebug() << "Failed to update vote_count for:" << firstName << lastName << "-" << query.lastError().text();
-            }
-        }
-    }
-
-    QSqlQuery updateVoter(db);
-    updateVoter.prepare("UPDATE voter_info SET has_voted = 1 WHERE voter_id = :voter_id");
-    updateVoter.bindValue(":voter_id", currentVoterId);
-    updateVoter.exec();
-
-    QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");
 
     QString receiptContent;
     receiptContent += "<h2 align='center'>Vote Receipt</h2>";
@@ -287,18 +252,56 @@ void vvm::submitVote()
 
     if (printDialog.exec() == QDialog::Accepted) {
         receiptDoc.print(&printer);
+
+
+        for (const QString& displayText : votedCandidates) {
+            QStringList parts = displayText.split(" - ");
+            if (parts.isEmpty()) continue;
+
+            QString fullName = parts[0].trimmed();
+
+            QSqlQuery nameQuery(db);
+            nameQuery.prepare("SELECT first_name, last_name FROM candidates_info WHERE first_name || ' ' || last_name = :full_name");
+            nameQuery.bindValue(":full_name", fullName);
+
+            if (nameQuery.exec() && nameQuery.next()) {
+                QString firstName = nameQuery.value(0).toString();
+                QString lastName = nameQuery.value(1).toString();
+
+                QSqlQuery query(db);
+                query.prepare(R"(
+                    UPDATE candidates_info
+                    SET vote_count = COALESCE(vote_count, 0) + 1
+                    WHERE first_name = :first AND last_name = :last
+                )");
+                query.bindValue(":first", firstName);
+                query.bindValue(":last", lastName);
+
+                if (!query.exec()) {
+                    qDebug() << "Failed to update vote_count for:" << firstName << lastName << "-" << query.lastError().text();
+                }
+            }
+        }
+
+        QSqlQuery updateVoter(db);
+        updateVoter.prepare("UPDATE voter_info SET has_voted = 1 WHERE voter_id = :voter_id");
+        updateVoter.bindValue(":voter_id", currentVoterId);
+        updateVoter.exec();
+
+        QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");
         ui->submitButton->setEnabled(false);
+
+        closingAfterVote = true;
+        this->close();
+
+        loginWindow = new loginsystem(db, nullptr);
+        loginWindow->exec();
     } else {
         QMessageBox::warning(this, "Print Required", "You must print your vote receipt before continuing.");
         return;
     }
-
-    closingAfterVote = true;
-    this->close();
-
-    loginWindow = new loginsystem(db, nullptr);
-    loginWindow->exec();
 }
+
 
 
 
