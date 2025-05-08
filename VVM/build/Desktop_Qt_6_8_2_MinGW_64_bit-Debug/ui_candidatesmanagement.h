@@ -375,7 +375,7 @@ public:
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
-        horizontalLayout->setContentsMargins(200, 10, 200, 0);
+        horizontalLayout->setContentsMargins(230, 10, 230, 0);
         pushButton_back = new QPushButton(frame);
         pushButton_back->setObjectName("pushButton_back");
         pushButton_back->setMinimumSize(QSize(125, 31));

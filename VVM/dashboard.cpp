@@ -11,9 +11,10 @@
 #include <QCloseEvent>
 
 
-dashboard::dashboard(QSqlDatabase &database, QWidget *parent)
+dashboard::dashboard(QSqlDatabase &database, const QString &email, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::dashboard)
+    , currentAdmin(email)
     , db(database)
     , loginWindow(nullptr)
     , vmanageWindow(nullptr)
@@ -64,7 +65,7 @@ void dashboard::ManageVotersButton()
 {
     this->hide();
     if (!vmanageWindow) {
-        vmanageWindow = new VoterManagement (db, nullptr);
+        vmanageWindow = new VoterManagement (db, currentAdmin, nullptr);
         connect(vmanageWindow, &VoterManagement::windowClosed, this, &dashboard::show);
     }
 
@@ -77,7 +78,7 @@ void dashboard::ManageCandidatesButton()
 {
     this->hide();
     if (!cmanagementWindow) {
-        cmanagementWindow = new candidatesmanagement (db, nullptr);
+        cmanagementWindow = new candidatesmanagement (db, currentAdmin, nullptr);
         connect(cmanagementWindow, &candidatesmanagement::windowClosed, this, &dashboard::show);
     }
 

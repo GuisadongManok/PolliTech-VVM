@@ -10,6 +10,7 @@
 #include <QPrinter>
 #include <QFileDialog>
 #include <QPainter>
+#include <QMessageBox>
 
 ReportsNResults::ReportsNResults(QSqlDatabase &database, QWidget *parent)
     : QDialog(parent)
@@ -129,75 +130,38 @@ void ReportsNResults::loadVoteCounts()
 
 void ReportsNResults::printTable()
 {
-    QString fileName = QFileDialog::getSaveFileName(this, "Save Table as PDF", "", "PDF Files (*.pdf)");
+    QString fileName = QFileDialog::getSaveFileName(this, "Save Table as CSV", "", "CSV Files (*.csv)");
     if (fileName.isEmpty()) return;
+    if (!fileName.endsWith(".csv", Qt::CaseInsensitive))
+        fileName += ".csv";
 
-    if (!fileName.endsWith(".pdf", Qt::CaseInsensitive))
-        fileName += ".pdf";
-
-    QPrinter printer;
-    printer.setOutputFormat(QPrinter::PdfFormat);
-    printer.setOutputFileName(fileName);
-    printer.setPageOrientation(QPageLayout::Portrait);
-    printer.setPageSize(QPageSize::A4);
-    printer.setFullPage(true);
-
-    QPageLayout layout = printer.pageLayout();
-    QMarginsF margins(15, 15, 15, 15);
-    layout.setMargins(margins);
-    printer.setPageLayout(layout);
-
-    QString html;
-    html += "<html><head><style>";
-    html += "body { font-family: 'Segoe UI'; font-size: 12pt; }";
-    html += "h2 { font-size: 18pt; margin-bottom: 20px; }";
-    html += "table { border-collapse: collapse; width: 100%; font-size: 12pt; }";
-    html += "th, td { border: 1px solid black; padding: 6px; }";
-    html += "th { background-color: #f0f0f0; text-align: center; }";
-    html += "</style></head><body>";
-
-    html += "<h2 align='center'>VOTE COUNT REPORT</h2>";
-    html += "<table>";
-
-    html += "<tr>";
-    for (int col = 0; col < ui->tableWidget_voteCount->columnCount(); ++col) {
-        QString header = ui->tableWidget_voteCount->horizontalHeaderItem(col)->text();
-        html += "<th>" + header + "</th>";
+    QFile file(fileName);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QMessageBox::warning(this, "Error", "Failed to save file.");
+        return;
     }
-    html += "</tr>";
 
-    for (int row = 0; row < ui->tableWidget_voteCount->rowCount(); ++row) {
-        html += "<tr>";
-        for (int col = 0; col < ui->tableWidget_voteCount->columnCount(); ++col) {
+    QTextStream out(&file);
+    const int cols = ui->tableWidget_voteCount->columnCount();
+    const int rows = ui->tableWidget_voteCount->rowCount();
+
+    for (int col = 0; col < cols; ++col) {
+        out << "\"" << ui->tableWidget_voteCount->horizontalHeaderItem(col)->text() << "\"";
+        if (col < cols - 1) out << ",";
+    }
+    out << "\n";
+
+
+    for (int row = 0; row < rows; ++row) {
+        for (int col = 0; col < cols; ++col) {
             QTableWidgetItem* item = ui->tableWidget_voteCount->item(row, col);
-            QString text = item ? item->text() : "";
-
-            if (col == ui->tableWidget_voteCount->columnCount() - 1)
-                html += "<td align='center'>" + text + "</td>";
-            else
-                html += "<td>" + text + "</td>";
+            out << "\"" << (item ? item->text() : "") << "\"";
+            if (col < cols - 1) out << ",";
         }
-        html += "</tr>";
+        out << "\n";
     }
 
-    html += "</table><br><br>";
-
-    QDateTime current = QDateTime::currentDateTime();
-    QString timestamp = current.toString("MMMM d, yyyy - hh:mm AP");
-
-    html += "<div style='text-align: center; font-size: 10pt; margin-top: 40px;'>";
-    html += "Generated on: " + timestamp;
-    html += "</div>";
-
-    html += "</body></html>";
-
-    QTextDocument document;
-    document.setHtml(html);
-
-    QRectF pageRect = printer.pageRect(QPrinter::Point);
-    document.setPageSize(QSizeF(pageRect.width(), pageRect.height()));
-
-    document.print(&printer);
+    file.close();
 }
 
 

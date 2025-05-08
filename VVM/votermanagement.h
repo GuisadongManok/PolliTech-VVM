@@ -14,7 +14,7 @@ class VoterManagement : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit VoterManagement(QSqlDatabase &database, QWidget *parent = nullptr);
+    explicit VoterManagement(QSqlDatabase &database, const QString &email, QWidget *parent = nullptr);
     ~VoterManagement();
 
 protected:
@@ -34,6 +34,7 @@ private slots:
 
 private:
     Ui::VoterManagement *ui;
+    QString currentAdmin;
     QSqlDatabase &db;
     bool loadingTable = false;
 };

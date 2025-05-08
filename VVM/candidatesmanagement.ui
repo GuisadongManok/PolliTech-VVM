@@ -476,13 +476,13 @@ border: 1px solid #0A1C3A;
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout">
              <property name="leftMargin">
-              <number>200</number>
+              <number>230</number>
              </property>
              <property name="topMargin">
               <number>10</number>
              </property>
              <property name="rightMargin">
-              <number>200</number>
+              <number>230</number>
              </property>
              <property name="bottomMargin">
               <number>0</number>

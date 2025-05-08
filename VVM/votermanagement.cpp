@@ -6,10 +6,12 @@
 #include <QSqlQuery>
 #include <QMessageBox>
 #include <QSqlError>
+#include <QInputDialog>
 
-VoterManagement::VoterManagement(QSqlDatabase &database, QWidget *parent)
+VoterManagement::VoterManagement(QSqlDatabase &database, const QString &email, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::VoterManagement)
+    , currentAdmin(email)
     , db(database)
 {
     ui->setupUi(this);
@@ -215,21 +217,56 @@ void VoterManagement::ListDeleteButton()
 
 void VoterManagement::ListDeleteAllButton()
 {
-    QMessageBox::StandardButton reply = QMessageBox::warning(this, "Confirm Deletion",
-                                                             "Are you sure you want to delete ALL candidates? It can't be undone.",
-                                                             QMessageBox::Yes | QMessageBox::No);
+    QMessageBox::StandardButton confirmReply = QMessageBox::warning(
+        this,
+        "Confirm Deletion",
+        "Are you sure you want to delete ALL voters? This cannot be undone.",
+        QMessageBox::Yes | QMessageBox::No
+        );
 
-    if (reply == QMessageBox::Yes) {
-        QSqlQuery query;
+    if (confirmReply != QMessageBox::Yes)
+        return;
 
-        if (query.exec("DELETE FROM candidates_info")) {
-            ui->Voter_table->setRowCount(0);
-            QMessageBox::information(this, "Deleted", "All candidates have been deleted.");
-        } else {
-            QMessageBox::warning(this, "Error", "Failed to delete candidates from the database.");
-        }
+    bool ok;
+    QString password = QInputDialog::getText(
+        this,
+        "Admin Verification",
+        "Enter your password to confirm:",
+        QLineEdit::Password,
+        "",
+        &ok
+        );
+
+    if (!ok || password.isEmpty()) {
+        QMessageBox::warning(this, "Cancelled", "Deletion cancelled. Password is required.");
+        return;
+    }
+
+    QSqlQuery query(db);
+    query.prepare("SELECT password FROM admins WHERE email = :email");
+    query.bindValue(":email", currentAdmin);
+
+    if (!query.exec() || !query.next()) {
+        QMessageBox::warning(this, "Error", "Failed to verify admin password.");
+        return;
+    }
+
+    QString storedPassword = query.value(0).toString();
+
+    if (storedPassword != password) {
+        QMessageBox::warning(this, "Access Denied", "Incorrect password. Deletion not allowed.");
+        return;
+    }
+
+    QSqlQuery deleteQuery(db);
+    if (deleteQuery.exec("DELETE FROM voter_info")) {
+        ui->Voter_table->setRowCount(0);
+        QMessageBox::information(this, "Deleted", "All voters have been deleted.");
+    } else {
+        QMessageBox::warning(this, "Error", "Failed to delete voters from the database.");
     }
 }
+
 
 void VoterManagement::onCellChanged(int row, int column)
 {

@@ -15,7 +15,7 @@ class candidatesmanagement : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit candidatesmanagement(QSqlDatabase &database, QWidget *parent = nullptr);
+    explicit candidatesmanagement(QSqlDatabase &database, const QString &email, QWidget *parent = nullptr);
     ~candidatesmanagement();
 
 protected:
@@ -34,6 +34,7 @@ private slots:
 
 private:
     Ui::candidatesmanagement *ui;
+    QString currentAdmin;
     QSqlDatabase &db;
     bool loadingTable = false;
 };

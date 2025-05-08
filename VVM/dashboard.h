@@ -21,7 +21,7 @@ class dashboard : public QDialog
     Q_OBJECT
 
 public:
-    explicit dashboard(QSqlDatabase &database, QWidget *parent = nullptr);
+    explicit dashboard(QSqlDatabase &database, const QString &email, QWidget *parent = nullptr);
     ~dashboard();
 
 private slots:
@@ -39,6 +39,7 @@ private:
 
 private:
     Ui::dashboard *ui;
+    QString currentAdmin;
     QSqlDatabase &db;
     loginsystem *loginWindow;
     VoterManagement *vmanageWindow;

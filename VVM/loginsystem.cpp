@@ -124,6 +124,7 @@ void loginsystem::LoginButton()
         QMessageBox::information(this, "Welcome", "Login Successful.");
         ui->lineEdit_lastName->clear();
         ui->lineEdit_VIN->clear();
+
         this->hide();
 
         delete mainWindow;

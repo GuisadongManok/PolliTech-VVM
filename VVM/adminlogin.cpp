@@ -70,7 +70,7 @@ void adminlogin::BackButton()
 
 void adminlogin::LoginButton()
 {
-    QString email = ui->lineEdit_email->text();
+    QString email = ui->lineEdit_email->text().trimmed();
     QString password = ui->lineEdit_password->text();
 
     QSqlQuery query (db);
@@ -88,7 +88,7 @@ void adminlogin::LoginButton()
         qDebug() << "Admin login successful for:" << email;
         QMessageBox::information(this, "Welcome", "Admin Login Successful!");
 
-        adminDash = new dashboard(db, nullptr);
+        adminDash = new dashboard(db, email, nullptr);
         adminDash->show();
         this->close();
 
