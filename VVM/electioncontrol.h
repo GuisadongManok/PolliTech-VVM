@@ -13,7 +13,7 @@ class ElectionControl : public QDialog
     Q_OBJECT
 
 public:
-    explicit ElectionControl(QSqlDatabase &database, QWidget *parent = nullptr);
+    explicit ElectionControl(QSqlDatabase &database, const QString &email, QWidget *parent = nullptr);
     ~ElectionControl();
 
 protected:
@@ -28,6 +28,7 @@ private slots:
 
 private:
     Ui::ElectionControl *ui;
+    QString currentAdmin;
     QSqlDatabase &db;
     void updateStatusDisplay();
     void loadElectionStatus();

@@ -10,9 +10,10 @@
 #include "admindashboard.h"
 #include "loginsystem.h"
 
-adminlogin::adminlogin(QSqlDatabase &database, QWidget *parent)
+adminlogin::adminlogin(QSqlDatabase &database, const QString &email, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::adminlogin)
+    , currentAdmin(email)
     , db(database)
     , loginWindow(nullptr)
     , mainWindow(nullptr)

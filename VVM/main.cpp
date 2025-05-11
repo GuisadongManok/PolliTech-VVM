@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
         qDebug() << "Error: Could not open database!" << db.lastError().text();
     }
 
-    loginsystem loginWindow(db);
+    loginsystem loginWindow(db, "", nullptr);
     loginWindow.show();
 
     int result = a.exec();

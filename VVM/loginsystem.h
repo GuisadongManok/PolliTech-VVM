@@ -22,7 +22,7 @@ class loginsystem : public QDialog
     Q_OBJECT
 
 public:
-    explicit loginsystem(QSqlDatabase &database, QWidget *parent = nullptr);
+    explicit loginsystem(QSqlDatabase &database, const QString &email, QWidget *parent = nullptr);
     ~loginsystem();
 
 private slots:
@@ -32,6 +32,7 @@ private slots:
 
 private:
     Ui::loginsystem *ui;
+    QString currentAdmin;
     adminlogin *adminWindow;
     QSqlDatabase &db;
     positions *posWindow;

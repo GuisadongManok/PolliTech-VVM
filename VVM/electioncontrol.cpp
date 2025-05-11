@@ -8,10 +8,12 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QMessageBox>
+#include <QInputDialog>
 
-ElectionControl::ElectionControl(QSqlDatabase &database, QWidget *parent)
+ElectionControl::ElectionControl(QSqlDatabase &database, const QString &email, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ElectionControl)
+    , currentAdmin(email)
     , db(database)
     , isElectionOngoing(false)
 {
@@ -76,11 +78,38 @@ void ElectionControl::resetElection()
         QMessageBox::Yes | QMessageBox::No
         );
 
-    if (reply != QMessageBox::Yes) {
+    if (reply != QMessageBox::Yes) return;
+
+    bool ok;
+    QString password = QInputDialog::getText(
+        this,
+        "Password Confirmation",
+        "Enter your password to confirm:",
+        QLineEdit::Password,
+        "",
+        &ok
+        );
+
+    if (!ok || password.isEmpty()) {
+        QMessageBox::warning(this, "Aborted", "Password not entered. Election reset canceled.");
         return;
     }
 
     QSqlQuery query;
+    query.prepare("SELECT password FROM admins WHERE email = :email");
+    query.bindValue(":email", currentAdmin);
+
+    if (!query.exec() || !query.next()) {
+        QMessageBox::warning(this, "Error", "Failed to verify credentials.");
+        return;
+    }
+
+    QString dbPassword = query.value(0).toString();
+
+    if (password != dbPassword) {
+        QMessageBox::warning(this, "Access Denied", "Incorrect password. Election reset aborted.");
+        return;
+    }
 
     if (!query.exec("UPDATE candidates_info SET vote_count = 0")) {
         QMessageBox::warning(this, "Error", "Failed to reset candidate votes: " + query.lastError().text());
@@ -103,6 +132,7 @@ void ElectionControl::resetElection()
 
     QMessageBox::information(this, "Reset Complete", "The election has been successfully reset.");
 }
+
 
 void ElectionControl::updateStatusDisplay()
 {

@@ -13,9 +13,10 @@
 #include <QGroupBox>
 
 
-loginsystem::loginsystem(QSqlDatabase& database, QWidget* parent)
+loginsystem::loginsystem(QSqlDatabase& database, const QString &email, QWidget* parent)
     : QDialog(parent)
     , ui(new Ui::loginsystem)
+    , currentAdmin(email)
     , adminWindow (nullptr)
     , db(database)
     , posWindow(nullptr)
@@ -59,7 +60,7 @@ loginsystem::~loginsystem()
 void loginsystem::AdminButton()
 {
     this->hide();
-    adminWindow = new adminlogin(db, nullptr);
+    adminWindow = new adminlogin(db, currentAdmin, nullptr);
     adminWindow->exec();
 
     if (adminWindow->isHidden()) {

@@ -14,9 +14,15 @@
 #include <QDate>
 
 #include <QPrinter>
+#include <QPrinterInfo>
 #include <QPrintDialog>
 #include <QTextDocument>
 #include <QFile>
+#include <QDir>
+#include <QFileInfo>
+#include <QStandardPaths>
+#include <QRegularExpression>
+
 
 
 vvm::vvm(QSqlDatabase &database, const QString& voterId, QWidget *parent)
@@ -125,9 +131,7 @@ void vvm::submitVote()
     auto collectRadioVote = [&](QLayout* layout) -> QString {
         for (int i = 0; i < layout->count(); ++i) {
             QRadioButton* radio = qobject_cast<QRadioButton*>(layout->itemAt(i)->widget());
-            if (radio && radio->isChecked()) {
-                return radio->text();
-            }
+            if (radio && radio->isChecked()) return radio->text();
         }
         return "";
     };
@@ -136,9 +140,7 @@ void vvm::submitVote()
         QStringList selected;
         for (int i = 0; i < layout->count(); ++i) {
             QCheckBox* checkbox = qobject_cast<QCheckBox*>(layout->itemAt(i)->widget());
-            if (checkbox && checkbox->isChecked()) {
-                selected << checkbox->text();
-            }
+            if (checkbox && checkbox->isChecked()) selected << checkbox->text();
         }
         return selected;
     };
@@ -150,7 +152,6 @@ void vvm::submitVote()
 
     QString captainVote = collectRadioVote(ui->captainLayout);
     QString skChairVote = collectRadioVote(ui->skChairmanLayout);
-
     QStringList bCouncilorVotes = collectCheckboxVotes(ui->bCouncilorsLayout);
     QStringList skCouncilorVotes = collectCheckboxVotes(ui->skCouncilorsLayout);
 
@@ -158,12 +159,10 @@ void vvm::submitVote()
         QMessageBox::warning(this, "Incomplete Vote", "You must vote for 1 Barangay Captain.");
         return;
     }
-
     if (showSKChair && skChairVote.isEmpty()) {
         QMessageBox::warning(this, "Incomplete Vote", "You must vote for 1 SK Chairman.");
         return;
     }
-
     if (showBCouncilors) {
         if (bCouncilorVotes.size() < 1) {
             QMessageBox::warning(this, "Incomplete Vote", "Please select at least 1 Barangay Councilor.");
@@ -174,7 +173,6 @@ void vvm::submitVote()
             return;
         }
     }
-
     if (showSKCouncilors) {
         if (skCouncilorVotes.size() < 1) {
             QMessageBox::warning(this, "Incomplete Vote", "Please select at least 1 SK Councilor.");
@@ -185,7 +183,6 @@ void vvm::submitVote()
             return;
         }
     }
-
     if (captainVote.isEmpty() && skChairVote.isEmpty()) {
         QMessageBox::warning(this, "Missing Vote", "Please select at least one candidate for Barangay Captain or SK Chairman.");
         return;
@@ -197,20 +194,15 @@ void vvm::submitVote()
 
     QString summary;
     if (showCaptain) {
-        summary += "<b>Barangay Captain:</b><br>";
-        summary += captainVote.isEmpty() ? "None<br>" : "&nbsp;&nbsp;" + captainVote + "<br>";
+        summary += "<b>Barangay Captain:</b><br>" + (captainVote.isEmpty() ? "None<br>" : "&nbsp;&nbsp;" + captainVote + "<br>");
     }
-
     if (showBCouncilors) {
         summary += "<br><b>Barangay Councilors:</b><br>";
         for (const QString& c : bCouncilorVotes) summary += "&nbsp;&nbsp;" + c + "<br>";
     }
-
     if (showSKChair) {
-        summary += "<br><b>SK Chairman:</b><br>";
-        summary += skChairVote.isEmpty() ? "None<br>" : "&nbsp;&nbsp;" + skChairVote + "<br>";
+        summary += "<br><b>SK Chairman:</b><br>" + (skChairVote.isEmpty() ? "None<br>" : "&nbsp;&nbsp;" + skChairVote + "<br>");
     }
-
     if (showSKCouncilors) {
         summary += "<br><b>SK Councilors:</b><br>";
         for (const QString& c : skCouncilorVotes) summary += "&nbsp;&nbsp;" + c + "<br>";
@@ -232,75 +224,97 @@ void vvm::submitVote()
     confirmBox.setDefaultButton(QMessageBox::No);
     if (confirmBox.exec() != QMessageBox::Yes) return;
 
-
     QString receiptContent;
     receiptContent += "<h2 align='center'>Vote Receipt</h2>";
     receiptContent += "<p><b>Voter ID:</b> " + currentVoterId + "</p>";
     receiptContent += "<p><b>Date:</b> " + QDate::currentDate().toString("MMM dd, yyyy") + "</p>";
     receiptContent += "<p><b>Time:</b> " + QTime::currentTime().toString("hh:mm:ss AP") + "</p>";
-    receiptContent += "<hr>";
-    receiptContent += summary;
-    receiptContent += "<hr>";
+    receiptContent += "<hr>" + summary + "<hr>";
     receiptContent += "<p align='center'>Thank you for voting!</p>";
 
     QTextDocument receiptDoc;
     receiptDoc.setHtml(receiptContent);
 
-    QPrinter printer;
-    QPrintDialog printDialog(&printer, this);
-    printDialog.setWindowTitle("Print Vote Receipt");
+    // Create folder
+    QString receiptDir = QDir::currentPath() + "/receipt";
+    QDir().mkpath(receiptDir);
 
-    if (printDialog.exec() == QDialog::Accepted) {
-        receiptDoc.print(&printer);
+    // Get voter's name for filename
+    QString voterName;
+    QSqlQuery nameQuery(db);
+    nameQuery.prepare("SELECT first_name, last_name FROM voter_info WHERE voter_id = :voter_id");
+    nameQuery.bindValue(":voter_id", currentVoterId);
+    if (nameQuery.exec() && nameQuery.next()) {
+        voterName = nameQuery.value(0).toString() + " " + nameQuery.value(1).toString();
+    } else {
+        voterName = "Unknown";
+    }
 
+    QString sanitizedVoterName = voterName;
+    sanitizedVoterName.replace(QRegularExpression("[^a-zA-Z0-9 ]"), "_");
 
-        for (const QString& displayText : votedCandidates) {
-            QStringList parts = displayText.split(" - ");
-            if (parts.isEmpty()) continue;
+    QString pdfPath = receiptDir + "/Vote Receipt - " + sanitizedVoterName + ".pdf";
 
-            QString fullName = parts[0].trimmed();
+    // Save as PDF
+    QPrinter pdfPrinter(QPrinter::HighResolution);
+    pdfPrinter.setOutputFormat(QPrinter::PdfFormat);
+    pdfPrinter.setOutputFileName(pdfPath);
+    receiptDoc.print(&pdfPrinter);
 
-            QSqlQuery nameQuery(db);
-            nameQuery.prepare("SELECT first_name, last_name FROM candidates_info WHERE first_name || ' ' || last_name = :full_name");
-            nameQuery.bindValue(":full_name", fullName);
+    // Print to default printer if available
+    QPrinter autoPrinter(QPrinter::HighResolution);
+    QPrinterInfo defaultPrinter = QPrinterInfo::defaultPrinter();
+    if (!defaultPrinter.isNull()) {
+        autoPrinter.setPrinterName(defaultPrinter.printerName());
+        receiptDoc.print(&autoPrinter);
+    } else {
+        QMessageBox::information(this, "No Printer Found", "No default printer is available. Receipt saved to PDF only.");
+    }
 
-            if (nameQuery.exec() && nameQuery.next()) {
-                QString firstName = nameQuery.value(0).toString();
-                QString lastName = nameQuery.value(1).toString();
+    // Update vote counts
+    for (const QString& displayText : votedCandidates) {
+        QStringList parts = displayText.split(" - ");
+        if (parts.isEmpty()) continue;
+        QString fullName = parts[0].trimmed();
 
-                QSqlQuery query(db);
-                query.prepare(R"(
-                    UPDATE candidates_info
-                    SET vote_count = COALESCE(vote_count, 0) + 1
-                    WHERE first_name = :first AND last_name = :last
-                )");
-                query.bindValue(":first", firstName);
-                query.bindValue(":last", lastName);
+        QSqlQuery nameQuery(db);
+        nameQuery.prepare("SELECT first_name, last_name FROM candidates_info WHERE first_name || ' ' || last_name = :full_name");
+        nameQuery.bindValue(":full_name", fullName);
 
-                if (!query.exec()) {
-                    qDebug() << "Failed to update vote_count for:" << firstName << lastName << "-" << query.lastError().text();
-                }
+        if (nameQuery.exec() && nameQuery.next()) {
+            QString firstName = nameQuery.value(0).toString();
+            QString lastName = nameQuery.value(1).toString();
+
+            QSqlQuery query(db);
+            query.prepare(R"(
+                UPDATE candidates_info
+                SET vote_count = COALESCE(vote_count, 0) + 1
+                WHERE first_name = :first AND last_name = :last
+            )");
+            query.bindValue(":first", firstName);
+            query.bindValue(":last", lastName);
+            if (!query.exec()) {
+                qDebug() << "Failed to update vote_count for:" << firstName << lastName << "-" << query.lastError().text();
             }
         }
-
-        QSqlQuery updateVoter(db);
-        updateVoter.prepare("UPDATE voter_info SET has_voted = 1 WHERE voter_id = :voter_id");
-        updateVoter.bindValue(":voter_id", currentVoterId);
-        updateVoter.exec();
-
-        QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");
-        ui->submitButton->setEnabled(false);
-
-        closingAfterVote = true;
-        this->close();
-
-        loginWindow = new loginsystem(db, nullptr);
-        loginWindow->exec();
-    } else {
-        QMessageBox::warning(this, "Print Required", "You must print your vote receipt before continuing.");
-        return;
     }
+
+    // Mark voter as voted
+    QSqlQuery updateVoter(db);
+    updateVoter.prepare("UPDATE voter_info SET has_voted = 1 WHERE voter_id = :voter_id");
+    updateVoter.bindValue(":voter_id", currentVoterId);
+    updateVoter.exec();
+
+    QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");
+    ui->submitButton->setEnabled(false);
+
+    closingAfterVote = true;
+    this->close();
+
+    loginWindow = new loginsystem(db, nullptr);
+    loginWindow->exec();
 }
+
 
 
 

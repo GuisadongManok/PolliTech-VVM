@@ -15,6 +15,7 @@
 ReportsNResults::ReportsNResults(QSqlDatabase &database, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ReportsNResults)
+
     , db(database)
     , refreshTimer(new QTimer(this))
 {

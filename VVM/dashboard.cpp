@@ -128,7 +128,7 @@ void dashboard::closeEvent(QCloseEvent *event)
 void dashboard::controlButton()
 {
     if (!controlWindow) {
-        controlWindow = new ElectionControl(db, nullptr);
+        controlWindow = new ElectionControl(db, currentAdmin, nullptr);
         connect(controlWindow, &ElectionControl::windowClosed, this, &dashboard::show);
     }
 

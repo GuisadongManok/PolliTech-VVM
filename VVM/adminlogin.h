@@ -18,7 +18,7 @@ class adminlogin : public QDialog
     Q_OBJECT
 
 public:
-    explicit adminlogin(QSqlDatabase &database, QWidget *parent = nullptr);
+    explicit adminlogin(QSqlDatabase &database, const QString &email, QWidget *parent = nullptr);
     ~adminlogin();
 
 private slots:
@@ -27,6 +27,7 @@ private slots:
 
 private:
     Ui::adminlogin *ui;
+    QString currentAdmin;
     QSqlDatabase &db;
     loginsystem *loginWindow;
     vvm *mainWindow;
