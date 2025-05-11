@@ -52,7 +52,7 @@ void dashboard::LogoutButton()
             delete loginWindow;
         }
 
-        loginWindow = new loginsystem (db, nullptr);
+        loginWindow = new loginsystem(db, "", nullptr);
         this->close();
         loginWindow->exec();
     }
@@ -115,7 +115,7 @@ void dashboard::closeEvent(QCloseEvent *event)
             delete loginWindow;
         }
 
-        loginWindow = new loginsystem(db, nullptr);
+        loginWindow = new loginsystem(db, "", nullptr);
         this->close();
         loginWindow->exec();
         event->accept();

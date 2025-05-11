@@ -134,7 +134,7 @@ Vote for 1</string>
         </property>
         <property name="text">
          <string>SK Councilors (SK Kagawad)
-Vote for 7</string>
+Vote at least 1</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -196,7 +196,7 @@ Vote for 7</string>
       <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0">
         <layout class="QVBoxLayout" name="verticalLayout">
-         <item alignment="Qt::AlignmentFlag::AlignHCenter">
+         <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter">
           <widget class="QLabel" name="label_2">
            <property name="minimumSize">
             <size>
@@ -369,7 +369,7 @@ QPushButton:focus {
         </property>
         <property name="text">
          <string>Barangay Councilors (Sangguniang Barangay)
-Vote for 7</string>
+Vote at least 1</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignCenter</set>

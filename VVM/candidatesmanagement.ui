@@ -119,6 +119,12 @@
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>348</width>
+                   <height>35</height>
+                  </size>
+                 </property>
                  <property name="focusPolicy">
                   <enum>Qt::FocusPolicy::StrongFocus</enum>
                  </property>
@@ -130,6 +136,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -172,6 +179,12 @@ border: 1px solid #0A1C3A;
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>348</width>
+                   <height>35</height>
+                  </size>
+                 </property>
                  <property name="focusPolicy">
                   <enum>Qt::FocusPolicy::StrongFocus</enum>
                  </property>
@@ -183,6 +196,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -238,6 +252,7 @@ border: 1px solid #0A1C3A;
     color: #0A1C3A;
     background-color: rgba(255,255,255,200);
     border: 1px solid #0A1C3A;
+	border-radius: 5px;
     padding: 5px;
 }
 </string>
@@ -314,6 +329,12 @@ border: 1px solid #0A1C3A;
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>348</width>
+                   <height>35</height>
+                  </size>
+                 </property>
                  <property name="focusPolicy">
                   <enum>Qt::FocusPolicy::StrongFocus</enum>
                  </property>
@@ -325,6 +346,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -359,13 +381,25 @@ border: 1px solid #0A1C3A;
                  </property>
                 </widget>
                </item>
-               <item>
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                 <widget class="QLineEdit" name="lineEdit_age">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>208</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>208</width>
+                   <height>35</height>
+                  </size>
                  </property>
                  <property name="focusPolicy">
                   <enum>Qt::FocusPolicy::StrongFocus</enum>
@@ -378,6 +412,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -431,6 +466,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -476,23 +512,42 @@ border: 1px solid #0A1C3A;
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout">
              <property name="leftMargin">
-              <number>230</number>
+              <number>0</number>
              </property>
              <property name="topMargin">
               <number>10</number>
              </property>
              <property name="rightMargin">
-              <number>230</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
               <number>0</number>
              </property>
              <item>
+              <spacer name="horizontalSpacer">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QPushButton" name="pushButton_back">
                <property name="minimumSize">
                 <size>
                  <width>125</width>
-                 <height>31</height>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>140</width>
+                 <height>35</height>
                 </size>
                </property>
                <property name="cursor">
@@ -547,7 +602,13 @@ QPushButton:focus {
                <property name="minimumSize">
                 <size>
                  <width>126</width>
-                 <height>31</height>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>140</width>
+                 <height>35</height>
                 </size>
                </property>
                <property name="cursor">
@@ -596,6 +657,19 @@ QPushButton:focus {
                 <string>INSERT</string>
                </property>
               </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </item>
@@ -746,13 +820,38 @@ background-color: white;
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <property name="leftMargin">
-           <number>250</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>250</number>
+           <number>0</number>
           </property>
           <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QPushButton" name="list_delete_button">
+            <property name="minimumSize">
+             <size>
+              <width>129</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>129</width>
+              <height>35</height>
+             </size>
+            </property>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -809,6 +908,18 @@ QPushButton:focus {
           </item>
           <item>
            <widget class="QPushButton" name="list_deleteAll_button">
+            <property name="minimumSize">
+             <size>
+              <width>129</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>129</width>
+              <height>35</height>
+             </size>
+            </property>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -862,6 +973,19 @@ QPushButton:focus {
              <string>DELETE ALL</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>

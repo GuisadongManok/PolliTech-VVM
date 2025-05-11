@@ -223,7 +223,7 @@ public:
         label_2->setScaledContents(true);
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        verticalLayout->addWidget(label_2, 0, Qt::AlignmentFlag::AlignHCenter);
+        verticalLayout->addWidget(label_2, 0, Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignVCenter);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(2);
@@ -443,14 +443,14 @@ public:
         label_6->setText(QCoreApplication::translate("vvm", "SK Chairperson\n"
 "Vote for 1", nullptr));
         label_8->setText(QCoreApplication::translate("vvm", "SK Councilors (SK Kagawad)\n"
-"Vote for 7", nullptr));
+"Vote at least 1", nullptr));
         label_2->setText(QString());
         label->setText(QCoreApplication::translate("vvm", "BARANGAY AND SK ELECTIONS", nullptr));
         label_date->setText(QCoreApplication::translate("vvm", "MMM d, yyyy", nullptr));
         label_7->setText(QCoreApplication::translate("vvm", "Please select your candidates carefully. Votes cannot be changed after submitting.", nullptr));
         submitButton->setText(QCoreApplication::translate("vvm", "SUBMIT VOTE", nullptr));
         label_5->setText(QCoreApplication::translate("vvm", "Barangay Councilors (Sangguniang Barangay)\n"
-"Vote for 7", nullptr));
+"Vote at least 1", nullptr));
         label_3->setText(QCoreApplication::translate("vvm", "Barangay Captain (Punong Barangay)\n"
 "Vote for 1", nullptr));
     } // retranslateUi

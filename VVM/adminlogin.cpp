@@ -62,7 +62,7 @@ adminlogin::~adminlogin()
 
 void adminlogin::BackButton()
 {
-    loginWindow = new loginsystem (db, nullptr);
+    loginWindow = new loginsystem(db, "", nullptr);
     this->close();
     loginWindow->exec();
 

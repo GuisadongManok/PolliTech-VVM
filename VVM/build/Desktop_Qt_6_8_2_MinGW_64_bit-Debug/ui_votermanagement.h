@@ -54,8 +54,10 @@ public:
     QVBoxLayout *verticalLayout_5;
     QLabel *label_6;
     QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_2;
     QPushButton *pushButton_back;
     QPushButton *pushButton_insert;
+    QSpacerItem *horizontalSpacer_3;
     QVBoxLayout *verticalLayout_11;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
@@ -63,8 +65,10 @@ public:
     QVBoxLayout *verticalLayout_10;
     QTableWidget *Voter_table;
     QHBoxLayout *horizontalLayout_4;
+    QSpacerItem *horizontalSpacer_4;
     QPushButton *ListDeleteButton;
     QPushButton *DeleteAll_Button;
+    QSpacerItem *horizontalSpacer_5;
 
     void setupUi(QMainWindow *VoterManagement)
     {
@@ -157,6 +161,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(lineEdit_first_name->sizePolicy().hasHeightForWidth());
         lineEdit_first_name->setSizePolicy(sizePolicy3);
+        lineEdit_first_name->setMinimumSize(QSize(281, 35));
         lineEdit_first_name->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
         lineEdit_first_name->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "background-color: rgba(255,255,255,200);\n"
@@ -165,6 +170,7 @@ public:
 "font-size: 16px;\n"
 "padding: 5px;\n"
 "border: 1px solid #0A1C3A;\n"
+"border-radius: 5px;\n"
 "}"));
         lineEdit_first_name->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -202,6 +208,7 @@ public:
 "font-size: 16px;\n"
 "padding: 5px;\n"
 "border: 1px solid #0A1C3A;\n"
+"border-radius: 5px;\n"
 "}"));
         lineEdit_voter_id->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -236,6 +243,7 @@ public:
         lineEdit_last_name->setObjectName("lineEdit_last_name");
         sizePolicy3.setHeightForWidth(lineEdit_last_name->sizePolicy().hasHeightForWidth());
         lineEdit_last_name->setSizePolicy(sizePolicy3);
+        lineEdit_last_name->setMinimumSize(QSize(284, 35));
         lineEdit_last_name->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
         lineEdit_last_name->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "background-color: rgba(255,255,255,200);\n"
@@ -244,6 +252,7 @@ public:
 "font-size: 16px;\n"
 "padding: 5px;\n"
 "border: 1px solid #0A1C3A;\n"
+"border-radius: 5px;\n"
 "}"));
         lineEdit_last_name->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
@@ -254,7 +263,7 @@ public:
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
-        verticalLayout_4->setContentsMargins(80, -1, 80, -1);
+        verticalLayout_4->setContentsMargins(0, -1, 0, -1);
         label_5 = new QLabel(frame);
         label_5->setObjectName("label_5");
         sizePolicy2.setHeightForWidth(label_5->sizePolicy().hasHeightForWidth());
@@ -273,6 +282,7 @@ public:
         lineEdit_age->setObjectName("lineEdit_age");
         sizePolicy3.setHeightForWidth(lineEdit_age->sizePolicy().hasHeightForWidth());
         lineEdit_age->setSizePolicy(sizePolicy3);
+        lineEdit_age->setMaximumSize(QSize(135, 35));
         lineEdit_age->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
         lineEdit_age->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "background-color: rgba(255,255,255,200);\n"
@@ -281,10 +291,11 @@ public:
 "font-size: 16px;\n"
 "padding: 5px;\n"
 "border: 1px solid #0A1C3A;\n"
+"border-radius: 5px;\n"
 "}"));
         lineEdit_age->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        verticalLayout_4->addWidget(lineEdit_age);
+        verticalLayout_4->addWidget(lineEdit_age, 0, Qt::AlignmentFlag::AlignHCenter);
 
 
         verticalLayout_6->addLayout(verticalLayout_4);
@@ -315,10 +326,15 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setSizeConstraint(QLayout::SizeConstraint::SetFixedSize);
-        horizontalLayout->setContentsMargins(180, 10, 180, -1);
+        horizontalLayout->setContentsMargins(0, 10, 0, -1);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
         pushButton_back = new QPushButton(frame);
         pushButton_back->setObjectName("pushButton_back");
         pushButton_back->setMinimumSize(QSize(136, 35));
+        pushButton_back->setMaximumSize(QSize(136, 35));
         pushButton_back->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         pushButton_back->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         pushButton_back->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -361,6 +377,7 @@ public:
         pushButton_insert = new QPushButton(frame);
         pushButton_insert->setObjectName("pushButton_insert");
         pushButton_insert->setMinimumSize(QSize(136, 35));
+        pushButton_insert->setMaximumSize(QSize(136, 35));
         pushButton_insert->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         pushButton_insert->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         pushButton_insert->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -399,6 +416,10 @@ public:
 ""));
 
         horizontalLayout->addWidget(pushButton_insert);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
 
 
         verticalLayout_5->addLayout(horizontalLayout);
@@ -508,9 +529,15 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName("horizontalLayout_4");
-        horizontalLayout_4->setContentsMargins(180, -1, 180, -1);
+        horizontalLayout_4->setContentsMargins(0, -1, 0, -1);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_4);
+
         ListDeleteButton = new QPushButton(centralwidget);
         ListDeleteButton->setObjectName("ListDeleteButton");
+        ListDeleteButton->setMinimumSize(QSize(99, 35));
+        ListDeleteButton->setMaximumSize(QSize(99, 35));
         ListDeleteButton->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         ListDeleteButton->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         ListDeleteButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -554,6 +581,8 @@ public:
 
         DeleteAll_Button = new QPushButton(centralwidget);
         DeleteAll_Button->setObjectName("DeleteAll_Button");
+        DeleteAll_Button->setMinimumSize(QSize(109, 35));
+        DeleteAll_Button->setMaximumSize(QSize(109, 35));
         DeleteAll_Button->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         DeleteAll_Button->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         DeleteAll_Button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -593,6 +622,10 @@ public:
 ""));
 
         horizontalLayout_4->addWidget(DeleteAll_Button);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_5);
 
 
         verticalLayout_10->addLayout(horizontalLayout_4);

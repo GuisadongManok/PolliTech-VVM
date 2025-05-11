@@ -146,6 +146,12 @@ background-color: none;
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>281</width>
+                   <height>35</height>
+                  </size>
+                 </property>
                  <property name="focusPolicy">
                   <enum>Qt::FocusPolicy::StrongFocus</enum>
                  </property>
@@ -157,6 +163,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -217,6 +224,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -270,6 +278,12 @@ border: 1px solid #0A1C3A;
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>284</width>
+                   <height>35</height>
+                  </size>
+                 </property>
                  <property name="focusPolicy">
                   <enum>Qt::FocusPolicy::StrongFocus</enum>
                  </property>
@@ -281,6 +295,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -293,10 +308,10 @@ border: 1px solid #0A1C3A;
              <item>
               <layout class="QVBoxLayout" name="verticalLayout_4">
                <property name="leftMargin">
-                <number>80</number>
+                <number>0</number>
                </property>
                <property name="rightMargin">
-                <number>80</number>
+                <number>0</number>
                </property>
                <item alignment="Qt::AlignmentFlag::AlignBottom">
                 <widget class="QLabel" name="label_5">
@@ -322,13 +337,19 @@ border: 1px solid #0A1C3A;
                  </property>
                 </widget>
                </item>
-               <item>
+               <item alignment="Qt::AlignmentFlag::AlignHCenter">
                 <widget class="QLineEdit" name="lineEdit_age">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>135</width>
+                   <height>35</height>
+                  </size>
                  </property>
                  <property name="focusPolicy">
                   <enum>Qt::FocusPolicy::StrongFocus</enum>
@@ -341,6 +362,7 @@ font: 14pt &quot;Segoe UI&quot;;
 font-size: 16px;
 padding: 5px;
 border: 1px solid #0A1C3A;
+border-radius: 5px;
 }</string>
                  </property>
                  <property name="alignment">
@@ -389,17 +411,36 @@ border: 1px solid #0A1C3A;
               <enum>QLayout::SizeConstraint::SetFixedSize</enum>
              </property>
              <property name="leftMargin">
-              <number>180</number>
+              <number>0</number>
              </property>
              <property name="topMargin">
               <number>10</number>
              </property>
              <property name="rightMargin">
-              <number>180</number>
+              <number>0</number>
              </property>
+             <item>
+              <spacer name="horizontalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
              <item>
               <widget class="QPushButton" name="pushButton_back">
                <property name="minimumSize">
+                <size>
+                 <width>136</width>
+                 <height>35</height>
+                </size>
+               </property>
+               <property name="maximumSize">
                 <size>
                  <width>136</width>
                  <height>35</height>
@@ -460,6 +501,12 @@ QPushButton:focus {
                  <height>35</height>
                 </size>
                </property>
+               <property name="maximumSize">
+                <size>
+                 <width>136</width>
+                 <height>35</height>
+                </size>
+               </property>
                <property name="cursor">
                 <cursorShape>PointingHandCursor</cursorShape>
                </property>
@@ -506,6 +553,19 @@ QPushButton:focus {
                 <string>INSERT</string>
                </property>
               </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
              </item>
             </layout>
            </item>
@@ -671,13 +731,38 @@ font: 9pt &quot;Segoe UI&quot;;
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_4">
           <property name="leftMargin">
-           <number>180</number>
+           <number>0</number>
           </property>
           <property name="rightMargin">
-           <number>180</number>
+           <number>0</number>
           </property>
           <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
            <widget class="QPushButton" name="ListDeleteButton">
+            <property name="minimumSize">
+             <size>
+              <width>99</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>99</width>
+              <height>35</height>
+             </size>
+            </property>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -737,6 +822,18 @@ QPushButton:focus {
           </item>
           <item>
            <widget class="QPushButton" name="DeleteAll_Button">
+            <property name="minimumSize">
+             <size>
+              <width>109</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>109</width>
+              <height>35</height>
+             </size>
+            </property>
             <property name="cursor">
              <cursorShape>PointingHandCursor</cursorShape>
             </property>
@@ -787,6 +884,19 @@ QPushButton:focus {
              <string>DELETE ALL</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
