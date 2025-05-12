@@ -243,17 +243,15 @@ void vvm::submitVote()
         voterName = nameQuery.value(0).toString() + " " + nameQuery.value(1).toString();
 
     // Print receipt
-    QString receiptContent = QString(
-                                 "<div style='font-size:12pt;'>"
-                                 "<h2 align='center' style='font-size:14pt;'>Vote Receipt</h2>"
-                                 "<p><b>Date:</b> %2</p>"
-                                 "<p><b>Time:</b> %3</p>"
-                                 "<hr>%4<hr>"
-                                 "<p align='center'>Thank you for voting!</p>"
-                                 "</div>"
-                                 ).arg(QDate::currentDate().toString("MMM dd, yyyy"))
-                                 .arg(QTime::currentTime().toString("hh:mm:ss AP"))
-                                 .arg(summary);
+    QString receiptContent;
+    receiptContent += "<div style='font-size:12pt;'>";
+    receiptContent += "<h2 align='center' style='font-size:14pt;'>VOTE RECEIPT</h2>";
+    receiptContent += "<p><b>Date:</b> " + QDate::currentDate().toString("MMM dd, yyyy") + "</p>";
+    receiptContent += "<p><b>Time:</b> " + QTime::currentTime().toString("hh:mm:ss AP") + "</p>";
+    receiptContent += "<hr>" + summary + "<hr>";
+    receiptContent += "<p align='center'>Thank you for voting!</p>";
+    receiptContent += "</div>";
+
 
 
     QTextDocument receiptDoc;
