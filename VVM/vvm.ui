@@ -134,7 +134,7 @@ Vote for 1</string>
         </property>
         <property name="text">
          <string>SK Councilors (SK Kagawad)
-Vote at least 1</string>
+Vote at least 1 not exceeding 7</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -369,7 +369,7 @@ QPushButton:focus {
         </property>
         <property name="text">
          <string>Barangay Councilors (Sangguniang Barangay)
-Vote at least 1</string>
+Vote at least 1 not exceeding 7</string>
         </property>
         <property name="alignment">
          <set>Qt::AlignmentFlag::AlignCenter</set>

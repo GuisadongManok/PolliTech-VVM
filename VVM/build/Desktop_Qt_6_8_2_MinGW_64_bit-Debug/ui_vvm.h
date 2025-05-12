@@ -443,14 +443,14 @@ public:
         label_6->setText(QCoreApplication::translate("vvm", "SK Chairperson\n"
 "Vote for 1", nullptr));
         label_8->setText(QCoreApplication::translate("vvm", "SK Councilors (SK Kagawad)\n"
-"Vote at least 1", nullptr));
+"Vote at least 1 not exceeding 7", nullptr));
         label_2->setText(QString());
         label->setText(QCoreApplication::translate("vvm", "BARANGAY AND SK ELECTIONS", nullptr));
         label_date->setText(QCoreApplication::translate("vvm", "MMM d, yyyy", nullptr));
         label_7->setText(QCoreApplication::translate("vvm", "Please select your candidates carefully. Votes cannot be changed after submitting.", nullptr));
         submitButton->setText(QCoreApplication::translate("vvm", "SUBMIT VOTE", nullptr));
         label_5->setText(QCoreApplication::translate("vvm", "Barangay Councilors (Sangguniang Barangay)\n"
-"Vote at least 1", nullptr));
+"Vote at least 1 not exceeding 7", nullptr));
         label_3->setText(QCoreApplication::translate("vvm", "Barangay Captain (Punong Barangay)\n"
 "Vote for 1", nullptr));
     } // retranslateUi
