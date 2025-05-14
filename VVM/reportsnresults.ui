@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>769</width>
-    <height>664</height>
+    <width>793</width>
+    <height>782</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,12 +17,9 @@
    <iconset resource="../VVM.qrc">
     <normaloff>:/backgrounds/Smol logo no bg.png</normaloff>:/backgrounds/Smol logo no bg.png</iconset>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
+  <layout class="QGridLayout" name="gridLayout_2">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="sizeConstraint">
-      <enum>QLayout::SizeConstraint::SetFixedSize</enum>
-     </property>
      <item>
       <widget class="QLabel" name="label_6">
        <property name="styleSheet">
@@ -40,123 +37,454 @@
       </widget>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_7">
-       <property name="sizeConstraint">
-        <enum>QLayout::SizeConstraint::SetFixedSize</enum>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+         <bold>false</bold>
+        </font>
        </property>
-       <item>
-        <spacer name="horizontalSpacer_8">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_refresh">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::FocusPolicy::NoFocus</enum>
-         </property>
-         <property name="toolTip">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    font: 600 9pt &quot;Segoe UI&quot;;
-    font-size: 16px;
-    color: black;
-
-    background-color: qlineargradient(
-        x1:0, y1:0, x2:0, y2:1,
-        stop:0 #B3E5FC,
-        stop:1 #4FC3F7
-    );
-
-    border: 1px solid #0288D1;
-    border-radius: 15px;
-    padding: 6px 12px;
-}
-
-QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0, x2:0, y2:1,
-        stop:0 #E1F5FE,
-        stop:1 #81D4FA
-    );
-}
-
-QPushButton:pressed {
-    background-color: #29B6F6;
-    padding-top: 6px;
-    padding-bottom: 4px;
-}
-
-QPushButton:focus {
-    outline: none;
-    border: 2px solid #0288D1;
-}
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="../VVM.qrc">
-           <normaloff>:/icons/buttons/icons/refresh-page-option.png</normaloff>:/icons/buttons/icons/refresh-page-option.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <widget class="QTableWidget" name="tableWidget_voteCount">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>749</width>
-         <height>489</height>
-        </size>
-       </property>
-       <property name="cursor" stdset="0">
+       <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
        <property name="focusPolicy">
         <enum>Qt::FocusPolicy::NoFocus</enum>
        </property>
-       <property name="verticalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       <property name="styleSheet">
+        <string notr="true">QTabWidget::pane {
+    border: none;
+    background-color: transparent;
+}
+
+QTabWidget::tab-bar {
+    alignment: center;
+}
+
+QTabBar::tab {
+    font-size: 16px;
+	font-weight: bold;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin: 4px;
+}
+
+/* Hover effect */
+QTabBar::tab:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+/* Selected tab (pressed effect) */
+QTabBar::tab:selected {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+    color: #0A1C3A;
+    border: 1px solid #555;
+}
+
+/* Remove background from tab content */
+QTabWidget QWidget {
+    background-color: transparent;
+    font-size: 13px;
+}
+</string>
        </property>
-       <property name="horizontalScrollBarPolicy">
-        <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+       <property name="tabPosition">
+        <enum>QTabWidget::TabPosition::North</enum>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+       <property name="currentIndex">
+        <number>0</number>
        </property>
-       <property name="editTriggers">
-        <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-       </property>
-       <property name="selectionBehavior">
-        <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
-       </property>
-       <property name="sortingEnabled">
-        <bool>true</bool>
-       </property>
-       <property name="cornerButtonEnabled">
+       <property name="usesScrollButtons">
         <bool>false</bool>
        </property>
+       <widget class="QWidget" name="Captain">
+        <attribute name="title">
+         <string>BARANGAY CAPTAIN</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetFixedSize</enum>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer_8">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_refresh">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::NoFocus</enum>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../VVM.qrc">
+                 <normaloff>:/icons/buttons/icons/refresh-page-option.png</normaloff>:/icons/buttons/icons/refresh-page-option.png</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="vcCaptain">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>749</width>
+               <height>489</height>
+              </size>
+             </property>
+             <property name="cursor" stdset="0">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::NoFocus</enum>
+             </property>
+             <property name="verticalScrollBarPolicy">
+              <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+             </property>
+             <property name="horizontalScrollBarPolicy">
+              <enum>Qt::ScrollBarPolicy::ScrollBarAsNeeded</enum>
+             </property>
+             <property name="sizeAdjustPolicy">
+              <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+             </property>
+             <property name="sortingEnabled">
+              <bool>true</bool>
+             </property>
+             <property name="cornerButtonEnabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="Councilors">
+        <attribute name="title">
+         <string>BARANGAY COUNCILORS</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_3">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetFixedSize</enum>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer_10">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_refresh_3">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::NoFocus</enum>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../VVM.qrc">
+                 <normaloff>:/icons/buttons/icons/refresh-page-option.png</normaloff>:/icons/buttons/icons/refresh-page-option.png</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="vcCouncilors"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="skChairman">
+        <attribute name="title">
+         <string>SK CHAIRMAN</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_11">
+             <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetFixedSize</enum>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer_11">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_refresh_4">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::NoFocus</enum>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../VVM.qrc">
+                 <normaloff>:/icons/buttons/icons/refresh-page-option.png</normaloff>:/icons/buttons/icons/refresh-page-option.png</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="vcChairman"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="skCouncilors">
+        <attribute name="title">
+         <string>SK COUNCILORS</string>
+        </attribute>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <layout class="QVBoxLayout" name="verticalLayout_5">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_12">
+             <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetFixedSize</enum>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer_12">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton_refresh_5">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::NoFocus</enum>
+               </property>
+               <property name="toolTip">
+                <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Refresh&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    font: 600 9pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
+    padding: 6px 12px;
+    outline: none;
+}
+
+QPushButton:hover {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
+}
+
+QPushButton:pressed {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
+}
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../VVM.qrc">
+                 <normaloff>:/icons/buttons/icons/refresh-page-option.png</normaloff>:/icons/buttons/icons/refresh-page-option.png</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="vcCouncilorsSK">
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::NoFocus</enum>
+             </property>
+             <property name="editTriggers">
+              <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
+             </property>
+             <property name="tabKeyNavigation">
+              <bool>false</bool>
+             </property>
+             <property name="selectionMode">
+              <enum>QAbstractItemView::SelectionMode::NoSelection</enum>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </item>
      <item>

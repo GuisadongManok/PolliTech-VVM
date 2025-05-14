@@ -611,36 +611,26 @@ QPushButton:focus {
            <string notr="true">QPushButton {
     font: 600 9pt &quot;Segoe UI&quot;;
     font-size: 16px;
-    color: black;
-
-    background-color: qlineargradient(
-        x1:0, y1:0, x2:0, y2:1,
-        stop:0 #B3E5FC,
-        stop:1 #4FC3F7
-    );
-
-    border: 1px solid #0288D1;
-    border-radius: 15px;
+    color: #0A1C3A;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #ffffff, stop:1 #dcdcdc);
+    border: 1px solid #888;
+    border-radius: 4px;
     padding: 6px 12px;
+    outline: none;
 }
 
 QPushButton:hover {
-    background-color: qlineargradient(
-        x1:0, y1:0, x2:0, y2:1,
-        stop:0 #E1F5FE,
-        stop:1 #81D4FA
-    );
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #f0f0f0, stop:1 #c8c8c8);
+    border: 1px solid #555;
 }
 
 QPushButton:pressed {
-    background-color: #29B6F6;
-    padding-top: 6px;
-    padding-bottom: 4px;
-}
-
-QPushButton:focus {
-    outline: none;
-    border: 2px solid #0288D1;
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                stop:0 #c8c8c8, stop:1 #a0a0a0);
+    padding-top: 7px;
+    padding-left: 13px;
 }
 </string>
           </property>

@@ -21,6 +21,8 @@ ReportsNResults::ReportsNResults(QSqlDatabase &database, QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->tabWidget->setCurrentIndex(0);
+
     connect(ui->pushButton_back, &QPushButton::clicked, this, &ReportsNResults::BackButton);
     connect(ui->pushButton_refresh, &QPushButton::clicked, this, &ReportsNResults::loadVoteCounts);
     connect(ui->pushButton_print, &QPushButton::clicked, this, &ReportsNResults::printTable);
@@ -53,46 +55,72 @@ void ReportsNResults::BackButton()
 
 void ReportsNResults::loadVoteCounts()
 {
-    ui->tableWidget_voteCount->setSortingEnabled(false);
-    ui->tableWidget_voteCount->setColumnCount(4);
+    ui->vcCaptain->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->vcCaptain->setFocusPolicy(Qt::NoFocus);
+
+    ui->vcCaptain->setSortingEnabled(false);
+    ui->vcCaptain->setColumnCount(4);
+    ui->vcCaptain->setHorizontalHeaderLabels(QStringList() << "NAME" << "PARTY" << "VOTE COUNT" << "PERCENTAGE");
 
     QSqlQuery query(db);
-    query.prepare("SELECT first_name || ' ' || last_name AS full_name, position, party, vote_count FROM candidates_info");
-    ui->tableWidget_voteCount->setHorizontalHeaderLabels(QStringList() << "NAME" << "POSITION" << "PARTY" << "VOTE COUNT" );
+    query.prepare(R"(
+        SELECT last_name || ', ' || first_name AS full_name, party, vote_count
+        FROM candidates_info
+        WHERE position = 'Barangay Captain'
+    )");
 
     if (!query.exec()) {
         qDebug() << "Vote count query failed:" << query.lastError().text();
         return;
     }
 
-    ui->tableWidget_voteCount->setRowCount(0);
+    QList<QList<QVariant>> data;
+    int totalVotes = 0;
+    int maxVotes = 0;
 
-    int row = 0;
     while (query.next()) {
-        QString fullName = query.value("full_name").toString();
-        QString pos = query.value("position").toString();
-        QString party = query.value("party").toString();
-        int votes = query.value("vote_count").toInt();
+        QString name = query.value(0).toString();
+        QString party = query.value(1).toString();
+        int votes = query.value(2).toInt();
 
-        ui->tableWidget_voteCount->insertRow(row);
-        ui->tableWidget_voteCount->setItem(row, 0, new QTableWidgetItem(fullName));
-        ui->tableWidget_voteCount->setItem(row, 1, new QTableWidgetItem(pos));
-        ui->tableWidget_voteCount->setItem(row, 2, new QTableWidgetItem(party));
-        ui->tableWidget_voteCount->setItem(row, 3, new QTableWidgetItem(QString::number(votes)));
+        totalVotes += votes;
+        if (votes > maxVotes) maxVotes = votes;
 
-        row++;
+        data.append({name, party, votes});
     }
 
-    auto header = ui->tableWidget_voteCount->horizontalHeader();
-    for (int i = 0; i < ui->tableWidget_voteCount->columnCount(); ++i) {
+    ui->vcCaptain->setRowCount(data.size());
+
+    for (int row = 0; row < data.size(); ++row) {
+        QString name = data[row][0].toString();
+        QString party = data[row][1].toString();
+        int votes = data[row][2].toInt();
+        QString percent = totalVotes > 0 ? QString::number((votes * 100.0) / totalVotes, 'f', 2) + "%" : "0%";
+
+        ui->vcCaptain->setItem(row, 0, new QTableWidgetItem(name));
+        ui->vcCaptain->setItem(row, 1, new QTableWidgetItem(party));
+        ui->vcCaptain->setItem(row, 2, new QTableWidgetItem(QString::number(votes)));
+        ui->vcCaptain->setItem(row, 3, new QTableWidgetItem(percent));
+
+        // Highlight the winner
+        if (votes == maxVotes && maxVotes > 0) {
+            for (int col = 0; col < 4; ++col) {
+                ui->vcCaptain->item(row, col)->setBackground(QBrush(QColor(Qt::green)));
+                ui->vcCaptain->item(row, col)->setFont(QFont("Segoe UI", 10, QFont::Bold));
+            }
+        }
+    }
+
+    auto header = ui->vcCaptain->horizontalHeader();
+    for (int i = 0; i < ui->vcCaptain->columnCount(); ++i) {
         header->setSectionResizeMode(i, QHeaderView::ResizeToContents);
     }
 
+    header->setSectionResizeMode(0, QHeaderView::Stretch);
     header->setSectionResizeMode(1, QHeaderView::Stretch);
-    header->setSectionResizeMode(2, QHeaderView::Stretch);
-    ui->tableWidget_voteCount->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    ui->vcCaptain->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
-    ui->tableWidget_voteCount->setStyleSheet(R"(
+    ui->vcCaptain->setStyleSheet(R"(
         QTableWidget {
             background-color: #ffffff;
             border: 1px solid black;
@@ -102,15 +130,6 @@ void ReportsNResults::loadVoteCounts()
 
         QTableWidget::item {
             padding: 6px;
-        }
-
-        QTableWidget::item:selected {
-            background-color: #cce5ff;
-            color: #000;
-        }
-
-        QTableWidget::item:hover {
-            background-color: #e6f2ff;
         }
 
         QHeaderView::section {
@@ -126,7 +145,7 @@ void ReportsNResults::loadVoteCounts()
         }
     )");
 
-    ui->tableWidget_voteCount->setSortingEnabled(true);
+    ui->vcCaptain->sortItems(2, Qt::DescendingOrder);
 }
 
 void ReportsNResults::printTable()
@@ -143,11 +162,11 @@ void ReportsNResults::printTable()
     }
 
     QTextStream out(&file);
-    const int cols = ui->tableWidget_voteCount->columnCount();
-    const int rows = ui->tableWidget_voteCount->rowCount();
+    const int cols = ui->vcCaptain->columnCount();
+    const int rows = ui->vcCaptain->rowCount();
 
     for (int col = 0; col < cols; ++col) {
-        out << "\"" << ui->tableWidget_voteCount->horizontalHeaderItem(col)->text() << "\"";
+        out << "\"" << ui->vcCaptain->horizontalHeaderItem(col)->text() << "\"";
         if (col < cols - 1) out << ",";
     }
     out << "\n";
@@ -155,7 +174,7 @@ void ReportsNResults::printTable()
 
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < cols; ++col) {
-            QTableWidgetItem* item = ui->tableWidget_voteCount->item(row, col);
+            QTableWidgetItem* item = ui->vcCaptain->item(row, col);
             out << "\"" << (item ? item->text() : "") << "\"";
             if (col < cols - 1) out << ",";
         }
