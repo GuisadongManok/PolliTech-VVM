@@ -73,7 +73,13 @@ void vvm::closeEvent(QCloseEvent *event)
 void vvm::displayCandidates()
 {
     QSqlQuery getCandidate(db);
-    getCandidate.prepare("SELECT first_name || ' ' || last_name AS full_name, position, party FROM candidates_info");
+    getCandidate.prepare(R"(
+        SELECT last_name || ', ' || first_name AS full_name,
+               position,
+               party
+        FROM candidates_info
+        ORDER BY last_name ASC, first_name ASC
+    )");
 
     if (!getCandidate.exec()) {
         qDebug() << "Query failed:" << getCandidate.lastError().text();

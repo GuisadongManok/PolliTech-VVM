@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QSqlDatabase>
 #include <QTimer>
+#include <QTableWidget>
 
 namespace Ui {
 class ReportsNResults;
@@ -25,6 +26,7 @@ signals:
 
 private slots:
     void BackButton();
+    void loadWinnersOnly(QTableWidget* table);
     void loadVoteCounts();
     void printTable();
 

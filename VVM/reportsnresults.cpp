@@ -21,8 +21,6 @@ ReportsNResults::ReportsNResults(QSqlDatabase &database, QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->tabWidget->setCurrentIndex(0);
-
     connect(ui->pushButton_back, &QPushButton::clicked, this, &ReportsNResults::BackButton);
     connect(ui->pushButton_refresh, &QPushButton::clicked, this, &ReportsNResults::loadVoteCounts);
     connect(ui->pushButton_print, &QPushButton::clicked, this, &ReportsNResults::printTable);
@@ -53,100 +51,96 @@ void ReportsNResults::BackButton()
     this->close();
 }
 
+
 void ReportsNResults::loadVoteCounts()
 {
-    ui->vcCaptain->setSelectionMode(QAbstractItemView::NoSelection);
-    ui->vcCaptain->setFocusPolicy(Qt::NoFocus);
+    loadWinnersOnly(ui->VoteTable);
+}
 
-    ui->vcCaptain->setSortingEnabled(false);
-    ui->vcCaptain->setColumnCount(4);
-    ui->vcCaptain->setHorizontalHeaderLabels(QStringList() << "NAME" << "PARTY" << "VOTE COUNT" << "PERCENTAGE");
+void ReportsNResults::loadWinnersOnly(QTableWidget* table)
+{
+    table->setSelectionMode(QAbstractItemView::NoSelection);
+    table->setFocusPolicy(Qt::NoFocus);
+    table->setSortingEnabled(false);
+    table->setColumnCount(4);
+    table->setHorizontalHeaderLabels(QStringList() << "NAME" << "POSITION" << "PARTY" << "VOTE COUNT");
+    table->setRowCount(0);
 
-    QSqlQuery query(db);
-    query.prepare(R"(
-        SELECT last_name || ', ' || first_name AS full_name, party, vote_count
-        FROM candidates_info
-        WHERE position = 'Barangay Captain'
-    )");
+    QStringList positions = {
+        "Barangay Captain", "Barangay Councilor",
+        "SK Chairman", "SK Councilor"
+    };
 
-    if (!query.exec()) {
-        qDebug() << "Vote count query failed:" << query.lastError().text();
-        return;
-    }
+    int row = 0;
 
-    QList<QList<QVariant>> data;
-    int totalVotes = 0;
-    int maxVotes = 0;
+    for (const QString& pos : positions) {
+        QSqlQuery query(db);
+        query.prepare(R"(
+            SELECT last_name || ', ' || first_name AS full_name, position, party, vote_count
+            FROM candidates_info
+            WHERE position = :position
+            ORDER BY vote_count DESC
+        )");
+        query.bindValue(":position", pos);
 
-    while (query.next()) {
-        QString name = query.value(0).toString();
-        QString party = query.value(1).toString();
-        int votes = query.value(2).toInt();
+        if (!query.exec()) {
+            qDebug() << "Query failed for position" << pos << ":" << query.lastError().text();
+            continue;
+        }
 
-        totalVotes += votes;
-        if (votes > maxVotes) maxVotes = votes;
+        int limit = (pos.contains("Councilor", Qt::CaseInsensitive)) ? 7 : 1;
+        int count = 0;
 
-        data.append({name, party, votes});
-    }
+        while (query.next() && count < limit) {
+            QString name = query.value(0).toString();
+            QString position = query.value(1).toString();
+            QString party = query.value(2).toString();
+            int votes = query.value(3).toInt();
 
-    ui->vcCaptain->setRowCount(data.size());
+            table->insertRow(row);
+            table->setItem(row, 0, new QTableWidgetItem(name));
+            table->setItem(row, 1, new QTableWidgetItem(position));
+            table->setItem(row, 2, new QTableWidgetItem(party));
+            table->setItem(row, 3, new QTableWidgetItem(QString::number(votes)));
 
-    for (int row = 0; row < data.size(); ++row) {
-        QString name = data[row][0].toString();
-        QString party = data[row][1].toString();
-        int votes = data[row][2].toInt();
-        QString percent = totalVotes > 0 ? QString::number((votes * 100.0) / totalVotes, 'f', 2) + "%" : "0%";
-
-        ui->vcCaptain->setItem(row, 0, new QTableWidgetItem(name));
-        ui->vcCaptain->setItem(row, 1, new QTableWidgetItem(party));
-        ui->vcCaptain->setItem(row, 2, new QTableWidgetItem(QString::number(votes)));
-        ui->vcCaptain->setItem(row, 3, new QTableWidgetItem(percent));
-
-        // Highlight the winner
-        if (votes == maxVotes && maxVotes > 0) {
-            for (int col = 0; col < 4; ++col) {
-                ui->vcCaptain->item(row, col)->setBackground(QBrush(QColor(Qt::green)));
-                ui->vcCaptain->item(row, col)->setFont(QFont("Segoe UI", 10, QFont::Bold));
-            }
+            ++row;
+            ++count;
         }
     }
 
-    auto header = ui->vcCaptain->horizontalHeader();
-    for (int i = 0; i < ui->vcCaptain->columnCount(); ++i) {
-        header->setSectionResizeMode(i, QHeaderView::ResizeToContents);
-    }
+    // Resize columns
+    auto header = table->horizontalHeader();
+    header->setSectionResizeMode(0, QHeaderView::Stretch); // Name
+    header->setSectionResizeMode(1, QHeaderView::ResizeToContents); // Position
+    header->setSectionResizeMode(2, QHeaderView::Stretch); // Party
+    header->setSectionResizeMode(3, QHeaderView::ResizeToContents); // Votes
 
-    header->setSectionResizeMode(0, QHeaderView::Stretch);
-    header->setSectionResizeMode(1, QHeaderView::Stretch);
-    ui->vcCaptain->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+    table->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
 
-    ui->vcCaptain->setStyleSheet(R"(
+    // Table styling
+    table->setStyleSheet(R"(
         QTableWidget {
             background-color: #ffffff;
             border: 1px solid black;
             gridline-color: #ccc;
             font-size: 14px;
         }
-
         QTableWidget::item {
             padding: 6px;
         }
-
         QHeaderView::section {
             background-color: #f5f5f5;
             padding: 6px;
             border: 1px solid #ccc;
             font-weight: bold;
         }
-
         QTableCornerButton::section {
             background-color: #f5f5f5;
             border: 1px solid #ccc;
         }
     )");
-
-    ui->vcCaptain->sortItems(2, Qt::DescendingOrder);
 }
+
 
 void ReportsNResults::printTable()
 {
@@ -162,11 +156,11 @@ void ReportsNResults::printTable()
     }
 
     QTextStream out(&file);
-    const int cols = ui->vcCaptain->columnCount();
-    const int rows = ui->vcCaptain->rowCount();
+    const int cols = ui->VoteTable->columnCount();
+    const int rows = ui->VoteTable->rowCount();
 
     for (int col = 0; col < cols; ++col) {
-        out << "\"" << ui->vcCaptain->horizontalHeaderItem(col)->text() << "\"";
+        out << "\"" << ui->VoteTable->horizontalHeaderItem(col)->text() << "\"";
         if (col < cols - 1) out << ",";
     }
     out << "\n";
@@ -174,7 +168,7 @@ void ReportsNResults::printTable()
 
     for (int row = 0; row < rows; ++row) {
         for (int col = 0; col < cols; ++col) {
-            QTableWidgetItem* item = ui->vcCaptain->item(row, col);
+            QTableWidgetItem* item = ui->VoteTable->item(row, col);
             out << "\"" << (item ? item->text() : "") << "\"";
             if (col < cols - 1) out << ",";
         }

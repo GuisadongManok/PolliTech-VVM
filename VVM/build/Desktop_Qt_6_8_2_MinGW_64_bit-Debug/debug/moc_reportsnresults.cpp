@@ -41,6 +41,9 @@ static constexpr auto qt_meta_stringdata_ZN15ReportsNResultsE = QtMocHelpers::st
     "windowClosed",
     "",
     "BackButton",
+    "loadWinnersOnly",
+    "QTableWidget*",
+    "table",
     "loadVoteCounts",
     "printTable"
 );
@@ -54,7 +57,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN15ReportsNResultsE[] = {
       12,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       5,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,18 +65,20 @@ Q_CONSTINIT static const uint qt_meta_data_ZN15ReportsNResultsE[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   38,    2, 0x06,    1 /* Public */,
+       1,    0,   44,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       3,    0,   39,    2, 0x08,    2 /* Private */,
-       4,    0,   40,    2, 0x08,    3 /* Private */,
-       5,    0,   41,    2, 0x08,    4 /* Private */,
+       3,    0,   45,    2, 0x08,    2 /* Private */,
+       4,    1,   46,    2, 0x08,    3 /* Private */,
+       7,    0,   49,    2, 0x08,    5 /* Private */,
+       8,    0,   50,    2, 0x08,    6 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
 
  // slots: parameters
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 5,    6,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -93,6 +98,9 @@ Q_CONSTINIT const QMetaObject ReportsNResults::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'BackButton'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        // method 'loadWinnersOnly'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QTableWidget *, std::false_type>,
         // method 'loadVoteCounts'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'printTable'
@@ -108,9 +116,22 @@ void ReportsNResults::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         switch (_id) {
         case 0: _t->windowClosed(); break;
         case 1: _t->BackButton(); break;
-        case 2: _t->loadVoteCounts(); break;
-        case 3: _t->printTable(); break;
+        case 2: _t->loadWinnersOnly((*reinterpret_cast< std::add_pointer_t<QTableWidget*>>(_a[1]))); break;
+        case 3: _t->loadVoteCounts(); break;
+        case 4: _t->printTable(); break;
         default: ;
+        }
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+        case 2:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
+            case 0:
+                *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QTableWidget* >(); break;
+            }
+            break;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
@@ -144,14 +165,14 @@ int ReportsNResults::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 5)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 5;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
-            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 4;
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
     }
     return _id;
 }

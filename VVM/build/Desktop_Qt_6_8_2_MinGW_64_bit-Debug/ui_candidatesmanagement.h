@@ -311,8 +311,8 @@ public:
         lineEdit_age->setObjectName("lineEdit_age");
         sizePolicy2.setHeightForWidth(lineEdit_age->sizePolicy().hasHeightForWidth());
         lineEdit_age->setSizePolicy(sizePolicy2);
-        lineEdit_age->setMinimumSize(QSize(208, 35));
-        lineEdit_age->setMaximumSize(QSize(208, 35));
+        lineEdit_age->setMinimumSize(QSize(135, 35));
+        lineEdit_age->setMaximumSize(QSize(135, 35));
         lineEdit_age->setFocusPolicy(Qt::FocusPolicy::StrongFocus);
         lineEdit_age->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
 "background-color: rgba(255,255,255,200);\n"
