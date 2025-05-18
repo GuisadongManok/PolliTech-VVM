@@ -10,6 +10,7 @@
 #define UI_ELECTIONRESULTS_H
 
 #include <QtCore/QVariant>
+#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
@@ -28,10 +29,8 @@ class Ui_ElectionResults
 {
 public:
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *label;
     QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout;
+    QLabel *label;
     QComboBox *comboBox_positionFilter;
     QTableWidget *tableWidget_winners;
     QHBoxLayout *horizontalLayout_8;
@@ -46,6 +45,9 @@ public:
             ElectionResults->setObjectName("ElectionResults");
         ElectionResults->resize(874, 562);
         ElectionResults->setMinimumSize(QSize(826, 562));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
+        ElectionResults->setWindowIcon(icon);
         ElectionResults->setStyleSheet(QString::fromUtf8("QDialog {\n"
 "    background: qlineargradient(\n"
 "        x1: 0, y1: 0,\n"
@@ -56,8 +58,8 @@ public:
 "}"));
         gridLayout = new QGridLayout(ElectionResults);
         gridLayout->setObjectName("gridLayout");
-        verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setObjectName("verticalLayout_2");
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName("verticalLayout");
         label = new QLabel(ElectionResults);
         label->setObjectName("label");
         label->setStyleSheet(QString::fromUtf8("QLabel {\n"
@@ -66,34 +68,27 @@ public:
 "}"));
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        verticalLayout_2->addWidget(label);
+        verticalLayout->addWidget(label);
 
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName("verticalLayout");
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName("horizontalLayout");
         comboBox_positionFilter = new QComboBox(ElectionResults);
         comboBox_positionFilter->addItem(QString());
         comboBox_positionFilter->addItem(QString());
         comboBox_positionFilter->addItem(QString());
-        comboBox_positionFilter->addItem(QString());
         comboBox_positionFilter->setObjectName("comboBox_positionFilter");
-        comboBox_positionFilter->setMinimumSize(QSize(142, 25));
+        comboBox_positionFilter->setMinimumSize(QSize(221, 35));
         comboBox_positionFilter->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         comboBox_positionFilter->setFocusPolicy(Qt::FocusPolicy::NoFocus);
         comboBox_positionFilter->setStyleSheet(QString::fromUtf8("QComboBox {\n"
-"	background-color: white;\n"
-"	color: #0A1C3A;\n"
-"	font-size: 14px;\n"
-"	border: 1px solid #888;\n"
-"    padding: 6px 12px;\n"
-"    outline: none;\n"
-"}"));
+"	font: 14pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background-color: rgba(255,255,255,200);\n"
+"    border: 1px solid #0A1C3A;\n"
+"    padding: 5px;\n"
+"}\n"
+""));
 
-        horizontalLayout->addWidget(comboBox_positionFilter, 0, Qt::AlignmentFlag::AlignLeft);
-
-
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout->addWidget(comboBox_positionFilter, 0, Qt::AlignmentFlag::AlignLeft);
 
         tableWidget_winners = new QTableWidget(ElectionResults);
         tableWidget_winners->setObjectName("tableWidget_winners");
@@ -105,9 +100,6 @@ public:
         tableWidget_winners->setTabKeyNavigation(false);
 
         verticalLayout->addWidget(tableWidget_winners);
-
-
-        verticalLayout_2->addLayout(verticalLayout);
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName("horizontalLayout_8");
@@ -210,10 +202,10 @@ public:
         horizontalLayout_8->addItem(horizontalSpacer_7);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_8);
+        verticalLayout->addLayout(horizontalLayout_8);
 
 
-        gridLayout->addLayout(verticalLayout_2, 0, 0, 1, 1);
+        gridLayout->addLayout(verticalLayout, 0, 0, 1, 1);
 
 
         retranslateUi(ElectionResults);
@@ -223,12 +215,11 @@ public:
 
     void retranslateUi(QDialog *ElectionResults)
     {
-        ElectionResults->setWindowTitle(QCoreApplication::translate("ElectionResults", "Dialog", nullptr));
+        ElectionResults->setWindowTitle(QCoreApplication::translate("ElectionResults", "PolliTech", nullptr));
         label->setText(QCoreApplication::translate("ElectionResults", "ELECTION RESULTS", nullptr));
-        comboBox_positionFilter->setItemText(0, QCoreApplication::translate("ElectionResults", "Barangay Captain", nullptr));
-        comboBox_positionFilter->setItemText(1, QCoreApplication::translate("ElectionResults", "SK Chairman", nullptr));
-        comboBox_positionFilter->setItemText(2, QCoreApplication::translate("ElectionResults", "Barangay Councilor", nullptr));
-        comboBox_positionFilter->setItemText(3, QCoreApplication::translate("ElectionResults", "SK Councilor", nullptr));
+        comboBox_positionFilter->setItemText(0, QCoreApplication::translate("ElectionResults", "All Positions", nullptr));
+        comboBox_positionFilter->setItemText(1, QCoreApplication::translate("ElectionResults", "Barangay Officials", nullptr));
+        comboBox_positionFilter->setItemText(2, QCoreApplication::translate("ElectionResults", "SK Officials", nullptr));
 
         pushButton_back->setText(QCoreApplication::translate("ElectionResults", "BACK", nullptr));
         pushButton_print->setText(QCoreApplication::translate("ElectionResults", "EXPORT AS CSV", nullptr));

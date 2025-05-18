@@ -12,6 +12,8 @@ ElectionResults::ElectionResults(QSqlDatabase &database, QWidget *parent)
     , db(database)
 {
     ui->setupUi(this);
+    ui->comboBox_positionFilter->setCurrentIndex(0);
+
     loadTable();
 
     connect(ui->comboBox_positionFilter, &QComboBox::currentTextChanged, this, &ElectionResults::loadTable);

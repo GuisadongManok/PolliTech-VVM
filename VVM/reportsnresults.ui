@@ -50,6 +50,55 @@
           <enum>QLayout::SizeConstraint::SetFixedSize</enum>
          </property>
          <item>
+          <widget class="QComboBox" name="comboBox_positions">
+           <property name="minimumSize">
+            <size>
+             <width>231</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QComboBox {
+	font: 14pt &quot;Segoe UI&quot;;
+    font-size: 16px;
+    color: #0A1C3A;
+    background-color: rgba(255,255,255,200);
+    border: 1px solid #0A1C3A;
+    padding: 5px;
+}
+</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>All Positions</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Barangay Captain</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Barangay Councilor</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SK Chairman</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>SK Councilor</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
           <spacer name="horizontalSpacer_12">
            <property name="orientation">
             <enum>Qt::Orientation::Horizontal</enum>
@@ -112,7 +161,7 @@ QPushButton:pressed {
         </layout>
        </item>
        <item>
-        <widget class="QTableWidget" name="VoteTable">
+        <widget class="QTableWidget" name="tableWidget_voteCount">
          <property name="focusPolicy">
           <enum>Qt::FocusPolicy::NoFocus</enum>
          </property>

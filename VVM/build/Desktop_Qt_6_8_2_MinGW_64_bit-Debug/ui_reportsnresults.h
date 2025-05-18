@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -32,9 +33,10 @@ public:
     QLabel *label_6;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *horizontalLayout_12;
+    QComboBox *comboBox_positions;
     QSpacerItem *horizontalSpacer_12;
     QPushButton *pushButton_refresh;
-    QTableWidget *VoteTable;
+    QTableWidget *tableWidget_voteCount;
     QHBoxLayout *horizontalLayout_8;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *pushButton_back;
@@ -69,6 +71,27 @@ public:
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setObjectName("horizontalLayout_12");
         horizontalLayout_12->setSizeConstraint(QLayout::SizeConstraint::SetFixedSize);
+        comboBox_positions = new QComboBox(ReportsNResults);
+        comboBox_positions->addItem(QString());
+        comboBox_positions->addItem(QString());
+        comboBox_positions->addItem(QString());
+        comboBox_positions->addItem(QString());
+        comboBox_positions->addItem(QString());
+        comboBox_positions->setObjectName("comboBox_positions");
+        comboBox_positions->setMinimumSize(QSize(231, 35));
+        comboBox_positions->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        comboBox_positions->setStyleSheet(QString::fromUtf8("QComboBox {\n"
+"	font: 14pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background-color: rgba(255,255,255,200);\n"
+"    border: 1px solid #0A1C3A;\n"
+"    padding: 5px;\n"
+"}\n"
+""));
+
+        horizontalLayout_12->addWidget(comboBox_positions);
+
         horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_12->addItem(horizontalSpacer_12);
@@ -111,15 +134,15 @@ public:
 
         verticalLayout_5->addLayout(horizontalLayout_12);
 
-        VoteTable = new QTableWidget(ReportsNResults);
-        VoteTable->setObjectName("VoteTable");
-        VoteTable->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-        VoteTable->setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
-        VoteTable->setTabKeyNavigation(false);
-        VoteTable->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
-        VoteTable->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
+        tableWidget_voteCount = new QTableWidget(ReportsNResults);
+        tableWidget_voteCount->setObjectName("tableWidget_voteCount");
+        tableWidget_voteCount->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        tableWidget_voteCount->setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
+        tableWidget_voteCount->setTabKeyNavigation(false);
+        tableWidget_voteCount->setSelectionMode(QAbstractItemView::SelectionMode::NoSelection);
+        tableWidget_voteCount->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
 
-        verticalLayout_5->addWidget(VoteTable);
+        verticalLayout_5->addWidget(tableWidget_voteCount);
 
 
         verticalLayout->addLayout(verticalLayout_5);
@@ -240,6 +263,12 @@ public:
     {
         ReportsNResults->setWindowTitle(QCoreApplication::translate("ReportsNResults", "PolliTech", nullptr));
         label_6->setText(QCoreApplication::translate("ReportsNResults", "LIVE VOTE COUNT", nullptr));
+        comboBox_positions->setItemText(0, QCoreApplication::translate("ReportsNResults", "All Positions", nullptr));
+        comboBox_positions->setItemText(1, QCoreApplication::translate("ReportsNResults", "Barangay Captain", nullptr));
+        comboBox_positions->setItemText(2, QCoreApplication::translate("ReportsNResults", "Barangay Councilor", nullptr));
+        comboBox_positions->setItemText(3, QCoreApplication::translate("ReportsNResults", "SK Chairman", nullptr));
+        comboBox_positions->setItemText(4, QCoreApplication::translate("ReportsNResults", "SK Councilor", nullptr));
+
 #if QT_CONFIG(tooltip)
         pushButton_refresh->setToolTip(QCoreApplication::translate("ReportsNResults", "<html><head/><body><p align=\"center\">Refresh</p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)

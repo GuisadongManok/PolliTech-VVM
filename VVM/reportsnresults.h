@@ -26,7 +26,6 @@ signals:
 
 private slots:
     void BackButton();
-    void loadWinnersOnly(QTableWidget* table);
     void loadVoteCounts();
     void printTable();
 
