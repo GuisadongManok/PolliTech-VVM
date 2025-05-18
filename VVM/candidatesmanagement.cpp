@@ -156,9 +156,12 @@ void candidatesmanagement::LoadCandidateTable()
     ui->candidate_tableWidget->setSortingEnabled(false);
     ui->candidate_tableWidget->setRowCount(0);
 
-    QSqlQuery query("SELECT voter_id, first_name, last_name, age, position, party FROM candidates_info");
+    QSqlQuery query (R"(
+    SELECT voter_id, last_name, first_name, age, position, party FROM candidates_info
+    ORDER BY last_name ASC
+    )");
     ui->candidate_tableWidget->setColumnCount(6);
-    ui->candidate_tableWidget->setHorizontalHeaderLabels(QStringList() << "VOTER ID" << "FIRST NAME" << "LAST NAME" << "AGE" << "POSITION" << "PARTY");
+    ui->candidate_tableWidget->setHorizontalHeaderLabels(QStringList() << "VOTER ID" << "LAST NAME" << "FIRST NAME" << "AGE" << "POSITION" << "PARTY");
 
     int row = 0;
     while (query.next()) {
@@ -313,8 +316,8 @@ void candidatesmanagement::onCellChanged(int row, int column)
 
     QString columnName;
     switch (column) {
-    case 1: columnName = "first_name"; break;
-    case 2: columnName = "last_name"; break;
+    case 1: columnName = "last_name"; break;
+    case 2: columnName = "first_name"; break;
     case 3:
         columnName = "age";
         bool ok;

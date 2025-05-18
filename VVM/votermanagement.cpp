@@ -118,9 +118,12 @@ void VoterManagement::LoadVoterTable()
     ui->Voter_table->setRowCount(0);
     ui->Voter_table->setSortingEnabled(false);
 
-    QSqlQuery query("SELECT voter_id, first_name, last_name, age FROM voter_info");
+    QSqlQuery query(R"(
+        SELECT voter_id, last_name, first_name, age FROM voter_info
+        ORDER BY last_name ASC
+    )");
     ui->Voter_table->setColumnCount(4);
-    ui->Voter_table->setHorizontalHeaderLabels(QStringList() << "VOTER ID" << "FIRST NAME" << "LAST NAME" << "AGE");
+    ui->Voter_table->setHorizontalHeaderLabels(QStringList() << "VOTER ID" << "LAST NAME" << "FIRST NAME" << "AGE");
 
     int row = 0;
     while (query.next()) {
@@ -286,8 +289,8 @@ void VoterManagement::onCellChanged(int row, int column)
     QString columnName;
 
     switch (column) {
-    case 1: columnName = "first_name"; break;
-    case 2: columnName = "last_name"; break;
+    case 1: columnName = "last_name"; break;
+    case 2: columnName = "first_name"; break;
     case 3:
         columnName = "age";
         bool ok;
