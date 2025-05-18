@@ -17,6 +17,7 @@
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -34,10 +35,12 @@ public:
     QLabel *label;
     QPushButton *manage_voter_button;
     QPushButton *manage_candidate_button;
+    QSpacerItem *verticalSpacer;
     QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_2;
     QLabel *label_3;
     QPushButton *view_live_vote_button;
+    QPushButton *election_results_button;
     QPushButton *start_election_button;
     QFrame *line_2;
     QPushButton *LogoutButton;
@@ -46,7 +49,7 @@ public:
     {
         if (dashboard->objectName().isEmpty())
             dashboard->setObjectName("dashboard");
-        dashboard->resize(618, 265);
+        dashboard->resize(618, 306);
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
         dashboard->setWindowIcon(icon);
@@ -168,6 +171,10 @@ public:
 
         verticalLayout->addWidget(manage_candidate_button);
 
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Minimum, QSizePolicy::Policy::Expanding);
+
+        verticalLayout->addItem(verticalSpacer);
+
 
         verticalLayout_3->addLayout(verticalLayout);
 
@@ -220,6 +227,37 @@ public:
         view_live_vote_button->setIconSize(QSize(16, 16));
 
         verticalLayout_2->addWidget(view_live_vote_button);
+
+        election_results_button = new QPushButton(frame);
+        election_results_button->setObjectName("election_results_button");
+        election_results_button->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        election_results_button->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    font: 600 9pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: #0A1C3A;\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #ffffff, stop:1 #dcdcdc);\n"
+"    border: 1px solid #888;\n"
+"    border-radius: 4px;\n"
+"    padding: 6px 12px;\n"
+"    outline: none;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #f0f0f0, stop:1 #c8c8c8);\n"
+"    border: 1px solid #555;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                stop:0 #c8c8c8, stop:1 #a0a0a0);\n"
+"    padding-top: 7px;\n"
+"    padding-left: 13px;\n"
+"}\n"
+""));
+
+        verticalLayout_2->addWidget(election_results_button);
 
         start_election_button = new QPushButton(frame);
         start_election_button->setObjectName("start_election_button");
@@ -340,7 +378,8 @@ public:
 #if QT_CONFIG(tooltip)
         view_live_vote_button->setToolTip(QCoreApplication::translate("dashboard", "<html><head/><body><p align=\"center\">View live vote count</p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
-        view_live_vote_button->setText(QCoreApplication::translate("dashboard", "VIEW VOTE COUNT", nullptr));
+        view_live_vote_button->setText(QCoreApplication::translate("dashboard", "LIVE VOTE COUNT", nullptr));
+        election_results_button->setText(QCoreApplication::translate("dashboard", "OFFICIAL RESULTS", nullptr));
 #if QT_CONFIG(tooltip)
         start_election_button->setToolTip(QCoreApplication::translate("dashboard", "<html><head/><body><p align=\"center\">Control Election</p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)

@@ -21,6 +21,7 @@ dashboard::dashboard(QSqlDatabase &database, const QString &email, QWidget *pare
     , cmanagementWindow(nullptr)
     , rnrWindow(nullptr)
     , controlWindow(nullptr)
+    , electionResultsWindow(nullptr)
 {
     ui->setupUi(this);
     this->setFixedSize(this->size());
@@ -30,6 +31,7 @@ dashboard::dashboard(QSqlDatabase &database, const QString &email, QWidget *pare
     connect(ui->manage_candidate_button, &QPushButton::clicked, this, &dashboard::ManageCandidatesButton);
     connect(ui->view_live_vote_button, &QPushButton::clicked, this, &dashboard::ViewLiveVoteCountButton);
     connect(ui->start_election_button, &QPushButton::clicked, this, &dashboard::controlButton);
+    connect(ui->election_results_button, &QPushButton::clicked, this, &dashboard::ElectionResultsButton);
 
     this->setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 
@@ -134,5 +136,17 @@ void dashboard::controlButton()
 
     this->hide();
     controlWindow->show();
+}
+
+
+void dashboard::ElectionResultsButton()
+{
+    if (!electionResultsWindow) {
+        electionResultsWindow = new ElectionResults(db, nullptr);
+        connect(electionResultsWindow, &ElectionResults::windowClosed, this, &dashboard::show);
+    }
+
+    this->hide();
+    electionResultsWindow->show();
 }
 

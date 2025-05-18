@@ -58,7 +58,7 @@ public:
         label_6->setObjectName("label_6");
         label_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	font: 700 30pt \"Segoe UI\";\n"
-"	color: black;\n"
+"	color: #0A1C3A;\n"
 "}"));
         label_6->setAlignment(Qt::AlignmentFlag::AlignCenter);
 

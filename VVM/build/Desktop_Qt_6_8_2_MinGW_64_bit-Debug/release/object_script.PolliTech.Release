@@ -2,6 +2,7 @@ release/adminlogin.o
 release/candidatesmanagement.o
 release/dashboard.o
 release/electioncontrol.o
+release/electionresults.o
 release/loginsystem.o
 release/main.o
 release/reportsnresults.o
@@ -12,6 +13,7 @@ release/moc_adminlogin.o
 release/moc_candidatesmanagement.o
 release/moc_dashboard.o
 release/moc_electioncontrol.o
+release/moc_electionresults.o
 release/moc_loginsystem.o
 release/moc_reportsnresults.o
 release/moc_votermanagement.o

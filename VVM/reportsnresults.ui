@@ -31,7 +31,7 @@
        <property name="styleSheet">
         <string notr="true">QLabel {
 	font: 700 30pt &quot;Segoe UI&quot;;
-	color: black;
+	color: #0A1C3A;
 }</string>
        </property>
        <property name="text">

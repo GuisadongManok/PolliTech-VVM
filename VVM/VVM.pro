@@ -20,6 +20,7 @@ SOURCES += \
     candidatesmanagement.cpp \
     dashboard.cpp \
     electioncontrol.cpp \
+    electionresults.cpp \
     loginsystem.cpp \
     main.cpp \
     reportsnresults.cpp \
@@ -31,6 +32,7 @@ HEADERS += \
     candidatesmanagement.h \
     dashboard.h \
     electioncontrol.h \
+    electionresults.h \
     loginsystem.h \
     reportsnresults.h \
     votermanagement.h \
@@ -41,6 +43,7 @@ FORMS += \
     candidatesmanagement.ui \
     dashboard.ui \
     electioncontrol.ui \
+    electionresults.ui \
     loginsystem.ui \
     reportsnresults.ui \
     votermanagement.ui \

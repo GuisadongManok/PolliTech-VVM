@@ -2,6 +2,7 @@ debug/adminlogin.o
 debug/candidatesmanagement.o
 debug/dashboard.o
 debug/electioncontrol.o
+debug/electionresults.o
 debug/loginsystem.o
 debug/main.o
 debug/reportsnresults.o
@@ -12,6 +13,7 @@ debug/moc_adminlogin.o
 debug/moc_candidatesmanagement.o
 debug/moc_dashboard.o
 debug/moc_electioncontrol.o
+debug/moc_electionresults.o
 debug/moc_loginsystem.o
 debug/moc_reportsnresults.o
 debug/moc_votermanagement.o
