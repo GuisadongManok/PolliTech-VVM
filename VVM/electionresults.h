@@ -20,16 +20,16 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *event);
-    void showEvent(QShowEvent *event);
 
 signals:
     void windowClosed();
 
 private slots:
-    void loadWinnersOnly(QTableWidget* table);
-    void loadVoteCounts();
-    void printTable();
+    void loadWinnersOnlyBarangay();
+    void loadWinnersOnlySK();
+    void printTable(QTableWidget *table);
     void BackButton();
+    void print();
 
 private:
     Ui::ElectionResults *ui;

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>768</width>
-    <height>647</height>
+    <height>774</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -34,7 +34,7 @@
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+   <item row="0" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
     <widget class="QLabel" name="label">
      <property name="styleSheet">
       <string notr="true">QLabel {
@@ -51,13 +51,77 @@
     </widget>
    </item>
    <item row="1" column="0">
-    <widget class="QTableWidget" name="VoteTable">
-     <property name="styleSheet">
-      <string notr="true">QTableWidget {
+    <layout class="QVBoxLayout" name="verticalLayout_4">
+     <item>
+      <widget class="Line" name="line_2">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item alignment="Qt::AlignmentFlag::AlignHCenter">
+          <widget class="QLabel" name="label_2">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	font: 700 18pt &quot;Segoe UI&quot;;
+	color: #0A1C3A;
+}</string>
+           </property>
+           <property name="text">
+            <string>BARANGAY OFFICIALS</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="table_barangay">
+           <property name="styleSheet">
+            <string notr="true">QTableWidget {
 background-color: transparent;
 }</string>
-     </property>
-    </widget>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item alignment="Qt::AlignmentFlag::AlignHCenter">
+          <widget class="QLabel" name="label_3">
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+	font: 700 18pt &quot;Segoe UI&quot;;
+	color: #0A1C3A;
+}</string>
+           </property>
+           <property name="text">
+            <string>SK OFFICIALS</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QTableWidget" name="table_sk">
+           <property name="styleSheet">
+            <string notr="true">QTableWidget {
+background-color: transparent;
+}</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
    </item>
    <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
     <widget class="QPushButton" name="pushButton_back">

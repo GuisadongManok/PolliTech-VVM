@@ -13,11 +13,13 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableWidget>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
@@ -26,14 +28,22 @@ class Ui_ElectionResults
 public:
     QGridLayout *gridLayout;
     QLabel *label;
-    QTableWidget *VoteTable;
+    QVBoxLayout *verticalLayout_4;
+    QFrame *line_2;
+    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout;
+    QLabel *label_2;
+    QTableWidget *table_barangay;
+    QVBoxLayout *verticalLayout_2;
+    QLabel *label_3;
+    QTableWidget *table_sk;
     QPushButton *pushButton_back;
 
     void setupUi(QDialog *ElectionResults)
     {
         if (ElectionResults->objectName().isEmpty())
             ElectionResults->setObjectName("ElectionResults");
-        ElectionResults->resize(768, 647);
+        ElectionResults->resize(768, 774);
         ElectionResults->setMinimumSize(QSize(768, 647));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/backgrounds/Smol logo no bg.png"), QSize(), QIcon::Mode::Normal, QIcon::State::Off);
@@ -56,15 +66,70 @@ public:
 "}"));
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        gridLayout->addWidget(label, 0, 0, 1, 1);
+        gridLayout->addWidget(label, 0, 0, 1, 1, Qt::AlignmentFlag::AlignHCenter);
 
-        VoteTable = new QTableWidget(ElectionResults);
-        VoteTable->setObjectName("VoteTable");
-        VoteTable->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName("verticalLayout_4");
+        line_2 = new QFrame(ElectionResults);
+        line_2->setObjectName("line_2");
+        line_2->setFrameShape(QFrame::Shape::HLine);
+        line_2->setFrameShadow(QFrame::Shadow::Sunken);
+
+        verticalLayout_4->addWidget(line_2);
+
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName("verticalLayout_3");
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName("verticalLayout");
+        label_2 = new QLabel(ElectionResults);
+        label_2->setObjectName("label_2");
+        label_2->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	font: 700 18pt \"Segoe UI\";\n"
+"	color: #0A1C3A;\n"
+"}"));
+        label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        verticalLayout->addWidget(label_2, 0, Qt::AlignmentFlag::AlignHCenter);
+
+        table_barangay = new QTableWidget(ElectionResults);
+        table_barangay->setObjectName("table_barangay");
+        table_barangay->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
 "background-color: transparent;\n"
 "}"));
 
-        gridLayout->addWidget(VoteTable, 1, 0, 1, 1);
+        verticalLayout->addWidget(table_barangay);
+
+
+        verticalLayout_3->addLayout(verticalLayout);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName("verticalLayout_2");
+        label_3 = new QLabel(ElectionResults);
+        label_3->setObjectName("label_3");
+        label_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	font: 700 18pt \"Segoe UI\";\n"
+"	color: #0A1C3A;\n"
+"}"));
+        label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        verticalLayout_2->addWidget(label_3, 0, Qt::AlignmentFlag::AlignHCenter);
+
+        table_sk = new QTableWidget(ElectionResults);
+        table_sk->setObjectName("table_sk");
+        table_sk->setStyleSheet(QString::fromUtf8("QTableWidget {\n"
+"background-color: transparent;\n"
+"}"));
+
+        verticalLayout_2->addWidget(table_sk);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
+
+        verticalLayout_4->addLayout(verticalLayout_3);
+
+
+        gridLayout->addLayout(verticalLayout_4, 1, 0, 1, 1);
 
         pushButton_back = new QPushButton(ElectionResults);
         pushButton_back->setObjectName("pushButton_back");
@@ -118,6 +183,8 @@ public:
     {
         ElectionResults->setWindowTitle(QCoreApplication::translate("ElectionResults", "PolliTech", nullptr));
         label->setText(QCoreApplication::translate("ElectionResults", "ELECTION RESULTS", nullptr));
+        label_2->setText(QCoreApplication::translate("ElectionResults", "BARANGAY OFFICIALS", nullptr));
+        label_3->setText(QCoreApplication::translate("ElectionResults", "SK OFFICIALS", nullptr));
         pushButton_back->setText(QCoreApplication::translate("ElectionResults", "BACK", nullptr));
     } // retranslateUi
 
