@@ -64,17 +64,26 @@ void ReportsNResults::loadVoteCounts()
 
     QSqlQuery query(db);
     QString selectedPosition = ui->comboBox_positions->currentText();
+
     if (selectedPosition == "All Positions") {
-        query.prepare("SELECT last_name || ', ' || first_name AS full_name, position, party, vote_count "
-                      "FROM candidates_info ORDER BY last_name ASC");
+        query.prepare(R"(
+            SELECT last_name || ', ' || first_name AS full_name, position, party, vote_count
+            FROM candidates_info
+            ORDER BY vote_count DESC
+        )");
     } else {
-        query.prepare("SELECT last_name || ', ' || first_name AS full_name, position, party, vote_count "
-                      "FROM candidates_info WHERE position = :position ORDER BY last_name ASC");
+        query.prepare(R"(
+            SELECT last_name || ', ' || first_name AS full_name, position, party, vote_count
+            FROM candidates_info
+            WHERE position = :position
+            ORDER BY vote_count DESC
+        )");
         query.bindValue(":position", selectedPosition);
     }
 
     ui->tableWidget_voteCount->setHorizontalHeaderLabels(
-        QStringList() << "NAME" << "POSITION" << "PARTY" << "VOTE COUNT" );
+        QStringList() << "NAME" << "POSITION" << "PARTY" << "VOTE COUNT"
+        );
 
     if (!query.exec()) {
         qDebug() << "Vote count query failed:" << query.lastError().text();
@@ -133,6 +142,7 @@ void ReportsNResults::loadVoteCounts()
         }
     )");
 }
+
 
 
 
