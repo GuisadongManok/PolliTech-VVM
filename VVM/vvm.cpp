@@ -78,7 +78,7 @@ void vvm::displayCandidates()
                position,
                party
         FROM candidates_info
-        ORDER BY last_name ASC, first_name ASC
+        ORDER BY last_name ASC
     )");
 
     if (!getCandidate.exec()) {
@@ -248,6 +248,46 @@ void vvm::submitVote()
     if (nameQuery.exec() && nameQuery.next())
         voterName = nameQuery.value(0).toString() + " " + nameQuery.value(1).toString();
 
+    // Update vote count
+    db.transaction();
+    for (const QString& displayText : votedCandidates) {
+        QStringList parts = displayText.split(" - ");
+        if (parts.isEmpty()) continue;
+
+        QStringList nameParts = parts[0].trimmed().split(", ");
+        if (nameParts.size() != 2) {
+            qDebug() << "Invalid name format:" << parts[0];
+            continue;
+        }
+
+        QString last = nameParts[0].trimmed();
+        QString first = nameParts[1].trimmed();
+
+        QSqlQuery updateVote(db);
+        updateVote.prepare(R"(
+        UPDATE candidates_info
+        SET vote_count = COALESCE(vote_count, 0) + 1
+        WHERE last_name = :last AND first_name = :first
+    )");
+        updateVote.bindValue(":last", last);
+        updateVote.bindValue(":first", first);
+
+        if (!updateVote.exec()) {
+            qDebug() << "Vote count update failed for:" << last << first << "-" << updateVote.lastError().text();
+        }
+    }
+
+    // Mark voter as voted
+    QSqlQuery updateVoter(db);
+    updateVoter.prepare("UPDATE voter_info SET has_voted = 1 WHERE voter_id = :voter_id");
+    updateVoter.bindValue(":voter_id", currentVoterId);
+    if (!updateVoter.exec()) {
+        QMessageBox::critical(this, "Database Error", "Failed to update voter record.");
+        return;
+    }
+
+    db.commit();
+
     // Print receipt
     QString receiptContent;
     receiptContent += "<div style='font-size:12pt;'>";
@@ -271,42 +311,6 @@ void vvm::submitVote()
         receiptDoc.print(&printer);
     } else {
         QMessageBox::warning(this, "Printer Error", "No default printer found.");
-    }
-
-    // Update vote count
-    for (const QString& displayText : votedCandidates) {
-        QStringList parts = displayText.split(" - ");
-        if (parts.isEmpty()) continue;
-
-        QString fullName = parts[0].trimmed();
-        QSqlQuery findCandidate(db);
-        findCandidate.prepare("SELECT first_name, last_name FROM candidates_info WHERE TRIM(first_name || ' ' || last_name) = :full_name");
-        findCandidate.bindValue(":full_name", fullName);
-        if (findCandidate.exec() && findCandidate.next()) {
-            QString first = findCandidate.value(0).toString();
-            QString last = findCandidate.value(1).toString();
-
-            QSqlQuery updateVote(db);
-            updateVote.prepare(R"(
-                UPDATE candidates_info
-                SET vote_count = COALESCE(vote_count, 0) + 1
-                WHERE first_name = :first AND last_name = :last
-            )");
-            updateVote.bindValue(":first", first);
-            updateVote.bindValue(":last", last);
-            if (!updateVote.exec()) {
-                qDebug() << "Vote count update failed for:" << first << last << "-" << updateVote.lastError().text();
-            }
-        }
-    }
-
-    // Mark voter as voted
-    QSqlQuery updateVoter(db);
-    updateVoter.prepare("UPDATE voter_info SET has_voted = 1 WHERE voter_id = :voter_id");
-    updateVoter.bindValue(":voter_id", currentVoterId);
-    if (!updateVoter.exec()) {
-        QMessageBox::critical(this, "Database Error", "Failed to update voter record.");
-        return;
     }
 
     QMessageBox::information(this, "Success", "Your vote has been submitted. Thank you!");

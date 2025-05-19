@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>874</width>
-    <height>562</height>
+    <width>768</width>
+    <height>647</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>826</width>
-    <height>562</height>
+    <width>768</width>
+    <height>647</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -35,114 +35,46 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="styleSheet">
-        <string notr="true">QLabel {
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">QLabel {
 	font: 700 30pt &quot;Segoe UI&quot;;
 	color: #0A1C3A;
 }</string>
-       </property>
-       <property name="text">
-        <string>ELECTION RESULTS</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignmentFlag::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item alignment="Qt::AlignmentFlag::AlignLeft">
-      <widget class="QComboBox" name="comboBox_positionFilter">
-       <property name="minimumSize">
-        <size>
-         <width>221</width>
-         <height>35</height>
-        </size>
-       </property>
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="focusPolicy">
-        <enum>Qt::FocusPolicy::NoFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QComboBox {
-	font: 14pt &quot;Segoe UI&quot;;
-    font-size: 16px;
-    color: #0A1C3A;
-    background-color: rgba(255,255,255,200);
-    border: 1px solid #0A1C3A;
-    padding: 5px;
-}
-</string>
-       </property>
-       <item>
-        <property name="text">
-         <string>All Positions</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Barangay Officials</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>SK Officials</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item>
-      <widget class="QTableWidget" name="tableWidget_winners">
-       <property name="focusPolicy">
-        <enum>Qt::FocusPolicy::NoFocus</enum>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QTableWidget {
-	background-color: white;
+     </property>
+     <property name="text">
+      <string>ELECTION RESULTS</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QTableWidget" name="VoteTable">
+     <property name="styleSheet">
+      <string notr="true">QTableWidget {
+background-color: transparent;
 }</string>
-       </property>
-       <property name="editTriggers">
-        <set>QAbstractItemView::EditTrigger::NoEditTriggers</set>
-       </property>
-       <property name="tabKeyNavigation">
-        <bool>false</bool>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_8">
-       <item>
-        <spacer name="horizontalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_back">
-         <property name="minimumSize">
-          <size>
-           <width>52</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::FocusPolicy::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" alignment="Qt::AlignmentFlag::AlignHCenter">
+    <widget class="QPushButton" name="pushButton_back">
+     <property name="minimumSize">
+      <size>
+       <width>151</width>
+       <height>35</height>
+      </size>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::FocusPolicy::NoFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton {
     font: 600 9pt &quot;Segoe UI&quot;;
     font-size: 16px;
     color: white;
@@ -176,94 +108,11 @@ QPushButton:focus {
     outline: none;
     border: 2px solid #0A1C3A;
 }</string>
-         </property>
-         <property name="text">
-          <string>BACK</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_print">
-         <property name="minimumSize">
-          <size>
-           <width>162</width>
-           <height>32</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Segoe UI</family>
-           <pointsize>-1</pointsize>
-           <italic>false</italic>
-           <fontweight>DemiBold</fontweight>
-          </font>
-         </property>
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::FocusPolicy::NoFocus</enum>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::LayoutDirection::RightToLeft</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QPushButton {
-    font: 600 9pt &quot;Segoe UI&quot;;
-    font-size: 16px;
-    color: black;
-    background-color: qlineargradient(
-        spread:pad, x1:0, y1:0, x2:0, y2:1,
-        stop:0 #6FE1A4, stop:1 #3CA36E
-    );
-    border: 1px solid #2e7d5d;
-    border-radius: 15px;
-    padding: 6px 12px;
-}
-
-QPushButton:hover {
-    background-color: qlineargradient(
-        spread:pad, x1:0, y1:0, x2:0, y2:1,
-        stop:0 #7FFFB2, stop:1 #4BB97E
-    );
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(
-        spread:pad, x1:0, y1:0, x2:0, y2:1,
-        stop:0 #3CA36E, stop:1 #6FE1A4
-    );
-    padding-top: 7px;
-    padding-bottom: 3px;
-}
-
-QPushButton:focus {
-    outline: none;
-    border: 2px solid #1A5E3B;
-}
-</string>
-         </property>
-         <property name="text">
-          <string>EXPORT AS CSV</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_7">
-         <property name="orientation">
-          <enum>Qt::Orientation::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </item>
-    </layout>
+     </property>
+     <property name="text">
+      <string>BACK</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

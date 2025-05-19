@@ -34,7 +34,7 @@ public:
     QGridLayout *gridLayout_2;
     QFrame *frame;
     QGridLayout *gridLayout;
-    QVBoxLayout *verticalLayout_8;
+    QVBoxLayout *verticalLayout_9;
     QLabel *label;
     QHBoxLayout *horizontalLayout_3;
     QVBoxLayout *verticalLayout_7;
@@ -51,6 +51,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QLabel *label_5;
     QLineEdit *lineEdit_age;
+    QVBoxLayout *verticalLayout_8;
     QVBoxLayout *verticalLayout_5;
     QLabel *label_6;
     QHBoxLayout *horizontalLayout;
@@ -104,7 +105,6 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
         frame->setSizePolicy(sizePolicy1);
-        frame->setMaximumSize(QSize(16777215, 303));
         frame->setStyleSheet(QString::fromUtf8("QFrame {\n"
 "background-color: none;\n"
 "}"));
@@ -112,8 +112,8 @@ public:
         frame->setFrameShadow(QFrame::Shadow::Raised);
         gridLayout = new QGridLayout(frame);
         gridLayout->setObjectName("gridLayout");
-        verticalLayout_8 = new QVBoxLayout();
-        verticalLayout_8->setObjectName("verticalLayout_8");
+        verticalLayout_9 = new QVBoxLayout();
+        verticalLayout_9->setObjectName("verticalLayout_9");
         label = new QLabel(frame);
         label->setObjectName("label");
         QSizePolicy sizePolicy2(QSizePolicy::Policy::Preferred, QSizePolicy::Policy::Fixed);
@@ -130,7 +130,7 @@ public:
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
         label->setTextInteractionFlags(Qt::TextInteractionFlag::NoTextInteraction);
 
-        verticalLayout_8->addWidget(label, 0, Qt::AlignmentFlag::AlignBottom);
+        verticalLayout_9->addWidget(label);
 
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName("horizontalLayout_3");
@@ -304,11 +304,14 @@ public:
         horizontalLayout_3->addLayout(verticalLayout_6);
 
 
-        verticalLayout_8->addLayout(horizontalLayout_3);
+        verticalLayout_9->addLayout(horizontalLayout_3);
 
+        verticalLayout_8 = new QVBoxLayout();
+        verticalLayout_8->setObjectName("verticalLayout_8");
+        verticalLayout_8->setContentsMargins(-1, 5, -1, 0);
         verticalLayout_5 = new QVBoxLayout();
         verticalLayout_5->setObjectName("verticalLayout_5");
-        verticalLayout_5->setContentsMargins(-1, 5, -1, -1);
+        verticalLayout_5->setContentsMargins(-1, 5, -1, 0);
         label_6 = new QLabel(frame);
         label_6->setObjectName("label_6");
         sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
@@ -428,7 +431,10 @@ public:
         verticalLayout_8->addLayout(verticalLayout_5);
 
 
-        gridLayout->addLayout(verticalLayout_8, 0, 0, 1, 1);
+        verticalLayout_9->addLayout(verticalLayout_8);
+
+
+        gridLayout->addLayout(verticalLayout_9, 0, 0, 1, 1);
 
 
         gridLayout_2->addWidget(frame, 0, 0, 1, 1);
@@ -649,7 +655,8 @@ public:
         label_2->setText(QCoreApplication::translate("VoterManagement", "VOTER ID", nullptr));
         label_4->setText(QCoreApplication::translate("VoterManagement", "LAST NAME", nullptr));
         label_5->setText(QCoreApplication::translate("VoterManagement", "AGE", nullptr));
-        label_6->setText(QCoreApplication::translate("VoterManagement", "Voter ID cannot be changed. If incorrect, please delete and re-add the voter", nullptr));
+        label_6->setText(QCoreApplication::translate("VoterManagement", "To edit voter info, double-click a cell. \n"
+"Voter ID cannot be changed. If incorrect, please delete and re-add the voter.", nullptr));
         pushButton_back->setText(QCoreApplication::translate("VoterManagement", "BACK", nullptr));
         pushButton_insert->setText(QCoreApplication::translate("VoterManagement", "INSERT", nullptr));
 #if QT_CONFIG(tooltip)

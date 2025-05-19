@@ -40,6 +40,8 @@
         <file>icons/user logo.png</file>
         <file>icons/dashboard.png</file>
         <file>icons/undo.png</file>
+        <file>icons/information.png</file>
+        <file>icons/user-avatar.png</file>
     </qresource>
     <qresource prefix="/backgrounds">
         <file>PolliTech Logo.png</file>

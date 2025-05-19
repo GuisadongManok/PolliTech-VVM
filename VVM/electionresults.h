@@ -4,6 +4,7 @@
 #include <QDialog>
 
 #include <QSqlDatabase>
+#include <QTableWidget>
 
 namespace Ui {
 class ElectionResults;
@@ -19,12 +20,16 @@ public:
 
 protected:
     void closeEvent(QCloseEvent *event);
+    void showEvent(QShowEvent *event);
 
 signals:
     void windowClosed();
 
 private slots:
-    void loadTable();
+    void loadWinnersOnly(QTableWidget* table);
+    void loadVoteCounts();
+    void printTable();
+    void BackButton();
 
 private:
     Ui::ElectionResults *ui;

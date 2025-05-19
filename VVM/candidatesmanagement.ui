@@ -502,7 +502,8 @@ border-radius: 5px;
 }</string>
              </property>
              <property name="text">
-              <string>Voter ID cannot be changed. If incorrect, please delete and re-add the candidate</string>
+              <string>To edit voter info, double-click a cell. 
+Voter ID cannot be changed. If incorrect, please delete and re-add the voter.</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignmentFlag::AlignCenter</set>
