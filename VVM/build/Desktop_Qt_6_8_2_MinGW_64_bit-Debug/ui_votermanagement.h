@@ -61,6 +61,7 @@ public:
     QSpacerItem *horizontalSpacer_3;
     QVBoxLayout *verticalLayout_11;
     QHBoxLayout *horizontalLayout_2;
+    QLineEdit *lineEdit_search;
     QSpacerItem *horizontalSpacer;
     QPushButton *RefreshButton;
     QVBoxLayout *verticalLayout_10;
@@ -444,6 +445,21 @@ public:
         verticalLayout_11->setContentsMargins(-1, -1, 0, -1);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName("horizontalLayout_2");
+        lineEdit_search = new QLineEdit(centralwidget);
+        lineEdit_search->setObjectName("lineEdit_search");
+        lineEdit_search->setMinimumSize(QSize(361, 0));
+        lineEdit_search->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"background-color: rgba(255,255,255,200);\n"
+"color: #0A1C3A;\n"
+"font: 14pt \"Segoe UI\";\n"
+"font-size: 16px;\n"
+"padding: 5px;\n"
+"border: 1px solid #0A1C3A;\n"
+"}"));
+        lineEdit_search->setPlaceholderText(QString::fromUtf8("Search by name, position, or party"));
+
+        horizontalLayout_2->addWidget(lineEdit_search);
+
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Policy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer);

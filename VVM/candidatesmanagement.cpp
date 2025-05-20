@@ -8,6 +8,7 @@
 #include <QComboBox>
 #include <QStandardItemModel>
 #include <QInputDialog>
+#include <QToolButton>
 
 candidatesmanagement::candidatesmanagement(QSqlDatabase &database, const QString &email, QWidget *parent)
     : QMainWindow(parent)
@@ -29,6 +30,34 @@ candidatesmanagement::candidatesmanagement(QSqlDatabase &database, const QString
     connect(ui->list_delete_button, &QPushButton::clicked, this, &candidatesmanagement::ListDeleteButton);
     connect(ui->list_deleteAll_button, &QPushButton::clicked, this, &candidatesmanagement::ListDeleteAllButton);
     connect(ui->candidate_tableWidget, &QTableWidget::cellChanged, this, &candidatesmanagement::onCellChanged);
+    connect(ui->lineEdit_search, &QLineEdit::textChanged, this, &candidatesmanagement::filterTable);
+
+    QLineEdit* searchLine = ui->lineEdit_search;
+
+    QToolButton* searchButton = new QToolButton(searchLine);
+    searchButton->setIcon(QIcon(":/icons/buttons/icons/magnifier.png"));
+    searchButton->setCursor(Qt::PointingHandCursor);
+    searchButton->setStyleSheet("QToolButton { background: none; border: none; padding: 0px; }");
+
+    int frameWidth = searchLine->style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
+    searchButton->setFixedSize(20, 20);
+    searchButton->move(searchLine->rect().right() - searchButton->width() - frameWidth,
+                       (searchLine->rect().height() - searchButton->height()) / 2);
+    searchButton->move(335, 8);
+
+    searchLine->setStyleSheet(QString(R"(
+    QLineEdit {
+    background-color: rgba(255,255,255,200);
+    color: #0A1C3A;
+    font: 14pt;
+    font-size: 16px;
+    padding: 5px;
+    padding-right: %1px;
+    border: 1px solid #0A1C3A;
+    }
+    )")
+      .arg(searchButton->width() + frameWidth + 2));
+
 
     LoadCandidateTable();
 
@@ -352,4 +381,21 @@ void candidatesmanagement::onCellChanged(int row, int column)
         qDebug() << "Update failed:" << updateQuery.lastError().text();
     }
 }
+
+
+void candidatesmanagement::filterTable(const QString &text)
+{
+    for (int row = 0; row < ui->candidate_tableWidget->rowCount(); ++row) {
+        bool match = false;
+        for (int col = 0; col < ui->candidate_tableWidget->columnCount(); ++col) {
+            QTableWidgetItem *item = ui->candidate_tableWidget->item(row, col);
+            if (item && item->text().contains(text, Qt::CaseInsensitive)) {
+                match = true;
+                break;
+            }
+        }
+        ui->candidate_tableWidget->setRowHidden(row, !match);
+    }
+}
+
 

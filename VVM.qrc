@@ -42,6 +42,7 @@
         <file>icons/undo.png</file>
         <file>icons/information.png</file>
         <file>icons/user-avatar.png</file>
+        <file>icons/magnifier.png</file>
     </qresource>
     <qresource prefix="/backgrounds">
         <file>PolliTech Logo.png</file>

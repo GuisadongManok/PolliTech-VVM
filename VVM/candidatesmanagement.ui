@@ -686,6 +686,29 @@ QPushButton:focus {
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
+         <widget class="QLineEdit" name="lineEdit_search">
+          <property name="minimumSize">
+           <size>
+            <width>361</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit {
+background-color: rgba(255,255,255,200);
+color: #0A1C3A;
+font: 14pt &quot;Segoe UI&quot;;
+font-size: 16px;
+padding: 5px;
+border: 1px solid #0A1C3A;
+}</string>
+          </property>
+          <property name="placeholderText">
+           <string notr="true">Search by name, position, or party</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <spacer name="horizontalSpacer_3">
           <property name="orientation">
            <enum>Qt::Orientation::Horizontal</enum>
@@ -985,6 +1008,8 @@ QPushButton:focus {
      </layout>
     </item>
    </layout>
+   <zorder>lineEdit_search</zorder>
+   <zorder>frame</zorder>
   </widget>
  </widget>
  <tabstops>

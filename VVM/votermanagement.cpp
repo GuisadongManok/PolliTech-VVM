@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <QSqlError>
 #include <QInputDialog>
+#include <QToolButton>
 
 VoterManagement::VoterManagement(QSqlDatabase &database, const QString &email, QWidget *parent)
     : QMainWindow(parent)
@@ -22,8 +23,35 @@ VoterManagement::VoterManagement(QSqlDatabase &database, const QString &email, Q
     connect(ui->ListDeleteButton, &QPushButton::clicked, this, &VoterManagement::ListDeleteButton);
     connect(ui->DeleteAll_Button, &QPushButton::clicked, this, &VoterManagement::ListDeleteAllButton);
     connect(ui->Voter_table, &QTableWidget::cellChanged, this, &VoterManagement::onCellChanged);
+    connect(ui->lineEdit_search, &QLineEdit::textChanged, this, &VoterManagement::filterTable);
 
     LoadVoterTable();
+
+    QLineEdit* searchLine = ui->lineEdit_search;
+
+    QToolButton* searchButton = new QToolButton(searchLine);
+    searchButton->setIcon(QIcon(":/icons/buttons/icons/magnifier.png"));
+    searchButton->setCursor(Qt::PointingHandCursor);
+    searchButton->setStyleSheet("QToolButton { background: none; border: none; padding: 0px; }");
+
+    int frameWidth = searchLine->style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
+    searchButton->setFixedSize(20, 20);
+    searchButton->move(searchLine->rect().right() - searchButton->width() - frameWidth,
+                       (searchLine->rect().height() - searchButton->height()) / 2);
+    searchButton->move(335, 8);
+
+    searchLine->setStyleSheet(QString(R"(
+    QLineEdit {
+    background-color: rgba(255,255,255,200);
+    color: #0A1C3A;
+    font: 14pt;
+    font-size: 16px;
+    padding: 5px;
+    padding-right: %1px;
+    border: 1px solid #0A1C3A;
+    }
+    )")
+        .arg(searchButton->width() + frameWidth + 2));
 
     ui->label_6->setText(R"(
     To edit voter info, double-click a cell.<br>
@@ -326,5 +354,20 @@ void VoterManagement::onCellChanged(int row, int column)
         QMessageBox::information(this, "Success", "Voter info updated successfully.");
     } else {
         qDebug() << "Update failed:" << updateQuery.lastError().text();
+    }
+}
+
+void VoterManagement::filterTable(const QString &text)
+{
+    for (int row = 0; row < ui->Voter_table->rowCount(); ++row) {
+        bool match = false;
+        for (int col = 0; col < ui->Voter_table->columnCount(); ++col) {
+            QTableWidgetItem *item = ui->Voter_table->item(row, col);
+            if (item && item->text().contains(text, Qt::CaseInsensitive)) {
+                match = true;
+                break;
+            }
+        }
+        ui->Voter_table->setRowHidden(row, !match);
     }
 }

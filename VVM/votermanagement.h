@@ -30,6 +30,7 @@ private slots:
     void ListDeleteButton();
     void ListDeleteAllButton();
     void onCellChanged(int row, int column);
+    void filterTable(const QString &text);
 
 
 private:
