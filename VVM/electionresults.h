@@ -27,7 +27,7 @@ signals:
 private slots:
     void loadWinnersOnlyBarangay();
     void loadWinnersOnlySK();
-    void printTable(QTableWidget *table);
+    void writeTableToStream(QTableWidget* table, QTextStream& out);
     void BackButton();
     void print();
 

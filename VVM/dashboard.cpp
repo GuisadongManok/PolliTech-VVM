@@ -9,6 +9,7 @@
 #include <QStackedWidget>
 #include <QMessageBox>
 #include <QCloseEvent>
+#include <QSqlQuery>
 
 
 dashboard::dashboard(QSqlDatabase &database, const QString &email, QWidget *parent)
@@ -141,12 +142,20 @@ void dashboard::controlButton()
 
 void dashboard::ElectionResultsButton()
 {
-    if (!electionResultsWindow) {
-        electionResultsWindow = new ElectionResults(db, nullptr);
-        connect(electionResultsWindow, &ElectionResults::windowClosed, this, &dashboard::show);
+    QSqlQuery query(db);
+    query.prepare("SELECT status FROM election_state ORDER BY id DESC LIMIT 1");
+    if (!query.exec() || !query.next() || query.value(0).toString().toLower() != "ended") {
+        QMessageBox::warning(this, "Election Not Finished", "You can only view results after the election has ended.");
     }
+    else {
 
-    this->hide();
-    electionResultsWindow->show();
+        if (!electionResultsWindow) {
+            electionResultsWindow = new ElectionResults(db, nullptr);
+            connect(electionResultsWindow, &ElectionResults::windowClosed, this, &dashboard::show);
+        }
+
+        this->hide();
+        electionResultsWindow->show();
+    }
 }
 

@@ -18,7 +18,7 @@ candidatesmanagement::candidatesmanagement(QSqlDatabase &database, const QString
     ui->setupUi(this);
 
     ui->label_6->setText(R"(
-    To edit voter info, double-click a cell.<br>
+    To edit candidate info, double-click a cell.<br>
     <img src=':/icons/buttons/icons/warning.png' width='14' height='14'>
     Voter ID cannot be changed. If incorrect, please delete and re-add the voter.
     )");

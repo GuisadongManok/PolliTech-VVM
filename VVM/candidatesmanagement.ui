@@ -502,7 +502,7 @@ border-radius: 5px;
 }</string>
              </property>
              <property name="text">
-              <string>To edit voter info, double-click a cell. 
+              <string>To edit candidate info, double-click a cell. 
 Voter ID cannot be changed. If incorrect, please delete and re-add the voter.</string>
              </property>
              <property name="alignment">

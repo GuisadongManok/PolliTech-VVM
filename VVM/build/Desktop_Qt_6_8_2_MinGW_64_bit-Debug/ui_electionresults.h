@@ -15,6 +15,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -37,7 +38,9 @@ public:
     QVBoxLayout *verticalLayout_2;
     QLabel *label_3;
     QTableWidget *table_sk;
+    QHBoxLayout *horizontalLayout;
     QPushButton *pushButton_back;
+    QPushButton *pushButton_print;
 
     void setupUi(QDialog *ElectionResults)
     {
@@ -66,7 +69,7 @@ public:
 "}"));
         label->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        gridLayout->addWidget(label, 0, 0, 1, 1, Qt::AlignmentFlag::AlignHCenter);
+        gridLayout->addWidget(label, 0, 0, 1, 1);
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName("verticalLayout_4");
@@ -131,6 +134,8 @@ public:
 
         gridLayout->addLayout(verticalLayout_4, 1, 0, 1, 1);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName("horizontalLayout");
         pushButton_back = new QPushButton(ElectionResults);
         pushButton_back->setObjectName("pushButton_back");
         pushButton_back->setMinimumSize(QSize(151, 35));
@@ -171,7 +176,58 @@ public:
 "    border: 2px solid #0A1C3A;\n"
 "}"));
 
-        gridLayout->addWidget(pushButton_back, 2, 0, 1, 1, Qt::AlignmentFlag::AlignHCenter);
+        horizontalLayout->addWidget(pushButton_back, 0, Qt::AlignmentFlag::AlignRight);
+
+        pushButton_print = new QPushButton(ElectionResults);
+        pushButton_print->setObjectName("pushButton_print");
+        pushButton_print->setMinimumSize(QSize(162, 32));
+        QFont font;
+        font.setFamilies({QString::fromUtf8("Segoe UI")});
+        font.setWeight(QFont::DemiBold);
+        font.setItalic(false);
+        pushButton_print->setFont(font);
+        pushButton_print->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
+        pushButton_print->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+        pushButton_print->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
+        pushButton_print->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    font: 600 9pt \"Segoe UI\";\n"
+"    font-size: 16px;\n"
+"    color: black;\n"
+"    background-color: qlineargradient(\n"
+"        spread:pad, x1:0, y1:0, x2:0, y2:1,\n"
+"        stop:0 #6FE1A4, stop:1 #3CA36E\n"
+"    );\n"
+"    border: 1px solid #2e7d5d;\n"
+"    border-radius: 15px;\n"
+"    padding: 6px 12px;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: qlineargradient(\n"
+"        spread:pad, x1:0, y1:0, x2:0, y2:1,\n"
+"        stop:0 #7FFFB2, stop:1 #4BB97E\n"
+"    );\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(\n"
+"        spread:pad, x1:0, y1:0, x2:0, y2:1,\n"
+"        stop:0 #3CA36E, stop:1 #6FE1A4\n"
+"    );\n"
+"    padding-top: 7px;\n"
+"    padding-bottom: 3px;\n"
+"}\n"
+"\n"
+"QPushButton:focus {\n"
+"    outline: none;\n"
+"    border: 2px solid #1A5E3B;\n"
+"}\n"
+""));
+
+        horizontalLayout->addWidget(pushButton_print, 0, Qt::AlignmentFlag::AlignRight);
+
+
+        gridLayout->addLayout(horizontalLayout, 2, 0, 1, 1);
 
 
         retranslateUi(ElectionResults);
@@ -186,6 +242,7 @@ public:
         label_2->setText(QCoreApplication::translate("ElectionResults", "BARANGAY OFFICIALS", nullptr));
         label_3->setText(QCoreApplication::translate("ElectionResults", "SK OFFICIALS", nullptr));
         pushButton_back->setText(QCoreApplication::translate("ElectionResults", "BACK", nullptr));
+        pushButton_print->setText(QCoreApplication::translate("ElectionResults", "EXPORT AS CSV", nullptr));
     } // retranslateUi
 
 };

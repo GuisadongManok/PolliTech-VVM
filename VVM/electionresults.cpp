@@ -7,6 +7,7 @@
 #include <QsqlError>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QTimer>
 
 ElectionResults::ElectionResults(QSqlDatabase &database, QWidget *parent)
     : QDialog(parent)
@@ -14,9 +15,12 @@ ElectionResults::ElectionResults(QSqlDatabase &database, QWidget *parent)
     , db(database)
 {
     ui->setupUi(this);
+
     loadWinnersOnlyBarangay();
     loadWinnersOnlySK();
+
     connect(ui->pushButton_back, &QPushButton::clicked, this, &ElectionResults::BackButton);
+    connect(ui->pushButton_print, &QPushButton::clicked, this, &ElectionResults::print);
 
     this->setWindowFlags(Qt::Dialog | Qt::MSWindowsFixedSizeDialogHint);
 
@@ -197,9 +201,33 @@ void ElectionResults::loadWinnersOnlySK()
     )");
 }
 
-void ElectionResults::printTable(QTableWidget *table)
+void ElectionResults::writeTableToStream(QTableWidget* table, QTextStream& out)
 {
-    QString fileName = QFileDialog::getSaveFileName(this, "Save Table as CSV", "", "CSV Files (*.csv)");
+    const int cols = table->columnCount();
+    const int rows = table->rowCount();
+
+    // Header
+    for (int col = 0; col < cols; ++col) {
+        out << "\"" << table->horizontalHeaderItem(col)->text() << "\"";
+        if (col < cols - 1) out << ",";
+    }
+    out << "\n";
+
+    // Rows
+    for (int row = 0; row < rows; ++row) {
+        for (int col = 0; col < cols; ++col) {
+            QTableWidgetItem* item = table->item(row, col);
+            out << "\"" << (item ? item->text() : "") << "\"";
+            if (col < cols - 1) out << ",";
+        }
+        out << "\n";
+    }
+}
+
+
+void ElectionResults::print()
+{
+    QString fileName = QFileDialog::getSaveFileName(this, "Save Results as CSV", "", "CSV Files (*.csv)");
     if (fileName.isEmpty()) return;
     if (!fileName.endsWith(".csv", Qt::CaseInsensitive))
         fileName += ".csv";
@@ -211,32 +239,19 @@ void ElectionResults::printTable(QTableWidget *table)
     }
 
     QTextStream out(&file);
-    const int cols = table->columnCount();
-    const int rows = table->rowCount();
 
-    for (int col = 0; col < cols; ++col) {
-        out << "\"" << table->horizontalHeaderItem(col)->text() << "\"";
-        if (col < cols - 1) out << ",";
-    }
+    // Write Barangay Table
+    out << "BARANGAY OFFICIALS\n";
+    writeTableToStream(ui->table_barangay, out);
     out << "\n";
 
-
-    for (int row = 0; row < rows; ++row) {
-        for (int col = 0; col < cols; ++col) {
-            QTableWidgetItem* item = table->item(row, col);
-            out << "\"" << (item ? item->text() : "") << "\"";
-            if (col < cols - 1) out << ",";
-        }
-        out << "\n";
-    }
+    // Write SK Table
+    out << "SK OFFICIALS\n";
+    writeTableToStream(ui->table_sk, out);
 
     file.close();
+    QMessageBox::information(this, "Success", "Results exported successfully.");
 }
 
-void ElectionResults::print()
-{
-    printTable(ui->table_barangay);
-    printTable(ui->table_sk);
-}
 
 

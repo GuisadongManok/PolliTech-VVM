@@ -715,7 +715,7 @@ public:
         label_4->setText(QCoreApplication::translate("candidatesmanagement", "LAST NAME", nullptr));
         label_5->setText(QCoreApplication::translate("candidatesmanagement", "AGE", nullptr));
         label_8->setText(QCoreApplication::translate("candidatesmanagement", "PARTY", nullptr));
-        label_6->setText(QCoreApplication::translate("candidatesmanagement", "To edit voter info, double-click a cell. \n"
+        label_6->setText(QCoreApplication::translate("candidatesmanagement", "To edit candidate info, double-click a cell. \n"
 "Voter ID cannot be changed. If incorrect, please delete and re-add the voter.", nullptr));
         pushButton_back->setText(QCoreApplication::translate("candidatesmanagement", "BACK", nullptr));
         pushButton_insert->setText(QCoreApplication::translate("candidatesmanagement", "INSERT", nullptr));

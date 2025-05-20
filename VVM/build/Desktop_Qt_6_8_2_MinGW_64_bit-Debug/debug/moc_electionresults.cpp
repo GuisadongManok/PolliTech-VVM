@@ -42,9 +42,11 @@ static constexpr auto qt_meta_stringdata_ZN15ElectionResultsE = QtMocHelpers::st
     "",
     "loadWinnersOnlyBarangay",
     "loadWinnersOnlySK",
-    "printTable",
+    "writeTableToStream",
     "QTableWidget*",
     "table",
+    "QTextStream&",
+    "out",
     "BackButton",
     "print"
 );
@@ -71,9 +73,9 @@ Q_CONSTINIT static const uint qt_meta_data_ZN15ElectionResultsE[] = {
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
        3,    0,   51,    2, 0x08,    2 /* Private */,
        4,    0,   52,    2, 0x08,    3 /* Private */,
-       5,    1,   53,    2, 0x08,    4 /* Private */,
-       8,    0,   56,    2, 0x08,    6 /* Private */,
-       9,    0,   57,    2, 0x08,    7 /* Private */,
+       5,    2,   53,    2, 0x08,    4 /* Private */,
+      10,    0,   58,    2, 0x08,    7 /* Private */,
+      11,    0,   59,    2, 0x08,    8 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -81,7 +83,7 @@ Q_CONSTINIT static const uint qt_meta_data_ZN15ElectionResultsE[] = {
  // slots: parameters
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 6,    7,
+    QMetaType::Void, 0x80000000 | 6, 0x80000000 | 8,    7,    9,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -103,9 +105,10 @@ Q_CONSTINIT const QMetaObject ElectionResults::staticMetaObject = { {
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'loadWinnersOnlySK'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
-        // method 'printTable'
+        // method 'writeTableToStream'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         QtPrivate::TypeAndForceComplete<QTableWidget *, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QTextStream &, std::false_type>,
         // method 'BackButton'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'print'
@@ -122,7 +125,7 @@ void ElectionResults::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 0: _t->windowClosed(); break;
         case 1: _t->loadWinnersOnlyBarangay(); break;
         case 2: _t->loadWinnersOnlySK(); break;
-        case 3: _t->printTable((*reinterpret_cast< std::add_pointer_t<QTableWidget*>>(_a[1]))); break;
+        case 3: _t->writeTableToStream((*reinterpret_cast< std::add_pointer_t<QTableWidget*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QTextStream&>>(_a[2]))); break;
         case 4: _t->BackButton(); break;
         case 5: _t->print(); break;
         default: ;
