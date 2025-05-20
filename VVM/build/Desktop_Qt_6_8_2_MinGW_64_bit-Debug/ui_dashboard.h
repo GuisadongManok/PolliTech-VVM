@@ -379,6 +379,9 @@ public:
         view_live_vote_button->setToolTip(QCoreApplication::translate("dashboard", "<html><head/><body><p align=\"center\">View live vote count</p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
         view_live_vote_button->setText(QCoreApplication::translate("dashboard", "LIVE VOTE COUNT", nullptr));
+#if QT_CONFIG(tooltip)
+        election_results_button->setToolTip(QCoreApplication::translate("dashboard", "<html><head/><body><p align=\"center\">View Election Results</p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
         election_results_button->setText(QCoreApplication::translate("dashboard", "OFFICIAL RESULTS", nullptr));
 #if QT_CONFIG(tooltip)
         start_election_button->setToolTip(QCoreApplication::translate("dashboard", "<html><head/><body><p align=\"center\">Control Election</p></body></html>", nullptr));

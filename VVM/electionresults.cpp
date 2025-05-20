@@ -61,7 +61,7 @@ void ElectionResults::loadWinnersOnlyBarangay()
         query.prepare(R"(
             SELECT last_name || ', ' || first_name AS full_name, position, party, vote_count
             FROM candidates_info
-            WHERE position = :position
+            WHERE position = :position AND vote_count > 0
             ORDER BY vote_count DESC
         )");
         query.bindValue(":position", pos);
@@ -140,7 +140,7 @@ void ElectionResults::loadWinnersOnlySK()
         query.prepare(R"(
             SELECT last_name || ', ' || first_name AS full_name, position, party, vote_count
             FROM candidates_info
-            WHERE position = :position
+            WHERE position = :position AND vote_count > 0
             ORDER BY vote_count DESC
         )");
         query.bindValue(":position", pos);

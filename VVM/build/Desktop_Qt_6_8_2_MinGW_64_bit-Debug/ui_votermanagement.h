@@ -456,7 +456,7 @@ public:
 "padding: 5px;\n"
 "border: 1px solid #0A1C3A;\n"
 "}"));
-        lineEdit_search->setPlaceholderText(QString::fromUtf8("Search by name, position, or party"));
+        lineEdit_search->setPlaceholderText(QString::fromUtf8("Search by name or voter ID"));
 
         horizontalLayout_2->addWidget(lineEdit_search);
 

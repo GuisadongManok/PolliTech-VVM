@@ -33,30 +33,8 @@ candidatesmanagement::candidatesmanagement(QSqlDatabase &database, const QString
     connect(ui->lineEdit_search, &QLineEdit::textChanged, this, &candidatesmanagement::filterTable);
 
     QLineEdit* searchLine = ui->lineEdit_search;
-
-    QToolButton* searchButton = new QToolButton(searchLine);
-    searchButton->setIcon(QIcon(":/icons/buttons/icons/magnifier.png"));
-    searchButton->setCursor(Qt::PointingHandCursor);
-    searchButton->setStyleSheet("QToolButton { background: none; border: none; padding: 0px; }");
-
-    int frameWidth = searchLine->style()->pixelMetric(QStyle::PM_DefaultFrameWidth);
-    searchButton->setFixedSize(20, 20);
-    searchButton->move(searchLine->rect().right() - searchButton->width() - frameWidth,
-                       (searchLine->rect().height() - searchButton->height()) / 2);
-    searchButton->move(335, 8);
-
-    searchLine->setStyleSheet(QString(R"(
-    QLineEdit {
-    background-color: rgba(255,255,255,200);
-    color: #0A1C3A;
-    font: 14pt;
-    font-size: 16px;
-    padding: 5px;
-    padding-right: %1px;
-    border: 1px solid #0A1C3A;
-    }
-    )")
-      .arg(searchButton->width() + frameWidth + 2));
+    QAction* searchIcon = new QAction(QIcon(":/icons/buttons/icons/magnifier.png"), "", searchLine);
+    searchLine->addAction(searchIcon, QLineEdit::TrailingPosition);
 
 
     LoadCandidateTable();

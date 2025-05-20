@@ -704,7 +704,7 @@ border: 1px solid #0A1C3A;
 }</string>
           </property>
           <property name="placeholderText">
-           <string notr="true">Search by name, position, or party</string>
+           <string notr="true">Search by name, position, party or voter ID</string>
           </property>
          </widget>
         </item>

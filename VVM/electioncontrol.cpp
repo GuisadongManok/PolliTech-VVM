@@ -42,6 +42,7 @@ void ElectionControl::toggleElection()
     QSqlQuery query(db);
 
     if (!isElectionOngoing) {
+        // START ELECTION
         isElectionOngoing = true;
         appendStatusRow("Election Started");
         ui->label_eStats->setText("Election Status: Ongoing");
@@ -51,7 +52,40 @@ void ElectionControl::toggleElection()
 
         query.prepare("UPDATE election_state SET status = 'ongoing', start_time = :start_time, end_time = NULL WHERE id = 1");
         query.bindValue(":start_time", QDateTime::currentDateTime().toString(Qt::ISODate));
+
     } else {
+        // ⚠️ STOP ELECTION — require password first
+        bool ok;
+        QString password = QInputDialog::getText(
+            this,
+            "Password Required",
+            "Enter your password to stop the election:",
+            QLineEdit::Password,
+            "",
+            &ok
+            );
+
+        if (!ok || password.isEmpty()) {
+            QMessageBox::warning(this, "Aborted", "Election stop cancelled.");
+            return;
+        }
+
+        QSqlQuery verifyQuery(db);
+        verifyQuery.prepare("SELECT password FROM admins WHERE email = :email");
+        verifyQuery.bindValue(":email", currentAdmin);
+
+        if (!verifyQuery.exec() || !verifyQuery.next()) {
+            QMessageBox::warning(this, "Error", "Failed to verify password.");
+            return;
+        }
+
+        QString storedPassword = verifyQuery.value(0).toString();
+        if (password != storedPassword) {
+            QMessageBox::warning(this, "Access Denied", "Incorrect password. Operation cancelled.");
+            return;
+        }
+
+        // Password confirmed, proceed to stop election
         isElectionOngoing = false;
         appendStatusRow("Election Ended");
         ui->label_eStats->setText("Election Status: Ended");
@@ -67,6 +101,7 @@ void ElectionControl::toggleElection()
         QMessageBox::warning(this, "Error", "Failed to update election status: " + query.lastError().text());
     }
 }
+
 
 void ElectionControl::resetElection()
 {
