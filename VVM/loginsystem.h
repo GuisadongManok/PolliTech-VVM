@@ -3,13 +3,11 @@
 
 #include <QDialog>
 #include "ui_loginsystem.h"
-#include "positions.h"
 #include <QSqlDatabase>
 
 
 class adminlogin;
 class vvm;
-class positions;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,7 +33,6 @@ private:
     QString currentAdmin;
     adminlogin *adminWindow;
     QSqlDatabase &db;
-    positions *posWindow;
     vvm *mainWindow;
 };
 #endif // LOGINSYSTEM_H

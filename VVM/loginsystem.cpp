@@ -19,7 +19,6 @@ loginsystem::loginsystem(QSqlDatabase& database, const QString &email, QWidget* 
     , currentAdmin(email)
     , adminWindow (nullptr)
     , db(database)
-    , posWindow(nullptr)
     , mainWindow (nullptr)
 {
     ui->setupUi(this);

@@ -7,7 +7,6 @@
 #include <QSqlError>
 #include <QMessageBox>
 #include <QDebug>
-#include "admindashboard.h"
 #include "loginsystem.h"
 
 adminlogin::adminlogin(QSqlDatabase &database, const QString &email, QWidget *parent)
